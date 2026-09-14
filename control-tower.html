@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Tower — Supply Chain Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+        tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f172a',
+            'primary-container': '#1e293b',
+            secondary: '#4338ca',
+            surface: '#f8fafc',
+            'surface-card': '#ffffff',
+            'surface-container': '#e5eeff',
+            'surface-container-low': '#eff4ff',
+            'surface-container-lowest': '#ffffff',
+            'surface-container-high': '#dce9ff',
+            'surface-container-highest': '#d3e4fe',
+            'on-surface': '#0f172a',
+            'on-surface-variant': '#64748b',
+            outline: '#64748b',
+            'border-subtle': '#e2e8f0',
+            error: '#ef4444',
+            'error-light': '#fef2f2',
+            'error-border': '#fecaca',
+            success: '#10b981',
+            'success-light': '#ecfdf5',
+            background: '#f8f9ff',
+            'on-primary': '#ffffff',
+            'on-background': '#0b1c30',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Geist', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <script>
+    (function() {
+      const theme = localStorage.getItem('nexus-theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="min-h-screen bg-surface text-on-surface font-sans" data-page="controlTower">
+  <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between">
+    <div>
+      <div class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle">
+        <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">deployed_code</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-semibold text-[15px] leading-snug tracking-tight text-slate-900">Nexus Tower</span>
+          <span class="text-[11px] text-slate-500 leading-none">Operations Cockpit</span>
+        </div>
+      </div>
+      <nav class="p-4 space-y-1">
+        <div class="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-slate-400 font-mono">Operations</div>
+        <a data-nav="controlTower" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="control-tower.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">hub</span><span>Control Tower</span></a>
+        <a data-nav="procurement" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="procurement.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">shopping_cart</span><span>Procurement</span></a>
+        <a data-nav="inventory" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="inventory.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">inventory_2</span><span>Inventory</span></a>
+        <a data-nav="production" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="production.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">precision_manufacturing</span><span>Production</span></a>
+        <a data-nav="logistics" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="logistics.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">local_shipping</span><span>Logistics</span></a>
+      </nav>
+    </div>
+    <div class="p-4 border-t border-border-subtle">
+      <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 border border-border-subtle">
+        <span class="relative flex h-2 w-2 ml-1"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span>
+        <div class="flex flex-col min-w-0">
+          <span class="text-xs font-medium text-slate-800">Rotterdam Hub 04</span>
+          <span class="text-[11px] text-slate-500">Live Telemetry Active</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="lg:pl-64 min-h-screen flex flex-col">
+    <header class="h-16 bg-white border-b border-border-subtle px-6 sm:px-8 flex items-center justify-between sticky top-0 z-30">
+      <div class="flex items-center gap-6 min-w-0">
+        <div class="flex items-center gap-2 text-sm text-slate-500 truncate">
+          <span class="font-medium text-slate-900">Nexus Tower</span>
+          <span>/</span>
+          <span>Operations Overview</span>
+        </div>
+        <div class="relative hidden md:block w-80">
+          <span class="material-symbols-outlined absolute left-3 top-2 text-[18px] text-slate-400">search</span>
+          <input class="w-full h-9 pl-9 pr-8 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-400 focus:border-slate-400 transition" placeholder="Search PO, SKU, line or facility..." type="text" />
+          <kbd class="absolute right-2.5 top-2 text-[10px] font-mono text-slate-400 border border-slate-200 px-1 rounded bg-white">⌘K</kbd>
+        </div>
+      </div>
+        <div class="flex items-center gap-4">
+        <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition relative" type="button">
+          <span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span>
+        </button>
+        <span class="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 text-slate-700">Supply Chain Director</span>
+        <button aria-label="Notifications" class="p-2 text-slate-500 hover:text-slate-900 rounded-lg hover:bg-slate-100 transition relative" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="w-1.5 h-1.5 bg-rose-500 rounded-full absolute top-2 right-2"></span></button>
+        <div class="h-5 w-px bg-slate-200"></div>
+        <div class="flex items-center gap-3">
+          <div class="text-right hidden sm:block">
+            <div class="text-xs font-medium text-slate-900 leading-tight">Marcus Vance</div>
+            <div class="text-[11px] text-slate-500 leading-none">Antwerp HQ</div>
+          </div>
+          <img alt="User" class="w-8 h-8 rounded-full border border-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChSaObbGUL8IDEAtrYZu9BDRwEMLhPVvmZ16oYHBeodBQ5NffFGU58oCVV-VKnH7DaiowzWay76otj3esuE681JnHj6sWqXziWm-3iO7Y4QkBd1qn95Qrio-aqMiguhiHp4H6TTMcpRgK6NNzvuDlAgo3T_UYErnaKkeuNu6audwWOYZJ37UXGkEIw_NDztlbBidLLWQSU5knFgvPpcDLmhrx3xUWRirFp2q0MpxjV26XB3QfvhIu1" />
+        </div>
+        <button id="logout-btn" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-200 bg-white text-slate-600 text-xs font-medium hover:bg-slate-50 hover:text-error transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">logout</span><span class="hidden sm:inline">Logout</span></button>
+      </div>
+    </header>
+
+    <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8">
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">System Health & Incident Chain</h1>
+          <p class="text-sm text-slate-500 mt-1">Real-time status across operational nodes and active resolutions.</p>
+        </div>
+        <button class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-sm transition" type="button"><span class="material-symbols-outlined text-[16px]">refresh</span>Refresh Status</button>
+      </div>
+
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Procurement</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Delay</span></div>
+          <div class="mt-3"><div class="text-2xl font-display font-semibold">42 Open POs</div><p class="text-xs text-slate-500 mt-1">1 shipment delayed (+3 days)</p></div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Inventory</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Critical</span></div>
+          <div class="mt-3"><div class="text-2xl font-display font-semibold">400 L Buffer</div><p class="text-xs text-slate-500 mt-1">&lt; 38 hours safety runway</p></div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Production</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Rebalance</span></div>
+          <div class="mt-3"><div class="text-2xl font-display font-semibold">18 Runs Active</div><p class="text-xs text-slate-500 mt-1">Line 04 swap configured</p></div>
+        </div>
+        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Logistics</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>On Schedule</span></div>
+          <div class="mt-3"><div class="text-2xl font-display font-semibold">34 Dispatches</div><p class="text-xs text-slate-500 mt-1">Reefer capacity secured</p></div>
+        </div>
+      </section>
+
+      <section class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        <div class="mb-4">
+          <h2 class="text-sm font-display font-semibold uppercase tracking-wider text-slate-900">Active Disruption Propagation</h2>
+          <p class="text-xs text-slate-500 mt-0.5">End-to-end incident cascade across downstream operational stages.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-rose-600 block">01. Root Cause</span><div class="font-medium text-sm text-slate-900 mt-1">Raw Milk Inbound Slip</div><div class="text-xs text-slate-500 mt-1">+3 days delivery delay at Antwerp</div></div>
+          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-amber-600 block">02. Inventory Buffer</span><div class="font-medium text-sm text-slate-900 mt-1">Silo Level Depletion</div><div class="text-xs text-slate-500 mt-1">Safety stock reaches 18h critical point</div></div>
+          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-slate-700 block">03. Line Bottleneck</span><div class="font-medium text-sm text-slate-900 mt-1">Shift Swap Batch #1042</div><div class="text-xs text-slate-500 mt-1">Preempt Line 04 idle downtime</div></div>
+          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-emerald-600 block">04. Fulfillment</span><div class="font-medium text-sm text-slate-900 mt-1">Reefer Truck SH-208</div><div class="text-xs text-slate-500 mt-1">Direct dispatch to Rotterdam Hub</div></div>
+        </div>
+      </section>
+
+      <section id="action-panel" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-1.5 max-w-2xl">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center gap-1 text-xs font-medium text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded"><span class="material-symbols-outlined text-[14px]">auto_awesome</span>Recommended Action</span>
+              <span class="text-xs text-slate-400">98.4% system confidence</span>
+            </div>
+            <h3 class="text-base font-display font-semibold text-slate-900">Expedite Raw Dairy Consignment via Cold-Chain Priority Corridor</h3>
+            <p class="text-xs text-slate-600 leading-relaxed">Authorizes a $450 surcharge waiver to prioritize tanker transit. Directly protects filling Line 04 continuity and averts an estimated <strong class="text-slate-900">$14,200 in idle production loss</strong>.</p>
+          </div>
+          <div class="flex items-center gap-3 shrink-0">
+            <button id="approve-action" class="px-4 py-2 text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm transition" type="button">Approve Action</button>
+            <button class="px-4 py-2 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition" type="button">Review Details</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="p-6 border-b border-slate-100 flex items-center justify-between">
+          <div>
+            <h2 class="text-sm font-display font-semibold uppercase tracking-wider text-slate-900">Domain Operations Status</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Consolidated departmental overview and ownership.</p>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-50 border-b border-slate-200 text-slate-500 font-medium">
+                <th class="py-3 px-6">Domain</th>
+                <th class="py-3 px-6">Status</th>
+                <th class="py-3 px-6">Active Issue / Alert</th>
+                <th class="py-3 px-6">Assigned Lead</th>
+                <th class="py-3 px-6 text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100 text-slate-700">
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Procurement</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Delay Risk</span></td><td class="py-3.5 px-6 text-slate-600">Supplier A milk transport customs clearance hold</td><td class="py-3.5 px-6">E. Vance</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Inventory</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Low Buffer</span></td><td class="py-3.5 px-6 text-slate-600">Central Hub 04 safety runway under 38h threshold</td><td class="py-3.5 px-6">M. Chen</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Production</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Line Swap</span></td><td class="py-3.5 px-6 text-slate-600">Batch PO-1042 reassigned to avoid Line 04 idle period</td><td class="py-3.5 px-6">D. Richter</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Logistics</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Optimal</span></td><td class="py-3.5 px-6 text-slate-600">CarrierX direct route assigned for SH-208 outbound</td><td class="py-3.5 px-6">S. Tanaka</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

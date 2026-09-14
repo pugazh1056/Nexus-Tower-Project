@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Tower Enterprise - Production</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{primary:'#0f172a','primary-container':'#1e293b',secondary:'#4338ca',surface:'#f8fafc','surface-card':'#ffffff','surface-container':'#e5eeff','surface-container-low':'#eff4ff','surface-container-lowest':'#ffffff','on-surface':'#0f172a','on-surface-variant':'#64748b',outline:'#64748b','border-subtle':'#e2e8f0',error:'#ef4444','error-light':'#fef2f2','error-border':'#fecaca',success:'#10b981','success-light':'#ecfdf5',background:'#f8f9ff','on-primary':'#ffffff'},fontFamily:{sans:['Inter','sans-serif'],display:['Geist','sans-serif'],mono:['JetBrains Mono','monospace']}}}};</script>
+  <script>
+    (function() {
+      const theme = localStorage.getItem('nexus-theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    body[data-page="production"] {
+      --production-ink: #172033;
+      --production-muted: #64748b;
+      --production-line: #e5eaf2;
+      --production-surface: rgba(255, 255, 255, 0.92);
+      background:
+        radial-gradient(circle at 78% -10%, rgba(99, 102, 241, 0.10), transparent 28rem),
+        radial-gradient(circle at 15% 0%, rgba(14, 165, 233, 0.08), transparent 24rem),
+        #f4f7fb;
+    }
+
+    body[data-page="production"] aside {
+      width: 15.5rem;
+      background: rgba(255, 255, 255, 0.88);
+      border-color: var(--production-line);
+      box-shadow: 12px 0 36px rgba(15, 23, 42, 0.03);
+      backdrop-filter: blur(18px);
+    }
+
+    body[data-page="production"] aside > div:first-child > div:first-child {
+      height: 4.5rem;
+      padding-left: 1.5rem;
+      border-color: var(--production-line);
+    }
+
+    body[data-page="production"] aside nav {
+      padding: 1.5rem 0.875rem;
+    }
+
+    body[data-page="production"] aside nav a {
+      min-height: 2.75rem;
+      padding: 0.7rem 0.875rem;
+      border: 1px solid transparent;
+      color: #64748b;
+    }
+
+    body[data-page="production"] aside nav a:hover {
+      background: #f8fafc;
+      color: var(--production-ink);
+      border-color: #edf1f7;
+    }
+
+    body[data-page="production"] aside nav a.bg-slate-900 {
+      background: linear-gradient(135deg, #1e293b, #334155);
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+    }
+
+    body[data-page="production"] header {
+      height: 4.5rem;
+      background: rgba(255, 255, 255, 0.78);
+      border-color: var(--production-line);
+      backdrop-filter: blur(18px);
+    }
+
+    body[data-page="production"] header > div:first-child > span {
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #e0e7ff;
+      letter-spacing: 0.01em;
+    }
+
+    body[data-page="production"] main {
+      max-width: 88rem;
+      padding-top: 2.25rem;
+      padding-bottom: 3.5rem;
+    }
+
+    body[data-page="production"] main > div:first-child {
+      margin-bottom: 0.5rem;
+    }
+
+    body[data-page="production"] main h1 {
+      color: var(--production-ink);
+      letter-spacing: -0.035em;
+    }
+
+    body[data-page="production"] main h1 + p {
+      color: var(--production-muted);
+    }
+
+    body[data-page="production"] main > div:first-child button {
+      min-height: 2.5rem;
+    }
+
+    body[data-page="production"] main section > .bg-white,
+    body[data-page="production"] main > section.bg-white {
+      background: var(--production-surface);
+      border-color: var(--production-line);
+      box-shadow: 0 12px 32px rgba(30, 41, 59, 0.055);
+      backdrop-filter: blur(12px);
+    }
+
+    body[data-page="production"] main > section:nth-of-type(2) > div {
+      border-color: #fecaca;
+      background: linear-gradient(90deg, #fff7f7, #fffafa);
+      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.05);
+    }
+
+    body[data-page="production"] main > section:nth-of-type(3) > div {
+      border-color: #dbe4ff;
+      box-shadow: 0 12px 30px rgba(67, 56, 202, 0.06);
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) {
+      border-radius: 0.875rem;
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) > div:first-child {
+      padding: 1.25rem 1.5rem;
+      background: rgba(248, 250, 252, 0.72);
+      border-color: var(--production-line);
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) table {
+      min-width: 940px;
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) tbody tr {
+      border-color: #edf1f7;
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) tbody tr:hover {
+      background: #f8faff;
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) td,
+    body[data-page="production"] main > section:nth-of-type(4) th {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) thead th {
+      color: #64748b;
+      background: #f8fafc;
+      border-color: var(--production-line);
+    }
+
+    body[data-page="production"] main > section:nth-of-type(4) td:first-child {
+      font-weight: 600;
+    }
+
+    @media (max-width: 1023px) {
+      body[data-page="production"] main {
+        padding-top: 1.5rem;
+      }
+    }
+
+    .dark body[data-page="production"] {
+      background:
+        radial-gradient(circle at 78% -10%, rgba(99, 102, 241, 0.16), transparent 28rem),
+        #0f172a;
+    }
+
+    .dark body[data-page="production"] aside,
+    .dark body[data-page="production"] header {
+      background: rgba(30, 41, 59, 0.88);
+      border-color: #334155;
+    }
+
+    .dark body[data-page="production"] main > section:nth-of-type(2) > div {
+      background: linear-gradient(90deg, rgba(127, 29, 29, 0.32), rgba(69, 10, 10, 0.28));
+      border-color: #7f1d1d;
+    }
+
+    .dark body[data-page="production"] main > section:nth-of-type(4) > div:first-child,
+    .dark body[data-page="production"] main > section:nth-of-type(4) thead th {
+      background: #1e293b;
+      border-color: #334155;
+    }
+
+    .dark body[data-page="production"] main > section:nth-of-type(4) tbody tr:hover {
+      background: rgba(51, 65, 85, 0.45);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-surface text-on-surface font-sans" data-page="production">
+  <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between">
+    <div>
+      <div class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle">
+        <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
+          <span class="material-symbols-outlined text-[18px]">deployed_code</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="font-display font-semibold text-[15px] leading-snug tracking-tight text-slate-900">Nexus Tower</span>
+          <span class="text-[11px] text-slate-500 leading-none">Operations Cockpit</span>
+        </div>
+      </div>
+      <nav class="p-4 space-y-1">
+        <div class="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-slate-400 font-mono">Operations</div>
+        <a data-nav="controlTower" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="control-tower.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">hub</span><span>Control Tower</span></a>
+        <a data-nav="procurement" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="procurement.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">shopping_cart</span><span>Procurement</span></a>
+        <a data-nav="inventory" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="inventory.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">inventory_2</span><span>Inventory</span></a>
+        <a data-nav="production" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="production.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">precision_manufacturing</span><span>Production</span></a>
+        <a data-nav="logistics" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="logistics.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">local_shipping</span><span>Logistics</span></a>
+      </nav>
+    </div>
+    <div class="p-4 border-t border-border-subtle">
+      <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 border border-border-subtle">
+        <span class="relative flex h-2 w-2 ml-1"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span>
+        <div class="flex flex-col min-w-0">
+          <span class="text-xs font-medium text-slate-800">Rotterdam Hub 04</span>
+          <span class="text-[11px] text-slate-500">Live Telemetry Active</span>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <div class="lg:pl-64 min-h-screen flex flex-col">
+    <header class="h-16 border-b border-border-subtle bg-white px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30"><div class="flex items-center gap-4 min-w-0"><span class="text-xs font-medium text-slate-700 bg-slate-100 px-3 py-1 rounded-lg whitespace-nowrap">Production Manager</span></div><div class="flex items-center gap-4 sm:gap-6"><button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="relative w-80 hidden md:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-slate-400 pointer-events-none">search</span><input class="w-full h-9 pl-9 pr-12 rounded-lg bg-slate-50 border border-border-subtle text-xs text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors" placeholder="Search batches, lines, finished products..." type="text"/><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 border border-slate-200 rounded text-[10px] bg-white text-slate-400 font-mono">⌘K</kbd></div><div class="flex items-center gap-4"><button aria-label="Notifications" class="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-3 pl-2 border-l border-border-subtle"><img alt="Profile avatar" class="w-8 h-8 rounded-full ring-1 ring-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChSaObbGUL8IDEAtrYZu9BDRwEMLhPVvmZ16oYHBeodBQ5NffFGU58oCVV-VKnH7DaiowzWay76otj3esuE681JnHj6sWqXziWm-3iO7Y4QkBd1qn95Qrio-aqMiguhiHp4H6TTMcpRgK6NNzvuDlAgo3T_UYErnaKkeuNu6audwWOYZJ37UXGkEIw_NDztlbBidLLWQSU5knFgvPpcDLmhrx3xUWRirFp2q0MpxjV26XB3QfvhIu1"/><div class="hidden sm:flex flex-col text-left"><span class="text-xs font-medium text-on-surface">Marcus Vance</span><span class="text-[11px] text-on-surface-variant">Production Lead</span></div></div><button id="logout-btn" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs font-medium hover:bg-slate-50 hover:text-error transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">logout</span><span class="hidden sm:inline">Logout</span></button></div>
+  </header>
+      <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8"><div class="flex items-center justify-between gap-4"><div><h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Production Operations</h1><p class="text-sm text-slate-500 mt-1">Active line execution, batch dependencies, and bottleneck triage.</p></div><div class="flex items-center gap-3"><button class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px] text-slate-500">tune</span><span>Line Config</span></button><button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>New Production Run</span></button></div></div>
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active Orders</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-slate-900">18</span><span class="text-xs text-slate-500 font-medium">Runs</span></div><span class="text-xs text-emerald-600 font-medium">4 Lines Busy</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-error uppercase tracking-wider">Orders At Risk</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-error">2</span><span class="text-xs text-slate-500 font-medium">Batches</span></div><span class="text-xs text-error font-medium">Line 02 & Line 04</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Material Shortages</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-slate-900">1</span><span class="text-xs text-slate-500 font-medium">Impending</span></div><span class="text-xs text-amber-600 font-medium">Raw Milk Deficit</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Line Efficiency (OEE)</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-slate-900">93.4%</span><span class="text-xs text-slate-500 font-medium">Target: 92%</span></div><span class="text-xs text-emerald-600 font-medium">+0.8% this week</span></div></div></section>
+      <section><div class="bg-error-light border border-error-border rounded-xl p-4 flex items-center justify-between gap-4"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-error text-white flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">warning</span></div><p class="text-xs text-slate-800 leading-snug"><span class="font-semibold text-error">Line 02 Starvation Risk:</span> Batch <span class="font-semibold">PO-1042</span> (Fresh Milk 1L Pack) faces raw milk stockout on Shift B (07 Sep 14:00).</p></div><span class="text-xs font-mono text-error font-medium shrink-0">Downtime risk: 14.0 hrs</span></div></section>
+      <section id="aiRecommendationCard"><div class="bg-white border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col gap-5"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border-subtle"><div class="flex items-center gap-2.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span><h2 class="text-sm font-semibold text-slate-900">AI Recommendation: Reschedule Batch Sequence & Swap Line Priority</h2></div><span class="text-xs font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full w-fit">Confidence: 92%</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-600"><div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Reason</span><p class="text-slate-800 leading-relaxed">Swap Line 02 schedule: run <strong class="text-slate-900 font-semibold">Butter Crunch Biscuits Batch PO-1045</strong> first while waiting for expedited raw milk consignment. Prevents packaging cell idle starvation.</p></div><div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Impact</span><p class="text-slate-800 leading-relaxed">Recovers <span class="font-semibold text-emerald-700">14.0 hrs idle labor time</span>. Preserves 98.2% on-time fulfillment (<span class="font-semibold text-indigo-700 font-mono">Risk Delta: -42%</span>).</p></div></div><div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-border-subtle"><div class="flex items-center gap-2"><button class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm" type="button">Approve Schedule Swap</button><button class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Simulate Line OEE</button></div><button data-dismiss-target="aiRecommendationCard" class="px-3 py-2 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors" type="button">Dismiss</button></div></div></section>
+      <section class="bg-white border border-border-subtle rounded-xl shadow-sm overflow-hidden flex flex-col"><div class="p-5 border-b border-border-subtle flex items-center justify-between"><div class="flex items-center gap-3"><h3 class="text-sm font-semibold text-slate-900">Active Production Orders</h3><span class="text-xs text-slate-500 font-mono bg-slate-100 px-2 py-0.5 rounded-full">4 Active</span></div><div class="flex items-center gap-2"><button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button"><span class="material-symbols-outlined text-[15px] text-slate-400">filter_list</span><span>Filter: All Lines</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button"><span class="material-symbols-outlined text-[15px] text-slate-400">sort</span><span>Sort: Priority</span></button></div></div><div class="overflow-x-auto"><table class="w-full text-left border-collapse text-xs"><thead><tr class="bg-slate-50 text-slate-500 uppercase font-mono text-[11px] border-b border-border-subtle"><th class="py-3 px-5 font-medium">Order ID</th><th class="py-3 px-5 font-medium">Finished Product</th><th class="py-3 px-5 font-medium">Line / Cell</th><th class="py-3 px-5 font-medium">Batch Quantity</th><th class="py-3 px-5 font-medium">Progress</th><th class="py-3 px-5 font-medium">Risk Level</th><th class="py-3 px-5 font-medium text-right">Action</th></tr></thead><tbody class="divide-y divide-border-subtle text-slate-700"><tr class="hover:bg-slate-50/75 transition-colors bg-red-50/20"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1042</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Fresh Milk 1L TetraPack</span><span class="text-[11px] text-slate-400 font-mono">SKU-DRY-8832</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-error"></span><span>Line 02 (Dairy Cold)</span></div></td><td class="py-3.5 px-5 font-mono">10,000 Units</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>15%</span><span>1.5k / 10k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-error h-full rounded-full" style="width: 15%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-red-100 text-error">Critical (1.2d delay)</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-900 text-white text-[11px] font-medium hover:bg-slate-800 transition-colors" type="button">Resolve</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1045</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Butter Crunch Biscuits</span><span class="text-[11px] text-slate-400 font-mono">SKU-BKY-4412</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Line 01 (Bakery Dry)</span></div></td><td class="py-3.5 px-5 font-mono">25,000 Packs</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>68%</span><span>17k / 25k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-indigo-600 h-full rounded-full" style="width: 68%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">On Track</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1048</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Pure Mango Juice 250ml</span><span class="text-[11px] text-slate-400 font-mono">SKU-BEV-9920</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-500"></span><span>Line 04 (Aseptic Bottling)</span></div></td><td class="py-3.5 px-5 font-mono">8,000 Bottles</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>35%</span><span>2.8k / 8k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-indigo-400 h-full rounded-full" style="width: 35%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-100 text-amber-800">Warning</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1039</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Salted Cream Butter 200g</span><span class="text-[11px] text-slate-400 font-mono">SKU-DRY-3310</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Line 03 (Dairy Chilled)</span></div></td><td class="py-3.5 px-5 font-mono">4,500 Tubs</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>95%</span><span>4.2k / 4.5k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full rounded-full" style="width: 95%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">On Track</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr></tbody></table></div></section>
+    </main></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,365 @@
+/* Nexus Tower - Global Styles & UI Refinements */
+
+html, body {
+  margin:  0;
+  min-height:  100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background:
+    radial-gradient(circle at top left, #6366f11f, transparent 30%),
+    radial-gradient(circle at top right, #0ea5e91f, transparent 28%),
+    linear-gradient(180deg, #f8fafc 0%, #eef4ff 100%);
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.dark body {
+  background:
+    radial-gradient(circle at top left, #4338ca26, transparent 35%),
+    radial-gradient(circle at top right, #0f172a33, transparent 30%),
+    #0f172a;
+  color: #f8fafc;
+}
+
+.dark aside, .dark header, .dark section, .dark .bg-white {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .text-slate-900 { color: #f8fafc !important; }
+.dark .text-slate-500 { color: #94a3b8 !important; }
+.dark .text-slate-600 { color: #cbd5e1 !important; }
+.dark .bg-slate-50, .dark .bg-slate-100 { background-color: #334155 !important; }
+.dark .border-slate-100, .dark .border-slate-200 { border-color: #475569 !important; }
+.dark input { background-color: #0f172a !important; border-color: #334155 !important; color: #f8fafc !important; }
+
+/* Refined Scrollbar */
+::-webkit-scrollbar {
+  width:  6px;
+  height:  6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #64748b40;
+  border-radius:  9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b66;
+}
+
+/* Card & Surface */
+.card-glow {
+  box-shadow:  0 24px 80px #0f172a14;
+}
+
+.surface-frame {
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+/* Interaction Refinements */
+a, button, input, select, textarea, [role="button"] {
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration:  150ms;
+}
+
+:focus-visible {
+  outline:  2px solid #4338ca66;
+  outline-offset:  2px;
+}
+
+button:not(:disabled) {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: not-allowed;
+  opacity:  0.5;
+}
+
+/* Refined Shadow Scale */
+.shadow-sm {
+  box-shadow:  0 1px 2px #0f172a0a, 0 1px 3px #0f172a0f;
+}
+.shadow-md {
+  box-shadow:  0 2px 4px #0f172a0d, 0 4px 8px #0f172a0d;
+}
+.shadow-lg {
+  box-shadow:  0 4px 12px #0f172a14, 0 8px 24px #0f172a0f;
+}
+.shadow-xl {
+  box-shadow:  0 8px 24px #0f172a1a, 0 16px 48px #0f172a14;
+}
+
+/* Table Refinements */
+table {
+  border-collapse: separate;
+  border-spacing:  0;
+}
+
+thead th {
+  font-weight:  500;
+  letter-spacing:  0.05em;
+  text-transform: uppercase;
+  font-family: 'JetBrains Mono', monospace;
+  font-size:  11px;
+  color: #64748b;
+  background-color: #f8fafc;
+  border-bottom:  1px solid #e2e8f0;
+}
+
+tbody tr {
+  transition: background-color 150ms ease;
+}
+
+tbody tr:hover {
+  background-color: #f8fafccc;
+}
+
+/* Input Refinements */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus {
+  box-shadow:  0 0 0 3px #4338ca14;
+}
+
+/* Header & Sidebar */
+header {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+aside nav a {
+  position: relative;
+  transition: background-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+
+/* Dark Mode Refinements */
+.dark .shadow-sm,
+.dark .shadow-md,
+.dark .shadow-lg,
+.dark .shadow-xl {
+  box-shadow:  0 1px 3px #0000004d;
+}
+
+.dark tbody tr:hover {
+  background-color: #33415566;
+}
+
+.dark thead th {
+  background-color: #1e293b;
+  color: #94a3b8;
+  border-bottom-color: #334155;
+}
+
+/* Badge Refinements */
+.rounded-full {
+  letter-spacing:  0.01em;
+}
+
+/* Shared Nexus Tower visual system */
+:root {
+  --nexus-ink: #172033;
+  --nexus-muted: #64748b;
+  --nexus-line: #e5eaf2;
+  --nexus-indigo: #4f46e5;
+  --nexus-surface: rgba(255, 255, 255, 0.92);
+}
+
+body[data-page]:not([data-page="login"]) {
+  background:
+    radial-gradient(circle at 78% -10%, rgba(99, 102, 241, 0.10), transparent 28rem),
+    radial-gradient(circle at 15% 0%, rgba(14, 165, 233, 0.08), transparent 24rem),
+    #f4f7fb;
+}
+
+body[data-page]:not([data-page="login"]) aside {
+  width: 15.5rem;
+  background: rgba(255, 255, 255, 0.88);
+  border-color: var(--nexus-line);
+  box-shadow: 12px 0 36px rgba(15, 23, 42, 0.03);
+  backdrop-filter: blur(18px);
+}
+
+body[data-page]:not([data-page="login"]) aside > div:first-child > div:first-child {
+  height: 4.5rem;
+  border-color: var(--nexus-line);
+}
+
+body[data-page]:not([data-page="login"]) aside nav {
+  padding: 1.5rem 0.875rem;
+}
+
+body[data-page]:not([data-page="login"]) aside nav a {
+  min-height: 2.75rem;
+  padding: 0.7rem 0.875rem;
+  border: 1px solid transparent;
+  color: #64748b;
+}
+
+body[data-page]:not([data-page="login"]) aside nav a:hover {
+  background: #f8fafc;
+  color: var(--nexus-ink);
+  border-color: #edf1f7;
+}
+
+body[data-page]:not([data-page="login"]) aside nav a.bg-slate-900 {
+  background: linear-gradient(135deg, #1e293b, #334155);
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.14);
+}
+
+body[data-page]:not([data-page="login"]) header {
+  height: 4.5rem;
+  background: rgba(255, 255, 255, 0.78);
+  border-color: var(--nexus-line);
+  backdrop-filter: blur(18px);
+}
+
+body[data-page]:not([data-page="login"]) header > div:first-child > span {
+  background: #eef2ff;
+  color: #4338ca;
+  border: 1px solid #e0e7ff;
+  letter-spacing: 0.01em;
+}
+
+body[data-page]:not([data-page="login"]) main {
+  max-width: 88rem;
+  padding-top: 2.25rem;
+  padding-bottom: 3.5rem;
+}
+
+body[data-page]:not([data-page="login"]) main h1 {
+  color: var(--nexus-ink);
+  letter-spacing: -0.035em;
+}
+
+body[data-page]:not([data-page="login"]) main h1 + p {
+  color: var(--nexus-muted);
+}
+
+body[data-page]:not([data-page="login"]) main section > .bg-white,
+body[data-page]:not([data-page="login"]) main > section.bg-white {
+  background: var(--nexus-surface);
+  border-color: var(--nexus-line);
+  box-shadow: 0 12px 32px rgba(30, 41, 59, 0.055);
+  backdrop-filter: blur(12px);
+}
+
+body[data-page]:not([data-page="login"]) main section table thead th {
+  background: #f8fafc;
+  border-color: var(--nexus-line);
+}
+
+body[data-page]:not([data-page="login"]) main section table tbody tr {
+  border-color: #edf1f7;
+}
+
+body[data-page]:not([data-page="login"]) main section table tbody tr:hover {
+  background: #f8faff;
+}
+
+/* Landing page */
+body:not([data-page]) {
+  background:
+    radial-gradient(circle at 50% -12%, rgba(79, 70, 229, 0.15), transparent 30rem),
+    radial-gradient(circle at 0% 35%, rgba(14, 165, 233, 0.08), transparent 24rem),
+    #f8faff;
+  color: var(--nexus-ink);
+}
+
+body:not([data-page]) header {
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+  background: rgba(248, 250, 252, 0.78);
+  box-shadow: 0 10px 30px rgba(30, 41, 59, 0.04);
+}
+
+body:not([data-page]) main {
+  background: transparent;
+}
+
+body:not([data-page]) main section {
+  position: relative;
+}
+
+body:not([data-page]) h1,
+body:not([data-page]) h2,
+body:not([data-page]) h3 {
+  letter-spacing: -0.035em;
+}
+
+body:not([data-page]) section [class*="shadow"] {
+  box-shadow: 0 20px 50px rgba(30, 41, 59, 0.08);
+}
+
+body:not([data-page]) a[class*="bg-primary"] {
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.16);
+}
+
+/* Authentication */
+body[data-page="login"] {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(79, 70, 229, 0.14), transparent 30rem),
+    #f4f7fb;
+}
+
+body[data-page="login"] > main > section > div > div {
+  box-shadow: 0 24px 70px rgba(30, 41, 59, 0.10);
+  border-color: var(--nexus-line);
+}
+
+body[data-page="login"] #persona-selector {
+  border: 1px solid #dfe6f1;
+  box-shadow: inset 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+body[data-page="login"] form input {
+  border: 1px solid #e2e8f0;
+}
+
+body[data-page="login"] form input:focus {
+  border-color: #a5b4fc;
+}
+
+.dark body[data-page]:not([data-page="login"]),
+.dark body:not([data-page]),
+.dark body[data-page="login"] {
+  background:
+    radial-gradient(circle at 78% -10%, rgba(99, 102, 241, 0.16), transparent 28rem),
+    #0f172a;
+}
+
+.dark body[data-page]:not([data-page="login"]) aside,
+.dark body[data-page]:not([data-page="login"]) header {
+  background: rgba(30, 41, 59, 0.88);
+  border-color: #334155;
+}
+
+.dark body:not([data-page]) header {
+  background: rgba(15, 23, 42, 0.82);
+  border-color: #334155;
+}
+
+.dark body[data-page]:not([data-page="login"]) main section table thead th {
+  background: #1e293b;
+  border-color: #334155;
+}
+
+.dark body[data-page]:not([data-page="login"]) main section table tbody tr:hover {
+  background: rgba(51, 65, 85, 0.45);
+}
+
+@media (max-width: 1023px) {
+  body[data-page]:not([data-page="login"]) main {
+    padding-top: 1.5rem;
+  }
+}

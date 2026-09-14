@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Tower Enterprise Authentication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0f172a',
+            'primary-container': '#1e293b',
+            secondary: '#4338ca',
+            surface: '#f8fafc',
+            'surface-card': '#ffffff',
+            'surface-container': '#e5eeff',
+            'surface-container-low': '#eff4ff',
+            'surface-container-lowest': '#ffffff',
+            'surface-container-high': '#dce9ff',
+            'surface-container-highest': '#d3e4fe',
+            'on-surface': '#0f172a',
+            'on-surface-variant': '#64748b',
+            outline: '#64748b',
+            'border-subtle': '#e2e8f0',
+            error: '#ef4444',
+            'error-light': '#fef2f2',
+            'error-border': '#fecaca',
+            success: '#10b981',
+            'success-light': '#ecfdf5',
+            background: '#f8f9ff',
+            'on-primary': '#ffffff',
+            'on-background': '#0b1c30',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Geist', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body class="min-h-screen text-on-surface font-sans" data-page="login">
+  <main class="min-h-screen flex flex-col">
+    <header class="w-full flex items-center justify-between px-6 sm:px-8 py-4 sm:py-5">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
+          <span class="material-symbols-outlined text-[20px]">dataset</span>
+        </div>
+        <div class="flex flex-col leading-none">
+          <span class="font-display font-semibold tracking-tight text-on-surface">NEXUS TOWER</span>
+          <span class="text-[11px] font-mono text-outline tracking-[0.22em] mt-1">ENTERPRISE SYSTEM</span>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-surface-container text-on-surface-variant text-[11px] font-mono">
+          <span class="w-1.5 h-1.5 rounded-full bg-success animate-pulse"></span>
+          <span>CLUSTER: US-EAST-1</span>
+        </div>
+        <button id="theme-toggle" type="button" aria-label="Toggle Theme" class="w-9 h-9 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors">
+          <span id="theme-icon" class="material-symbols-outlined text-[18px]">dark_mode</span>
+        </button>
+      </div>
+    </header>
+
+    <section class="flex-1 flex items-center justify-center px-4 sm:px-6 py-10">
+      <div class="w-full max-w-[520px]">
+        <div class="card-glow surface-frame relative overflow-hidden rounded-2xl bg-surface-card border border-border-subtle p-6 sm:p-8">
+          <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-secondary to-primary"></div>
+          <div class="flex flex-col items-center text-center mb-8">
+            <div class="w-14 h-14 rounded-2xl bg-surface-container-low flex items-center justify-center mb-4 shadow-sm">
+              <span class="material-symbols-outlined text-[28px] text-primary">lock</span>
+            </div>
+            <h1 class="font-display text-3xl sm:text-[32px] tracking-tight text-on-surface">Nexus Tower</h1>
+            <p class="mt-2 max-w-[360px] text-sm sm:text-[14px] text-on-surface-variant">AI-powered supply chain decision workspace for enterprise teams.</p>
+          </div>
+
+          <div class="mb-6">
+            <label class="block text-[11px] font-semibold uppercase tracking-[0.2em] text-outline mb-2">Operational Persona Access</label>
+            <div id="persona-selector" class="grid grid-cols-2 gap-2 bg-surface-container p-2 rounded-2xl">
+              <button class="persona-btn rounded-xl px-3 py-2 text-sm font-medium transition-all bg-surface-container-lowest text-on-surface shadow-sm" data-role="Procurement" type="button">Procurement</button>
+              <button class="persona-btn rounded-xl px-3 py-2 text-sm font-medium transition-all text-on-surface-variant hover:text-on-surface" data-role="Inventory" type="button">Inventory</button>
+              <button class="persona-btn rounded-xl px-3 py-2 text-sm font-medium transition-all text-on-surface-variant hover:text-on-surface" data-role="Production" type="button">Production</button>
+              <button class="persona-btn rounded-xl px-3 py-2 text-sm font-medium transition-all text-on-surface-variant hover:text-on-surface" data-role="Logistics" type="button">Logistics</button>
+              <button class="persona-btn col-span-2 rounded-xl px-3 py-2 text-sm font-medium transition-all text-on-surface-variant hover:text-on-surface flex items-center justify-center gap-2" data-role="Control Tower" type="button"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>Control Tower Direct</button>
+            </div>
+          </div>
+
+          <form id="auth-form" class="space-y-5">
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="text-sm font-medium text-on-surface" for="work-email">Work Identity</label>
+                <span id="role-tag" class="text-[11px] font-mono text-outline">ROLE: PROC-MG</span>
+              </div>
+              <input id="work-email" type="email" required value="m.vance@nexustower.internal" placeholder="name@nexustower.internal" class="w-full h-11 px-4 rounded-xl bg-surface-container-low text-on-surface font-mono text-sm outline-none ring-1 ring-transparent focus:ring-secondary/30 focus:bg-surface-container transition-all" />
+            </div>
+
+            <div>
+              <div class="flex items-center justify-between mb-1.5">
+                <label class="text-sm font-medium text-on-surface" for="password">Security Credential</label>
+                <span class="text-[11px] text-outline">FIDO2 / Password</span>
+              </div>
+              <div class="relative">
+                <input id="password" type="password" required value="••••••••••••••••" placeholder="Enter credential" class="w-full h-11 px-4 pr-11 rounded-xl bg-surface-container-low text-on-surface font-mono text-sm outline-none ring-1 ring-transparent focus:ring-secondary/30 focus:bg-surface-container transition-all" />
+                <button id="toggle-pwd" type="button" aria-label="Toggle password visibility" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-1.5 rounded-lg">
+                  <span id="pwd-icon" class="material-symbols-outlined text-[18px]">visibility</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pt-1">
+              <label class="flex items-center gap-2 cursor-pointer select-none">
+                <input type="checkbox" checked class="w-4 h-4 rounded accent-primary" />
+                <span class="text-sm text-on-surface-variant">Remember workstation</span>
+              </label>
+              <a href="#" class="text-sm font-medium text-secondary hover:text-primary transition-colors">Reset credential?</a>
+            </div>
+
+            <button id="submit-btn" type="submit" class="w-full h-12 rounded-xl bg-primary text-on-primary font-medium tracking-wide shadow-md hover:bg-primary-container transition-all flex items-center justify-center gap-2">
+              <span>Sign In to Nexus Tower</span>
+              <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+            </button>
+          </form>
+
+          <div class="mt-8 pt-5 flex flex-col items-center text-center gap-2">
+            <div class="flex items-center gap-2 text-outline">
+              <span class="material-symbols-outlined text-[14px]">lock</span>
+              <span class="text-[11px] font-mono tracking-wide">TLS 1.3 Verified • FedRAMP Moderate High</span>
+            </div>
+            <p class="text-sm text-on-surface-variant">Single Sign-On and role-based access control enforced.</p>
+          </div>
+        </div>
+
+        <div class="mt-6 flex items-center justify-between text-outline px-2 text-xs sm:text-[11px] font-mono">
+          <span>v4.18.2-prod</span>
+          <div class="flex items-center gap-4">
+            <a href="#" class="hover:text-on-surface transition-colors">Audit Policy</a>
+            <a href="#" class="hover:text-on-surface transition-colors">System Health</a>
+            <a href="#" class="hover:text-on-surface transition-colors">SOC2 Compliance</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="assets/app.js"></script>
+</body>
+</html>

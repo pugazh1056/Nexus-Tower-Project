@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><title>Nexus Tower - FMCG Supply Chain Decision Intelligence</title><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Inter:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#1e293b", "on-primary": "#ffffff", "surface-bright": "#f8f9ff", "inverse-primary": "#bcc7de", "surface-container-lowest": "#ffffff", "secondary-container": "#6860ef", "on-background": "#0b1c30", "on-surface": "#0b1c30", "primary-fixed": "#d8e3fb", "inverse-surface": "#213145", "on-surface-variant": "#45474c", "surface-container-high": "#dce9ff", "on-secondary": "#ffffff", "tertiary-container": "#002f2a", "surface-variant": "#d3e4fe", "on-primary-container": "#8590a6", "on-primary-fixed": "#111c2d", "surface-container-highest": "#d3e4fe", "error-container": "#ffdad6", "on-tertiary": "#ffffff", "primary-fixed-dim": "#bcc7de", "on-error": "#ffffff", "tertiary-fixed-dim": "#6bd8cb", "outline-variant": "#c5c6cd", "tertiary": "#001815", "on-error-container": "#93000a", "on-secondary-container": "#fffbff", "primary": "#091426", "secondary-fixed": "#e3dfff", "on-tertiary-container": "#28a094", "on-tertiary-fixed": "#00201d", "on-primary-fixed-variant": "#3c475a", "on-secondary-fixed-variant": "#372abf", "on-secondary-fixed": "#100069", "secondary": "#4e45d5", "error": "#ba1a1a", "surface": "#f8f9ff", "outline": "#75777d", "background": "#f8f9ff", "on-tertiary-fixed-variant": "#005049", "surface-tint": "#545f73", "secondary-fixed-dim": "#c3c0ff", "surface-container-low": "#eff4ff", "surface-container": "#e5eeff", "tertiary-fixed": "#89f5e7", "inverse-on-surface": "#eaf1ff", "surface-dim": "#cbdbf5" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-2xs": "0.125rem", "space-lg": "1.25rem", "panel-gap": "1rem", "page-margin-mobile": "0.75rem", "space-base": "1rem", "space-xl": "1.5rem", "space-3xl": "3rem", "space-xs": "0.25rem", "space-2xl": "2rem", "space-sm": "0.5rem", "page-margin-desktop": "1.5rem", "space-md": "0.75rem", "col-gutter": "0.75rem" }, "fontFamily": { "headline-lg": ["Geist"], "headline-sm": ["Geist"], "display-lg-mobile": ["Geist"], "mono-metric": ["JetBrains Mono"], "label-sm": ["Inter"], "body-lg": ["Inter"], "mono-data": ["JetBrains Mono"], "body-md": ["Inter"], "headline-md": ["Geist"], "display-lg": ["Geist"], "label-md": ["Inter"], "body-sm": ["Inter"] }, "fontSize": { "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-sm": ["15px", { "lineHeight": "22px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "display-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "mono-metric": ["14px", { "lineHeight": "18px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-lg": ["14px", { "lineHeight": "22px", "fontWeight": "400" }], "mono-data": ["12px", { "lineHeight": "16px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "body-md": ["13px", { "lineHeight": "18px", "fontWeight": "400" }], "headline-md": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "display-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col justify-between"><header class="fixed top-0 inset-x-0 z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 w-full max-w-7xl mx-auto px-page-margin-desktop flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-md"><img alt="Nexus Tower Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XAYkLvmvMyA0zFvvLg-1PZnsy5RXZgoq_FcCjY7TakPaaqqNwSm31LB3rJ2w-YhJSF5kaSOvstiKQeq1NlJKBtxvChx1Qshjs5rgw2cBNGxHEiMcqHFOwpCVzKyNmantjKGdtgQOxCOsNjpyawxWgumkr2KQ_QXhqzz-dvja-t4dmPj-mm48Sc4b6NCF5yoVRI2nZrmXElWpqMTPg8RCuQddvFy3lyL80iic76CFZDWRXSZ98f4geI3A"/><a class="flex items-center gap-space-xs" data-path="landing-page" href="#"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-bold">NEXUS</span><span class="font-headline-sm text-headline-sm text-secondary tracking-tight font-semibold">TOWER</span></a><span class="hidden lg:inline-flex items-center px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface-variant font-mono-data text-[10px] tracking-wide uppercase">Operations Cockpit</span></div><nav class="hidden xl:flex items-center gap-space-lg" data-active-classes="text-primary font-semibold"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="platform" href="#">Platform</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="solutions" href="#">Solutions</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="decision-intelligence" href="#">Decision Intelligence</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="enterprise-security" href="#">Enterprise Security</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="documentation" href="#">Documentation</a></nav><div class="flex items-center gap-space-md"><a class="hidden sm:inline-flex px-space-md py-space-xs font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="sign-in" href="login.html">Sign In</a><a class="inline-flex items-center px-space-md py-1.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container hover:text-on-primary transition-all shadow-[0_1px_4px_rgba(0,0,0,0.08)]" data-path="request-demo" href="login.html">Request Demo</a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-grow"><div class="flex flex-col w-full">
+<!-- HERO SECTION -->
+<section class="relative overflow-hidden pt-12 pb-20 px-page-margin-desktop max-w-7xl mx-auto w-full">
+<!-- Ambient Structural Backdrop Glow -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[360px] bg-gradient-to-b from-surface-container via-surface-container-low/40 to-transparent blur-3xl pointer-events-none -z-10"></div>
+<div class="flex flex-col items-center text-center space-y-6 max-w-4xl mx-auto">
+<!-- Badge -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container text-on-surface-variant font-mono-data text-label-sm uppercase tracking-wider shadow-sm">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+        Nexus Tower • Supply Chain Operations Cockpit
+      </div>
+<!-- Headline -->
+<h1 class="font-headline-lg text-display-lg md:text-[46px] md:leading-[52px] text-primary tracking-tight font-bold">
+        One Control Tower. <br class="hidden sm:inline"/>Every Decision Connected.
+      </h1>
+<!-- Subheadline -->
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
+        Nexus Tower connects Procurement, Inventory, Production, and Logistics in one role-based operations cockpit. Turn live signals into clear actions before bottlenecks, stockouts, and delivery risks cascade.
+      </p>
+<!-- Primary CTAs -->
+<div class="flex flex-wrap items-center justify-center gap-space-md pt-2">
+<a class="inline-flex items-center gap-space-xs px-space-xl py-3 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all shadow-md" href="login.html">
+<span>Enter the Operations Cockpit</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+<button class="inline-flex items-center gap-space-xs px-space-lg py-3 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-sm hover:bg-surface-container-low transition-all" onclick="document.getElementById('live-cockpit-demo').scrollIntoView({behavior: 'smooth'})" type="button">
+<span class="material-symbols-outlined text-[18px] text-secondary">play_circle</span>
+<span>View Live Decision Flow</span>
+</button>
+</div>
+<!-- Proof Metrics Bar -->
+<div class="w-full pt-10 mt-6 grid grid-cols-2 md:grid-cols-4 gap-space-md text-left">
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="font-mono-metric text-headline-sm text-primary font-bold">99.4%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Critical SLA Adherence</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="font-mono-metric text-headline-sm text-secondary font-bold">$18.4M+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Line Downtime Averted</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="font-mono-metric text-headline-sm text-primary font-bold">40ms</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">Cross-Domain Graph Query</div>
+</div>
+<div class="p-space-md bg-surface-container-lowest rounded-xl shadow-sm">
+<div class="font-mono-metric text-headline-sm text-tertiary-container font-bold">SOC2 & FIDO2</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant mt-0.5">FedRAMP Ready & ISO 27001</div>
+</div>
+</div>
+</div>
+</section>
+<!-- LIVE DECISION COCKPIT PREVIEW (Answers 3 Core UX Principles) -->
+<section class="py-12 px-page-margin-desktop max-w-7xl mx-auto w-full" id="live-cockpit-demo">
+<div class="flex flex-col space-y-4 mb-6">
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-mono-data text-label-sm">LIVE SIMULATION</span>
+<h2 class="font-headline-md text-headline-md text-primary font-bold">Nexus Tower Live Exception Cockpit</h2>
+</div>
+<span class="font-mono-data text-label-sm text-on-surface-variant">TELEMETRY ID: #EXC-8842-MILK • ACTIVE CYCLE: 12 SEC AGO</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Deterministic 3-step decision structure turning telemetry noise into validated human-in-the-loop executions.</p>
+</div>
+<!-- Cockpit Master Frame -->
+<div class="bg-surface-container-lowest rounded-xl shadow-lg overflow-hidden">
+<!-- Cockpit Bar -->
+<div class="px-space-lg py-3 bg-primary-container text-on-primary flex flex-wrap items-center justify-between gap-space-md font-mono-data text-label-sm">
+<div class="flex items-center gap-space-md">
+<span class="inline-flex items-center gap-1 text-tertiary-fixed-dim">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></span> LIVE STREAM
+          </span>
+<span class="text-on-primary-container">FACILITY: Midwest Packaging Plant #04</span>
+<span class="text-on-primary-container">SKU: ULTRA-PASTEURIZED WHOLE MILK 1L</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<span class="px-2 py-0.5 rounded bg-error-container text-on-error-container font-semibold">CRITICAL VARIANCE</span>
+<span class="text-on-primary-container">CONFIDENCE: 98.6%</span>
+</div>
+</div>
+<!-- Dynamic Blast Radius / Dependency Ribbon -->
+<div class="bg-surface-container-low px-space-lg py-4">
+<div class="text-label-sm font-mono-data text-on-surface-variant uppercase tracking-wider mb-2">Blast Radius • Cross-Domain Propagation Graph</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-space-md">
+<!-- Node 1: Procurement -->
+<div class="p-space-sm bg-surface-container-lowest rounded-lg shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-error text-[20px] shrink-0 mt-0.5">local_shipping</span>
+<div class="min-w-0">
+<div class="font-mono-data text-label-sm text-error font-semibold uppercase">Procurement Inbound</div>
+<div class="font-label-md text-label-md text-primary font-bold truncate">PO #89110 Milk Reefer</div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mt-0.5">Slip: +72 hrs (Port Congestion)</div>
+</div>
+</div>
+<!-- Node 2: Inventory -->
+<div class="p-space-sm bg-surface-container-lowest rounded-lg shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-secondary text-[20px] shrink-0 mt-0.5">warehouse</span>
+<div class="min-w-0">
+<div class="font-mono-data text-label-sm text-secondary font-semibold uppercase">Inventory Buffer</div>
+<div class="font-label-md text-label-md text-primary font-bold truncate">Cold Silo 04</div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mt-0.5">Depletion: 38h to Safety Floor</div>
+</div>
+</div>
+<!-- Node 3: Production -->
+<div class="p-space-sm bg-surface-container-lowest rounded-lg shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[20px] shrink-0 mt-0.5">precision_manufacturing</span>
+<div class="min-w-0">
+<div class="font-mono-data text-label-sm text-primary font-semibold uppercase">Production Line</div>
+<div class="font-label-md text-label-md text-primary font-bold truncate">Filling Line 02</div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mt-0.5">Starvation Hazard: Batch 409</div>
+</div>
+</div>
+<!-- Node 4: Logistics Downstream -->
+<div class="p-space-sm bg-surface-container-lowest rounded-lg shadow-sm flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px] shrink-0 mt-0.5">storefront</span>
+<div class="min-w-0">
+<div class="font-mono-data text-label-sm text-on-surface-variant font-semibold uppercase">Customer OTIF</div>
+<div class="font-label-md text-label-md text-primary font-bold truncate">28 Regional DC Outlets</div>
+<div class="font-mono-data text-[11px] text-on-surface-variant mt-0.5">Revenue at Risk: $14,200</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Core 3-Column Decision Logic -->
+<div class="p-space-lg grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- 1. What is happening? -->
+<div class="flex flex-col bg-surface-container-low/50 p-space-lg rounded-xl">
+<div class="flex items-center gap-space-xs font-mono-data text-label-sm uppercase tracking-wider text-error font-semibold mb-2">
+<span class="material-symbols-outlined text-[16px]">crisis_alert</span>
+            1. What is happening?
+          </div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-2">Supplier A Raw Transit Delayed</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+            GPS transponder telemetry on reefer fleet <span class="font-mono-data font-semibold text-primary">#TRK-9021</span> indicates intermodal transit slip of +3 days due to extreme weather rerouting across I-80 corridor.
+          </p>
+<div class="mt-auto space-y-2 pt-3 bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Scheduled ETA:</span>
+<span class="text-primary font-semibold">Oct 24, 06:00 CST</span>
+</div>
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Projected Arrival:</span>
+<span class="text-error font-semibold">Oct 27, 14:15 CST</span>
+</div>
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Carrier SLA Score:</span>
+<span class="text-on-surface font-semibold">82% (-14% variance)</span>
+</div>
+</div>
+</div>
+<!-- 2. What is affected? -->
+<div class="flex flex-col bg-surface-container-low/50 p-space-lg rounded-xl">
+<div class="flex items-center gap-space-xs font-mono-data text-label-sm uppercase tracking-wider text-primary font-semibold mb-2">
+<span class="material-symbols-outlined text-[16px]">error</span>
+            2. What is affected?
+          </div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-2">Packaging Line 02 Buffer Breach</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+            Available raw milk reserves reach critical zero floor within <span class="font-mono-data font-semibold text-error">38 hours</span>. Without intervention, Line 02 must execute forced sanitize downtime, voiding 2,400 SKU cases.
+          </p>
+<div class="mt-auto space-y-2 pt-3 bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Available Buffer:</span>
+<span class="text-error font-semibold">6,200 L (-8,400 L gap)</span>
+</div>
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">OEE Starvation Time:</span>
+<span class="text-error font-semibold">38h 14m</span>
+</div>
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Loss Exposure:</span>
+<span class="text-primary font-semibold font-mono-metric">$14,200 Finished Goods</span>
+</div>
+</div>
+</div>
+<!-- 3. What should I do? -->
+<div class="flex flex-col bg-surface-container-high/40 p-space-lg rounded-xl relative overflow-hidden">
+<div class="flex items-center gap-space-xs font-mono-data text-label-sm uppercase tracking-wider text-secondary font-semibold mb-2">
+<span class="material-symbols-outlined text-[16px]">auto_awesome</span>
+            3. What should I do?
+          </div>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-2">AI Prescriptive Mitigation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">
+            Authorize dynamic re-route: Dispatch certified partner <span class="font-semibold text-primary">SwiftReefer</span> from Green Bay Hub. Reallocates 9,000L fresh batch in 14 hours.
+          </p>
+<div class="space-y-2 mb-4 bg-surface-container-lowest p-space-md rounded-lg shadow-sm">
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Mitigation Cost:</span>
+<span class="text-primary font-semibold font-mono-metric">+$450 Freight Surcharge</span>
+</div>
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Net Protected Value:</span>
+<span class="text-tertiary-container font-semibold font-mono-metric">+$13,750 Margin</span>
+</div>
+<div class="flex justify-between font-mono-data text-label-sm">
+<span class="text-on-surface-variant">Fill Rate Protected:</span>
+<span class="text-secondary font-semibold font-mono-metric">100.0% OTIF</span>
+</div>
+</div>
+<!-- Human-in-the-loop action trigger -->
+<div class="mt-auto flex items-center gap-space-sm" id="action-state-box">
+<button class="w-full inline-flex items-center justify-center gap-space-xs py-2.5 px-space-md rounded-lg bg-secondary text-on-secondary font-label-md text-label-md hover:bg-secondary-container transition-all shadow-sm" id="approve-mitigation-btn" onclick="executeDecisionApproval()" type="button">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+<span>Commit AI Re-Route ($450)</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 2: THE FOUR UNIFIED OPERATIONAL DOMAINS -->
+<section class="py-16 px-page-margin-desktop max-w-7xl mx-auto w-full">
+<div class="max-w-3xl mb-12">
+<div class="font-mono-data text-label-sm text-secondary uppercase tracking-wider mb-2">Connected Operations</div>
+<h2 class="font-headline-lg text-display-lg text-primary font-bold tracking-tight">The Four Unified Operational Domains</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+        Break down siloed legacy ERPs, MES islands, and WMS blindspots into a continuous deterministic data pipeline designed for high-velocity consumer goods.
+      </p>
+</div>
+<!-- Domain Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-xl">
+<!-- 1. Procurement Operations -->
+<div class="p-space-xl bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-[28px]">assignment_turned_in</span>
+</div>
+<span class="font-mono-data text-label-sm text-secondary font-medium">DOMAIN 01</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold mt-1 mb-2">Procurement Operations</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+            Eliminate vendor blindspots. Real-time PO tracking with automated raw material delivery variance modeling, port customs feeds, and instantaneous hedge triggers.
+          </p>
+<ul class="space-y-2 mb-6 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Dynamic supplier reliability rating & lead-time variance
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Automated vendor surcharge audits against contract baseline
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Predictive dairy & agricultural commodity index tracking
+            </li>
+</ul>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg font-mono-data text-label-sm flex items-center justify-between text-on-surface-variant">
+<span>SUPPLIER REPUTATION ENGINE</span>
+<span class="text-primary font-bold">ACTIVE • 1,420 VENDORS</span>
+</div>
+</div>
+<!-- 2. Inventory & Stock Health -->
+<div class="p-space-xl bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-[28px]">shelves</span>
+</div>
+<span class="font-mono-data text-label-sm text-secondary font-medium">DOMAIN 02</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold mt-1 mb-2">Inventory & Stock Health</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+            Move beyond static safety stocks. Nexus evaluates perishability shelf-life velocity, safety floors, and true stock reserves across regional distribution centers.
+          </p>
+<!-- Available Stock Formula Visual Pill -->
+<div class="p-space-sm mb-6 bg-surface-container rounded-lg font-mono-metric text-label-sm text-center text-primary font-bold">
+            Available Stock = Total Physically Present - (Safety Floor + Committed)
+          </div>
+<ul class="space-y-2 mb-6 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Real-time expiration degradation curves for short-shelf-life SKUs
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Multi-echelon rebalancing between regional distribution hubs
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Retail promotional surge buffer autocalibration
+            </li>
+</ul>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg font-mono-data text-label-sm flex items-center justify-between text-on-surface-variant">
+<span>SPOILAGE PREVENTION RATIO</span>
+<span class="text-secondary font-bold font-mono-metric">99.88% ZERO-WASTE</span>
+</div>
+</div>
+<!-- 3. Production & Line Orchestration -->
+<div class="p-space-xl bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-[28px]">factory</span>
+</div>
+<span class="font-mono-data text-label-sm text-secondary font-medium">DOMAIN 03</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold mt-1 mb-2">Production & Line Orchestration</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+            Keep manufacturing lines humming. Synchronize ingredient staging with actual plant equipment speeds, changeover windows, and recipe constraints.
+          </p>
+<ul class="space-y-2 mb-6 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Batch starvation prevention with 48-hour forward projection
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Automated CIP (Clean-in-Place) sequencing optimization
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Dynamic line rescheduling to minimize expensive allergen changeovers
+            </li>
+</ul>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg font-mono-data text-label-sm flex items-center justify-between text-on-surface-variant">
+<span>OEE STABILITY RATING</span>
+<span class="text-primary font-bold font-mono-metric">94.2% OPTIMAL</span>
+</div>
+</div>
+<!-- 4. Logistics & Multimodal Freight -->
+<div class="p-space-xl bg-surface-container-lowest rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-primary text-[28px]">rv_hookup</span>
+</div>
+<span class="font-mono-data text-label-sm text-secondary font-medium">DOMAIN 04</span>
+<h3 class="font-headline-md text-headline-md text-primary font-bold mt-1 mb-2">Logistics & Multimodal Freight</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+            Autonomous cold-chain integrity monitoring. Track continuous temperature sensor telemetry, port dwell times, and driver hours-of-service in real time.
+          </p>
+<ul class="space-y-2 mb-6 font-body-sm text-body-sm text-on-surface">
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              IoT Reefer cold-chain violation alerts (±1.5°C threshold tracking)
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Expedited multimodal lane rerouting for high-priority shipments
+            </li>
+<li class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
+              Automatic carrier scorecard penalization on repeated unnotified slips
+            </li>
+</ul>
+</div>
+<div class="p-space-md bg-surface-container-low rounded-lg font-mono-data text-label-sm flex items-center justify-between text-on-surface-variant">
+<span>LIVE FLEET GPS NODES</span>
+<span class="text-primary font-bold font-mono-metric">4,812 ACTIVE UNITS</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: THE NEXUS DECISION FRAMEWORK -->
+<section class="py-16 bg-surface-container-low/60 w-full">
+<div class="px-page-margin-desktop max-w-7xl mx-auto">
+<div class="text-center max-w-3xl mx-auto mb-14">
+<div class="font-mono-data text-label-sm text-secondary uppercase tracking-wider mb-2">How Nexus Tower Works</div>
+<h2 class="font-headline-lg text-display-lg text-primary font-bold tracking-tight">From Signal to Authorized Action</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-2">
+          Operations teams do not need another disconnected dashboard. Nexus Tower turns cross-stage telemetry into three clear answers your team can act on immediately.
+        </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm relative flex flex-col">
+<div class="w-10 h-10 rounded-full bg-surface-container text-primary font-mono-metric font-bold flex items-center justify-center mb-4">
+            01
+          </div>
+<span class="font-mono-data text-label-sm text-error uppercase font-semibold mb-1">Signal Isolation</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-2">What is happening?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Instant anomaly isolation filtering out normal operational variance. Pinpoint specific port disruptions, milk souring alerts, supplier batch deficiencies, or sudden retail re-orders.
+          </p>
+<div class="mt-6 pt-4 bg-surface-container-low/50 p-space-sm rounded-lg font-mono-data text-[11px] text-on-surface-variant">
+            • Raw Telemetry Ingestion Rate: 120k events/sec<br/>
+            • Noise Suppression: 99.2% false-alarm filtering
+          </div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm relative flex flex-col">
+<div class="w-10 h-10 rounded-full bg-surface-container text-primary font-mono-metric font-bold flex items-center justify-center mb-4">
+            02
+          </div>
+<span class="font-mono-data text-label-sm text-primary uppercase font-semibold mb-1">Downstream Blast Radius</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-2">What is affected?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Deterministic graph modeling maps exactly which bottling lines, packaging runs, or key accounts face disruption. Never wonder whether a supplier delay impacts tomorrow's shift.
+          </p>
+<div class="mt-6 pt-4 bg-surface-container-low/50 p-space-sm rounded-lg font-mono-data text-[11px] text-on-surface-variant">
+            • Multi-tier BOM explosion • Line starvation timers<br/>
+            • Financial consequence calculation in real time
+          </div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-space-xl rounded-xl shadow-sm relative flex flex-col">
+<div class="w-10 h-10 rounded-full bg-secondary text-on-secondary font-mono-metric font-bold flex items-center justify-center mb-4">
+            03
+          </div>
+<span class="font-mono-data text-label-sm text-secondary uppercase font-semibold mb-1">Prescriptive Action</span>
+<h3 class="font-headline-sm text-headline-sm text-primary font-bold mb-2">What should I do?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+            Rather than leaving teams to manually calculate tradeoffs, Nexus generates cost-optimized resolutions ready for 1-click human authorization with complete auditable history.
+          </p>
+<div class="mt-6 pt-4 bg-surface-container-low/50 p-space-sm rounded-lg font-mono-data text-[11px] text-on-surface-variant">
+            • Cost vs. OTIF optimization trade-off matrices<br/>
+            • Immutable audit trail logged to compliance ledger
+          </div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: ENTERPRISE-GRADE ARCHITECTURE -->
+<section class="py-16 px-page-margin-desktop max-w-7xl mx-auto w-full">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-xl items-center">
+<div class="lg:col-span-5 space-y-6">
+<div class="font-mono-data text-label-sm text-secondary uppercase tracking-wider">Mission-Critical Foundation</div>
+<h2 class="font-headline-lg text-display-lg text-primary font-bold tracking-tight">Built for Mission-Critical FMCG Operations</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Nexus Tower is a high-throughput operational workspace built for strict enterprise security, auditable decisions, and the high transaction volume of modern food and beverage networks.
+        </p>
+<div class="space-y-4 pt-2">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0 mt-0.5">security</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-semibold">Zero-Trust Scoped Access Control</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Role-based scoping across Procurement, Inventory, Production, and Freight. Ensure personnel execute actions solely within their authorized operational envelope.</div>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0 mt-0.5">hub</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-semibold">Deterministic Real-Time Graph Database</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Cross-echelon graph processing engine resolves cascading dependency trees under 40 milliseconds across 50,000+ simultaneous bill-of-material items.</div>
+</div>
+</div>
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary text-[22px] shrink-0 mt-0.5">cloud_sync</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary font-semibold">Bi-Directional ERP & MES Connectors</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Turnkey connectors for SAP S/4HANA, Blue Yonder, Oracle SCM, and AspenTech. Bi-directional sync guarantees zero split-brain data discrepancies.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Architectural Specs Panel -->
+<div class="lg:col-span-7 bg-primary-container text-on-primary p-space-xl rounded-xl shadow-xl font-mono-data text-body-sm relative overflow-hidden">
+<div class="flex items-center justify-between pb-4 text-on-primary-container border-b border-primary text-label-sm">
+<div class="flex items-center gap-space-xs">
+<span class="w-3 h-3 rounded-full bg-error inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-surface-variant inline-block"></span>
+<span class="w-3 h-3 rounded-full bg-tertiary-fixed-dim inline-block"></span>
+<span class="ml-2">NEXUS_SYS_KERNEL // CONFIG.IO</span>
+</div>
+<span>SECURE ENCLAVE 01</span>
+</div>
+<div class="py-6 space-y-4">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 p-space-sm bg-primary/60 rounded">
+<span class="text-on-primary-container">ENCRYPTION PROTOCOL</span>
+<span class="text-tertiary-fixed-dim font-bold">AES-256-GCM + HARDWARE HSM KEY ROTATION</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 p-space-sm bg-primary/60 rounded">
+<span class="text-on-primary-container">FAILOVER ARCHITECTURE</span>
+<span class="text-on-primary font-bold">ACTIVE-ACTIVE MULTI-REGION REPLICATION (<1s RPO)</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 p-space-sm bg-primary/60 rounded">
+<span class="text-on-primary-container">IDENTITY & AUDITABILITY</span>
+<span class="text-tertiary-fixed-dim font-bold">FIDO2 HARDWARE KEYS • CRYPTOGRAPHIC NONCE LOGS</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 p-space-sm bg-primary/60 rounded">
+<span class="text-on-primary-container">EVENT STREAMING THROUGHPUT</span>
+<span class="text-on-primary font-bold">1,850,000 TELEMETRY SAMPLES/MIN PER TENANT</span>
+</div>
+</div>
+<div class="pt-4 flex flex-wrap items-center gap-space-md text-label-sm text-on-primary-container">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check</span> 99.999% UPTIME SLA</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check</span> FEDRAMP HIGH READY</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim">check</span> BRCGS & FDA 21 CFR COMPLIANT</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: FINAL CTA SECTION -->
+<section class="py-20 px-page-margin-desktop max-w-7xl mx-auto w-full">
+<div class="bg-surface-container-lowest p-space-2xl md:p-16 rounded-2xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-space-xl text-left">
+<div class="max-w-2xl space-y-3">
+<div class="font-mono-data text-label-sm text-secondary uppercase tracking-wider font-semibold">Immediate Impact Deployment</div>
+<h2 class="font-headline-lg text-display-lg text-primary font-bold tracking-tight">
+          Ready to run your supply chain from one connected cockpit?
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+          Connect your existing ERP, inventory, production, and logistics signals to a shared operating view. Give every stage owner the context to resolve the next exception before it spreads.
+        </p>
+</div>
+<div class="flex flex-col sm:flex-row md:flex-col lg:flex-row items-center gap-space-md shrink-0 w-full md:w-auto">
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-xl py-3.5 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-all shadow-md" href="login.html">
+<span>Open Nexus Tower</span>
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+</a>
+<a class="w-full sm:w-auto inline-flex items-center justify-center gap-space-xs px-space-lg py-3.5 rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-all" href="login.html">
+<span>Choose Your Operations Role</span>
+<span class="material-symbols-outlined text-[16px]">vpn_key</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Interactive JavaScript for Live Cockpit Simulation -->
+<script>
+    function executeDecisionApproval() {
+      const actionBox = document.getElementById('action-state-box');
+      if (!actionBox) return;
+
+      actionBox.innerHTML = `
+        <div class="w-full p-2.5 rounded-lg bg-tertiary-container text-on-tertiary font-mono-data text-label-sm flex items-center justify-center gap-space-xs animate-pulse">
+          <span class="material-symbols-outlined text-[16px]">done_all</span>
+          <span>EXECUTED: Dispatched Reefer #SR-401 • PO #89110-EXP Authorized</span>
+        </div>
+      `;
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low"><div class="w-full max-w-7xl mx-auto px-page-margin-desktop py-space-3xl flex flex-col gap-space-2xl"><div class="grid grid-cols-2 md:grid-cols-5 gap-space-xl"><div class="col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><img alt="Nexus Tower Logo" class="h-6 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XAYkLvmvMyA0zFvvLg-1PZnsy5RXZgoq_FcCjY7TakPaaqqNwSm31LB3rJ2w-YhJSF5kaSOvstiKQeq1NlJKBtxvChx1Qshjs5rgw2cBNGxHEiMcqHFOwpCVzKyNmantjKGdtgQOxCOsNjpyawxWgumkr2KQ_QXhqzz-dvja-t4dmPj-mm48Sc4b6NCF5yoVRI2nZrmXElWpqMTPg8RCuQddvFy3lyL80iic76CFZDWRXSZ98f4geI3A"/><span class="font-headline-sm text-headline-sm text-primary font-bold">NEXUS TOWER</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Autonomous exception orchestration and high-fidelity operational twin architecture for Fortune 500 Food & Beverage consumer packaged goods manufacturers.</p><div class="flex items-center gap-space-xs font-mono-data text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-tertiary-container">verified</span>SOC2 Type II • ISO 27001 • FedRAMP High • FIDO2</div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Platform</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="procurement-engine" href="#">Procurement Engine</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="inventory-optimization" href="#">Inventory Multi-Echelon</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="production-scheduling" href="#">Factory & Batch Run</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="freight-logistics" href="#">Cold Chain Logistics</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Solutions</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="shelf-life-spoilage" href="#">Perishables & Spoilage</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="promotional-demand" href="#">Retail Promo Volatility</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="ingredient-hedging" href="#">Commodity Hedging</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="traceability" href="#">Batch Genealogies</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Governance</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="enterprise-security" href="#">Security Whitepaper</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="audit-trail" href="#">Immutable Auditing</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="sla-commitments" href="#">99.999% SLA</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-compliance" href="#">Privacy Framework</a></nav></div></div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Nexus Tower Systems Inc. Mission-critical autonomous FMCG supply decision platform.</span><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-compliance" href="#">Privacy Policy</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="responsible-ai" href="#">Trust & AI Safety</a></div></div></div></footer></body></html>
