@@ -24,15 +24,28 @@ This dataset enables multi-agent orchestration, anomaly detection, automated roo
 
 | File | Primary Key | Description | Record Count |
 | :--- | :--- | :--- | :---: |
-| `products.csv` | `id` (UUID) | Master catalog of finished FMCG goods and raw feedstock (Milk, Biscuits, Mango Juice). | 3 |
+| `products.csv` | `id` (UUID) | Master catalog of finished FMCG goods and raw feedstock (Milk, Biscuits, Mango Juice). Source of truth for `reorder_level`. | 3 |
 | `suppliers.csv` | `id` (UUID) | Directory of certified global raw material suppliers, packaging vendors, and freight carriers. | 4 |
-| `inventory.csv` | `id` (UUID) | Physical stock balances across cold storage hubs, dry bulk units, and distribution centers. | 3 |
+| `inventory.csv` | `id` (UUID) | Physical stock balances across cold storage hubs, dry bulk units, and distribution centers. Includes `product_name`, `receiving_date`, `expiry_date`, and `target_stock`. | 3 |
 | `purchase_orders.csv` | `id` (UUID) | Inbound procurement orders, vendor assignment, commitment dates, and monetary totals. | 3 |
 | `purchase_order_items.csv` | `id` (UUID) | Itemized line-item quantities, unit prices, and extended amounts linked to purchase orders. | 3 |
 | `production_orders.csv` | `id` (UUID) | Factory floor batch manufacturing runs, planned/actual start dates, and line progress. | 3 |
 | `shipments.csv` | `id` (UUID) | In-transit dispatches, telematics tracking numbers, origin/destination hubs, and carrier SLAs. | 3 |
 | `events.csv` | `id` (UUID) | Real-time telemetry audit events, sensor triggers, status shifts, and domain alerts. | 5 |
 | `inventory_events.csv` | `event_id` (Text) | High-throughput inventory stream schema formatted specifically for SNS Agent Workbench feeds. | 3 |
+
+### Inventory (`inventory.csv`) Field Dictionary
+
+- **`id`** (`UUID`): Unique primary identifier of the inventory record.
+- **`product_id`** (`UUID`): Foreign key referencing `products.id`.
+- **`product_name`** (`Text`): Name of the SKU (`Milk`, `Biscuits`, `Mango Juice`) denormalized for direct consumption in the Workbench without requiring auxiliary table joins.
+- **`warehouse_location`** (`Text`): Facility bay or zone storing the goods (e.g., `Cold Hub Alpha - Bay 4`).
+- **`quantity`** (`Numeric`): Total on-hand physical stock quantity.
+- **`reserved_quantity`** (`Numeric`): Units committed to outbound dispatches or work orders.
+- **`available_quantity`** (`Numeric`): Usable unallocated stock (`quantity - reserved_quantity`).
+- **`receiving_date`** (`Date`, `YYYY-MM-DD`): Inbound receiving date when the lot was checked in.
+- **`expiry_date`** (`Date`, `YYYY-MM-DD`): Batch expiration date calibrated to product shelf-life characteristics (fresh dairy: 14 days, juice: 6 months, dry biscuits: 6 months) for FEFO rotation.
+- **`target_stock`** (`Numeric`): Minimum replenishment target threshold, strictly mapped 1:1 to `products.reorder_level` (the source of truth).
 
 ---
 
