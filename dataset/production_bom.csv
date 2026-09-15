@@ -1,0 +1,6 @@
+id,finished_product_id,component_product_id,component_name,required_quantity_per_unit,unit,scrap_factor
+bom-001,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,c5e6f7a8-1111-4b2c-8d3e-4f5a6b7c8d9e,Raw Pasteurization Feedstock,1.05,litre,0.05
+bom-002,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,c5e6f7a8-2222-4b2c-8d3e-4f5a6b7c8d9e,Premium Biscuit Flour Mix,0.5,kg,0.02
+bom-003,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,c5e6f7a8-5555-4b2c-8d3e-4f5a6b7c8d9e,Moisture-Barrier Biscuit Wrappers,0.01,roll,0.01
+bom-004,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,c5e6f7a8-3333-4b2c-8d3e-4f5a6b7c8d9e,Alphonso Mango Pulp Concentrate,0.3,kg,0.03
+bom-005,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,c5e6f7a8-4444-4b2c-8d3e-4f5a6b7c8d9e,500ml Aseptic Glass Bottles,1.0,unit,0.01

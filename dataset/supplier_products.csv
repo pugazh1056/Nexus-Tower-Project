@@ -1,0 +1,13 @@
+id,supplier_id,product_id,tier,standard_lead_time_days,min_order_quantity,unit_price,currency,is_certified
+sp-001,545e9817-ce6b-4a0f-9a6f-9b5b29041090,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,primary,3,50.0,50.0,USD,True
+sp-002,545e9817-ce6b-4a0f-9a6f-9b5b29041090,c5e6f7a8-1111-4b2c-8d3e-4f5a6b7c8d9e,primary,3,100.0,35.0,USD,True
+sp-003,a1b2c3d4-0005-4a7b-8c9d-0e1f2a3b4c5d,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,backup,4,80.0,52.5,USD,True
+sp-004,a1b2c3d4-0005-4a7b-8c9d-0e1f2a3b4c5d,c5e6f7a8-1111-4b2c-8d3e-4f5a6b7c8d9e,backup,4,150.0,37.0,USD,True
+sp-005,7c89f1d2-3a45-4b67-89ef-0123456789ab,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,primary,4,100.0,50.0,USD,True
+sp-006,7c89f1d2-3a45-4b67-89ef-0123456789ab,c5e6f7a8-2222-4b2c-8d3e-4f5a6b7c8d9e,primary,4,200.0,25.0,USD,True
+sp-007,a1b2c3d4-0006-4a7b-8c9d-0e1f2a3b4c5d,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,backup,5,150.0,53.0,USD,True
+sp-008,a1b2c3d4-0006-4a7b-8c9d-0e1f2a3b4c5d,c5e6f7a8-2222-4b2c-8d3e-4f5a6b7c8d9e,backup,5,250.0,26.5,USD,True
+sp-009,8d90a2e3-4b56-4c78-90fa-1234567890bc,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,primary,10,100.0,28.0,USD,True
+sp-010,8d90a2e3-4b56-4c78-90fa-1234567890bc,c5e6f7a8-3333-4b2c-8d3e-4f5a6b7c8d9e,primary,10,150.0,18.0,USD,True
+sp-011,a1b2c3d4-0007-4a7b-8c9d-0e1f2a3b4c5d,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,backup,12,120.0,29.5,USD,True
+sp-012,a1b2c3d4-0007-4a7b-8c9d-0e1f2a3b4c5d,c5e6f7a8-3333-4b2c-8d3e-4f5a6b7c8d9e,backup,12,200.0,19.2,USD,True

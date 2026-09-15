@@ -1,4 +1,9 @@
 id,sku,name,description,category,unit,reorder_level,is_active
-b462b2e9-4a83-4e3c-af52-dd87ab42d06d,MILK-001,Milk,Fresh pasteurized whole milk,Dairy,litre,100.0,true
-6b9956f6-5c18-4fe3-9681-d4feaaed0a38,BIS-001,Biscuits,Crunchy packaged tea biscuits,Snacks,pack,200.0,true
-d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,MJ-001,Mango Juice,100% natural premium mango nectar,Beverages,bottle,150.0,true
+b462b2e9-4a83-4e3c-af52-dd87ab42d06d,MILK-001,Milk,Fresh pasteurized whole milk,Dairy,litre,100.0,True
+6b9956f6-5c18-4fe3-9681-d4feaaed0a38,BIS-001,Biscuits,Crunchy packaged tea biscuits,Snacks,pack,200.0,True
+d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,MJ-001,Mango Juice,100% natural premium mango nectar,Beverages,bottle,150.0,True
+c5e6f7a8-1111-4b2c-8d3e-4f5a6b7c8d9e,RAW-MILK-01,Raw Pasteurization Feedstock,Grade A raw farm milk bulk tank feedstock,Raw Materials,litre,500.0,True
+c5e6f7a8-2222-4b2c-8d3e-4f5a6b7c8d9e,RAW-FLOUR-01,Premium Biscuit Flour Mix,Refined enriched wheat flour and leavening mix,Raw Materials,kg,600.0,True
+c5e6f7a8-3333-4b2c-8d3e-4f5a6b7c8d9e,RAW-PULP-01,Alphonso Mango Pulp Concentrate,Aseptic packed pure Alphonso mango puree,Raw Materials,kg,300.0,True
+c5e6f7a8-4444-4b2c-8d3e-4f5a6b7c8d9e,PKG-BOT-01,500ml Aseptic Glass Bottles,Sterilized 500ml glass beverage bottles with caps,Packaging,unit,1000.0,True
+c5e6f7a8-5555-4b2c-8d3e-4f5a6b7c8d9e,PKG-WRAP-01,Moisture-Barrier Biscuit Wrappers,BOPP printed moisture barrier wrapping film,Packaging,roll,50.0,True

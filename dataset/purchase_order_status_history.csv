@@ -1,0 +1,8 @@
+id,purchase_order_id,previous_status,new_status,changed_by,timestamp,reason
+posh-001,ccaa359c-72a7-4a9a-adde-abcad89cf171,draft,approved,USR-MGR-01,2026-09-03T08:30:00Z,Approved high-priority dairy replenishment
+posh-002,ccaa359c-72a7-4a9a-adde-abcad89cf171,approved,ordered,USR-PROC-01,2026-09-03T09:15:00Z,Transmitted EDI purchase order to Dairy Pure Co
+posh-003,ccaa359c-72a7-4a9a-adde-abcad89cf171,ordered,delayed,SYSTEM,2026-09-14T09:15:39Z,Supplier reported mechanical cooling breakdown (delay of 8 days)
+posh-004,a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,draft,approved,USR-MGR-02,2026-09-11T10:00:00Z,Routine raw flour restocking approval
+posh-005,a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,approved,ordered,USR-PROC-02,2026-09-11T11:20:00Z,Dispatched order confirmation to Golden Wheat Mills
+posh-006,b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e,ordered,in_transit,SYSTEM,2026-09-02T14:00:00Z,Vessel departed origin port Mumbai
+posh-007,b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e,in_transit,received,USR-WH-03,2026-09-10T16:30:00Z,"Received, inspected, and verified at Beverage Distribution East"

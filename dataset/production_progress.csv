@@ -1,0 +1,4 @@
+id,production_order_id,production_line,equipment_id,planned_quantity,produced_quantity,production_rate,progress_percentage,downtime_minutes,downtime_reason,planned_start_date,planned_end_date,actual_start_date,actual_end_date,status
+prog-001,f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c,Bottling Line 2,EQ-NOZZLE-02,500.0,120.0,40.0,24.0,180,High-pressure filler nozzle calibration fault causing line speed throttling (40% operating capacity),2026-09-12,2026-09-15,2026-09-12,,slowdown
+prog-002,e2b3c4d5-f6a7-4a8b-9c0d-1e2f3a4b5c6d,Baking & Packaging Line 1,EQ-OVEN-01,1000.0,0.0,0.0,0.0,0,Scheduled staging - waiting for flour consignment clearance,2026-09-16,2026-09-20,,,planned
+prog-003,d3c4d5e6-a7b8-4b9c-0d1e-2f3a4b5c6d7e,Pasteurization Line 3,EQ-PAST-03,800.0,0.0,0.0,0.0,0,Production hold - raw milk feedstock delivery delayed by supplier Dairy Pure Co,2026-09-17,2026-09-19,,,on_hold

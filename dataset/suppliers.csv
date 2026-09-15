@@ -3,3 +3,7 @@ id,name,supplier_code,contact_person,email,phone,address,city,country,status
 7c89f1d2-3a45-4b67-89ef-0123456789ab,Golden Wheat Mills,SUP-002,Sarah Jenkins,procurement@goldenwheat.com,+1-312-555-0192,800 Industrial Blvd,Chicago,USA,active
 8d90a2e3-4b56-4c78-90fa-1234567890bc,Tropical Sunshine Groves,SUP-003,Rajesh Sharma,export@tropicalgroves.in,+91-22-2849-1120,45 Orchard Estate,Mumbai,India,active
 9e01b3f4-5c67-4d89-01ab-2345678901cd,Global Swift Logistics,SUP-004,Elena Rostova,dispatch@globalswift.sg,+65-6789-2211,10 Marina Terminal Road,Singapore,Singapore,active
+a1b2c3d4-0005-4a7b-8c9d-0e1f2a3b4c5d,Apex Dairy Farms,SUP-005,Liam O'Connor,contracts@apexdairy.com.au,+61-3-5561-2200,400 Coastal Highway,Warrnambool,Australia,active
+a1b2c3d4-0006-4a7b-8c9d-0e1f2a3b4c5d,Midwest Grain Corp,SUP-006,David Miller,sales@midwestgrain.com,+1-612-555-4920,1400 River Road,Minneapolis,USA,active
+a1b2c3d4-0007-4a7b-8c9d-0e1f2a3b4c5d,Ratnagiri Agro Exports,SUP-007,Pooja Kulkarni,trade@ratnagiriagro.in,+91-2352-224410,88 Port Wharf Road,Ratnagiri,India,active
+a1b2c3d4-0008-4a7b-8c9d-0e1f2a3b4c5d,Pacific Reefer Lines,SUP-008,James MacLeod,ops@pacificreefer.com,+61-2-9211-7788,25 Port Botany Way,Sydney,Australia,active

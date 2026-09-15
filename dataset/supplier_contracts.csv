@@ -1,0 +1,7 @@
+id,supplier_id,contract_number,title,start_date,end_date,payment_terms,incoterms,late_penalty_rate_percent,min_sla_on_time_percent,auto_renew,status
+cnt-001,545e9817-ce6b-4a0f-9a6f-9b5b29041090,CTR-DP-2025,Fresh Dairy Bulk Supply Agreement,2025-01-01,2026-12-31,Net 30,DDP,1.5,95.0,True,active
+cnt-002,7c89f1d2-3a45-4b67-89ef-0123456789ab,CTR-GW-2025,Baking Flour Long-Term Sourcing MSA,2025-03-01,2027-02-28,Net 45,FOB,1.0,92.0,True,active
+cnt-003,8d90a2e3-4b56-4c78-90fa-1234567890bc,CTR-TG-2025,Tropical Fruit Puree Import Agreement,2025-05-01,2027-04-30,Letter of Credit,CIF,2.0,90.0,False,active
+cnt-004,9e01b3f4-5c67-4d89-01ab-2345678901cd,CTR-GS-2026,Master Freight & Intermodal Transport Agreement,2026-01-01,2026-12-31,Net 30,FCA,2.5,96.0,True,active
+cnt-005,a1b2c3d4-0005-4a7b-8c9d-0e1f2a3b4c5d,CTR-AD-2026,Secondary Dairy Contingency Framework Agreement,2026-02-01,2027-01-31,Net 30,DDP,1.0,90.0,True,standby
+cnt-006,a1b2c3d4-0006-4a7b-8c9d-0e1f2a3b4c5d,CTR-MG-2026,Secondary Grain Contingency Agreement,2026-02-01,2027-01-31,Net 30,FOB,1.0,90.0,True,standby

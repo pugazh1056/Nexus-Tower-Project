@@ -1,0 +1,12 @@
+id,supplier_id,purchase_order_id,order_date,promised_delivery_date,actual_delivery_date,lead_time_days,delay_days,on_time_status,delivered_quantity,accepted_quantity,rejected_quantity,defect_rate,inspection_notes
+perf-001,545e9817-ce6b-4a0f-9a6f-9b5b29041090,77777777-1111-4444-8888-000000000001,2026-06-01,2026-06-04,2026-06-04,3,0,ON_TIME,100.0,100.0,0.0,0.0,Passed bacteriological and fat content testing
+perf-002,545e9817-ce6b-4a0f-9a6f-9b5b29041090,77777777-1111-4444-8888-000000000002,2026-07-02,2026-07-05,2026-07-07,5,2,LATE,100.0,98.0,2.0,0.02,Minor cap seal damage on 2 units
+perf-003,545e9817-ce6b-4a0f-9a6f-9b5b29041090,77777777-1111-4444-8888-000000000003,2026-08-01,2026-08-04,2026-08-04,3,0,ON_TIME,100.0,100.0,0.0,0.0,Passed all quality criteria
+perf-004,545e9817-ce6b-4a0f-9a6f-9b5b29041090,ccaa359c-72a7-4a9a-adde-abcad89cf171,2026-09-03,2026-09-06,,11,8,CRITICAL_DELAY,0.0,0.0,0.0,0.0,Refrigeration compressor breakdown in transport
+perf-005,7c89f1d2-3a45-4b67-89ef-0123456789ab,77777777-1111-4444-8888-000000000004,2026-06-10,2026-06-17,2026-06-17,7,0,ON_TIME,250.0,250.0,0.0,0.0,Flour moisture content verified at 13.5%
+perf-006,7c89f1d2-3a45-4b67-89ef-0123456789ab,77777777-1111-4444-8888-000000000005,2026-07-15,2026-07-22,2026-07-22,7,0,ON_TIME,250.0,248.0,2.0,0.008,Slight torn packaging on 2 cartons
+perf-007,7c89f1d2-3a45-4b67-89ef-0123456789ab,77777777-1111-4444-8888-000000000006,2026-08-10,2026-08-17,2026-08-18,8,1,LATE,250.0,250.0,0.0,0.0,Passed quality testing
+perf-008,7c89f1d2-3a45-4b67-89ef-0123456789ab,a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,2026-09-11,2026-09-15,,7,3,TRANSIT_DELAY,0.0,0.0,0.0,0.0,Carrier rail intermodal bottleneck in Chicago
+perf-009,8d90a2e3-4b56-4c78-90fa-1234567890bc,77777777-1111-4444-8888-000000000007,2026-06-20,2026-07-01,2026-07-01,11,0,ON_TIME,300.0,300.0,0.0,0.0,"Brix reading 16.2, pH 3.8"
+perf-010,8d90a2e3-4b56-4c78-90fa-1234567890bc,77777777-1111-4444-8888-000000000008,2026-07-25,2026-08-05,2026-08-05,11,0,ON_TIME,300.0,300.0,0.0,0.0,Aseptic packaging intact
+perf-011,8d90a2e3-4b56-4c78-90fa-1234567890bc,b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e,2026-08-31,2026-09-10,2026-09-10,10,0,ON_TIME,300.0,300.0,0.0,0.0,Passed full incoming laboratory assay

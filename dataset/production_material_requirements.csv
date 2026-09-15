@@ -1,0 +1,6 @@
+id,production_order_id,finished_product_id,component_product_id,component_name,required_quantity,unit,available_inventory_quantity,material_shortage,status
+pmr-001,f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,c5e6f7a8-3333-4b2c-8d3e-4f5a6b7c8d9e,Alphonso Mango Pulp Concentrate,150.0,kg,300.0,0.0,sufficient
+pmr-002,f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,c5e6f7a8-4444-4b2c-8d3e-4f5a6b7c8d9e,500ml Aseptic Glass Bottles,500.0,unit,2000.0,0.0,sufficient
+pmr-003,e2b3c4d5-f6a7-4a8b-9c0d-1e2f3a4b5c6d,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,c5e6f7a8-2222-4b2c-8d3e-4f5a6b7c8d9e,Premium Biscuit Flour Mix,500.0,kg,100.0,400.0,delayed_inbound
+pmr-004,e2b3c4d5-f6a7-4a8b-9c0d-1e2f3a4b5c6d,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,c5e6f7a8-5555-4b2c-8d3e-4f5a6b7c8d9e,Moisture-Barrier Biscuit Wrappers,10.0,roll,70.0,0.0,sufficient
+pmr-005,d3c4d5e6-a7b8-4b9c-0d1e-2f3a4b5c6d7e,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,c5e6f7a8-1111-4b2c-8d3e-4f5a6b7c8d9e,Raw Pasteurization Feedstock,840.0,litre,45.0,795.0,critical_shortage

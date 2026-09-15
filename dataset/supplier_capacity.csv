@@ -1,0 +1,7 @@
+id,supplier_id,product_id,period_month,monthly_capacity,allocated_quantity,available_capacity,max_surge_capacity,maintenance_scheduled,status
+cap-001,545e9817-ce6b-4a0f-9a6f-9b5b29041090,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,2026-09,5000.0,3800.0,1200.0,6000.0,2026-09-25,constrained
+cap-002,a1b2c3d4-0005-4a7b-8c9d-0e1f2a3b4c5d,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,2026-09,6000.0,2500.0,3500.0,7500.0,2026-10-10,optimal
+cap-003,7c89f1d2-3a45-4b67-89ef-0123456789ab,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,2026-09,10000.0,7200.0,2800.0,12000.0,,optimal
+cap-004,a1b2c3d4-0006-4a7b-8c9d-0e1f2a3b4c5d,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,2026-09,8000.0,3000.0,5000.0,9500.0,,optimal
+cap-005,8d90a2e3-4b56-4c78-90fa-1234567890bc,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,2026-09,8000.0,6000.0,2000.0,9000.0,,optimal
+cap-006,a1b2c3d4-0007-4a7b-8c9d-0e1f2a3b4c5d,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,2026-09,6000.0,2000.0,4000.0,7000.0,,optimal

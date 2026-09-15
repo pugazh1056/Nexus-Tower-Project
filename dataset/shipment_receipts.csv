@@ -1,0 +1,5 @@
+id,shipment_id,purchase_order_id,product_id,received_quantity,accepted_quantity,rejected_quantity,damaged_quantity,partial_delivery,receipt_date,inspector_notes
+rec-001,e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b,b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,300.0,300.0,0.0,0.0,False,2026-09-10,"All 300 bottles verified intact, seal intact, pH and brix verified within specification"
+rec-002,99999999-3333-6666-aaaa-000000000001,77777777-1111-4444-8888-000000000001,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,100.0,100.0,0.0,0.0,False,2026-06-04,Cold-chain continuous log verified at 3.8C
+rec-003,99999999-3333-6666-aaaa-000000000002,77777777-1111-4444-8888-000000000004,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,250.0,250.0,0.0,0.0,False,2026-06-17,Packaging clean and dry
+rec-004,99999999-3333-6666-aaaa-000000000003,77777777-1111-4444-8888-000000000007,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,300.0,300.0,0.0,0.0,False,2026-07-01,Passed inbound quality checks
