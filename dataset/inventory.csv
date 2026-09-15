@@ -1,0 +1,4 @@
+id,product_id,warehouse_location,quantity,reserved_quantity,available_quantity
+11111111-2222-3333-4444-555555555551,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,Cold Hub Alpha - Bay 4,45.0,15.0,30.0
+11111111-2222-3333-4444-555555555552,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,Warehouse West - Aisle 12,60.0,10.0,50.0
+11111111-2222-3333-4444-555555555553,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,Beverage Distribution East,350.0,50.0,300.0

@@ -1,1 +1,1 @@
-"""Nexus Tower backend application package."""
+"""Nexus Tower Backend Package."""

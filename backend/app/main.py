@@ -1,40 +1,39 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
-from app.api.routes.products import router as products_router
-from app.api.routes.health import router as health_router
-from app.api.routes.auth import router as auth_router
-from app.api.routes.suppliers import router as suppliers_router
-from app.api.routes.inventory import router as inventory_router
-from app.api.routes.purchase_orders import router as purchase_orders_router
-from app.api.routes.production_orders import router as production_orders_router
-from app.api.routes.shipments import router as shipments_router
-from app.api.routes.events import router as events_router
-from app.api.routes.alerts import router as alerts_router
-from app.api.routes.risks import router as risks_router
-from app.api.routes.recommendations import router as recommendations_router
+from app.api.routes import api_router
 
 app = FastAPI(
     title=settings.app_name,
-    version="1.0.0"
+    version=settings.app_version,
+    description="Nexus Tower FMCG Supply Chain Management & Control Tower API",
+    docs_url="/docs",
+    redoc_url="/redoc",
 )
 
-app.include_router(products_router)
-app.include_router(health_router)
-app.include_router(auth_router)
-app.include_router(suppliers_router)
-app.include_router(inventory_router)
-app.include_router(purchase_orders_router)
-app.include_router(production_orders_router)
-app.include_router(shipments_router)
-app.include_router(events_router)
-app.include_router(alerts_router)
-app.include_router(risks_router)
-app.include_router(recommendations_router)
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Mount all API routes under /api
+app.include_router(api_router)
 
 
 @app.get("/")
-def root():
+async def root():
     return {
-        "message": "FMCG Supply Chain API is running",
-        "environment": settings.environment
+        "message": f"Welcome to {settings.app_name} API",
+        "docs": "/docs",
+        "health": "/api/health",
+        "version": settings.app_version,
     }
+
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app.main:app", host=settings.host, port=settings.port, reload=settings.debug)

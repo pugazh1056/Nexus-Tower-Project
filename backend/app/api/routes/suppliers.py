@@ -1,35 +1,65 @@
-"""Supplier management routes."""
-
-from fastapi import APIRouter, Depends, Response, status
-
+from typing import List
+from uuid import UUID
+from fastapi import APIRouter, Depends, HTTPException, status, Body
+from app.schemas.supplier import SupplierCreate, SupplierUpdate, SupplierResponse
+from app.services.supplier_service import supplier_service
 from app.core.dependencies import get_current_user, require_roles
-from app.schemas.supplier import SupplierCreate, SupplierResponse, SupplierUpdate
-from app.services.crud import create_row, delete_row, get_row, list_rows, update_row
 
-router = APIRouter(prefix="/api/suppliers", tags=["suppliers"])
+router = APIRouter(prefix="/suppliers", tags=["Suppliers"])
 
 
-@router.get("/", response_model=list[SupplierResponse], dependencies=[Depends(get_current_user)])
-def list_suppliers() -> list[dict]:
-    return list_rows("suppliers")
+@router.get("/", response_model=List[SupplierResponse])
+async def list_suppliers(current_user: dict = Depends(get_current_user)):
+    return supplier_service.get_all()
 
 
-@router.get("/{supplier_id}", response_model=SupplierResponse, dependencies=[Depends(get_current_user)])
-def get_supplier(supplier_id: str) -> dict:
-    return get_row("suppliers", supplier_id)
+@router.get("/{supplier_id}", response_model=SupplierResponse)
+async def get_supplier(supplier_id: UUID, current_user: dict = Depends(get_current_user)):
+    sup = supplier_service.get_by_id(supplier_id)
+    if not sup:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found")
+    return sup
 
 
-@router.post("/", response_model=SupplierResponse, status_code=status.HTTP_201_CREATED, dependencies=[Depends(require_roles("admin", "procurement"))])
-def create_supplier(payload: SupplierCreate) -> dict:
-    return create_row("suppliers", payload.model_dump(exclude_none=True))
+@router.post("/", response_model=SupplierResponse, status_code=status.HTTP_201_CREATED)
+async def create_supplier(
+    supplier_in: SupplierCreate,
+    current_user: dict = Depends(require_roles(["admin", "procurement"])),
+):
+    return supplier_service.create_supplier(supplier_in)
 
 
-@router.patch("/{supplier_id}", response_model=SupplierResponse, dependencies=[Depends(require_roles("admin", "procurement"))])
-def update_supplier(supplier_id: str, payload: SupplierUpdate) -> dict:
-    return update_row("suppliers", supplier_id, payload.model_dump(exclude_unset=True, exclude_none=True))
+@router.put("/{supplier_id}", response_model=SupplierResponse)
+async def update_supplier(
+    supplier_id: UUID,
+    supplier_update: SupplierUpdate,
+    current_user: dict = Depends(require_roles(["admin", "procurement"])),
+):
+    updated = supplier_service.update_supplier(supplier_id, supplier_update)
+    if not updated:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found")
+    return updated
 
 
-@router.delete("/{supplier_id}", status_code=status.HTTP_204_NO_CONTENT, dependencies=[Depends(require_roles("admin", "procurement"))])
-def delete_supplier(supplier_id: str) -> Response:
-    delete_row("suppliers", supplier_id)
-    return Response(status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/{supplier_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_supplier(
+    supplier_id: UUID,
+    current_user: dict = Depends(require_roles(["admin"])),
+):
+    deleted = supplier_service.delete_supplier(supplier_id)
+    if not deleted:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found")
+    return None
+
+
+@router.post("/{supplier_id}/report-delay")
+async def report_supplier_delay(
+    supplier_id: UUID,
+    delay_days: int = Body(..., embed=True),
+    reason: str = Body(..., embed=True),
+    current_user: dict = Depends(require_roles(["admin", "procurement", "logistics"])),
+):
+    supplier = supplier_service.get_by_id(supplier_id)
+    if not supplier:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Supplier not found")
+    return supplier_service.report_delay(supplier_id, delay_days, reason)

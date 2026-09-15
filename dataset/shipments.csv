@@ -1,0 +1,4 @@
+id,shipment_number,purchase_order_id,supplier_id,status,carrier_name,tracking_number,origin,destination,expected_delivery_date,actual_delivery_date
+c1d2e3f4-a5b6-4c7d-8e9f-0a1b2c3d4e5f,SHP-2026-001,a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d,7c89f1d2-3a45-4b67-89ef-0123456789ab,delayed,Global Swift Logistics,TRK-SWIFT-8912,Chicago Central Freight Rail,Warehouse West Distribution,2026-09-13,
+d2e3f4a5-b6c7-4d8e-9f0a-1b2c3d4e5f6a,SHP-2026-002,ccaa359c-72a7-4a9a-adde-abcad89cf171,545e9817-ce6b-4a0f-9a6f-9b5b29041090,delayed,ColdRoute Express,TRK-COLD-4401,Melbourne Cold Logistics Hub,Cold Hub Alpha - Bay 4,2026-09-06,
+e3f4a5b6-c7d8-4e9f-0a1b-2c3d4e5f6a7b,SHP-2026-003,b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e,8d90a2e3-4b56-4c78-90fa-1234567890bc,delivered,Pacific Ocean Maritime,TRK-MAR-5520,Jawaharlal Nehru Port, Mumbai,Beverage Distribution East,2026-09-10,2026-09-10

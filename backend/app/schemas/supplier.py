@@ -1,47 +1,39 @@
-"""Supplier request and response models."""
-
-from datetime import datetime
-from typing import Literal
 from uuid import UUID
+from datetime import datetime
+from typing import Optional
+from pydantic import BaseModel, Field, EmailStr, ConfigDict
 
-from pydantic import BaseModel, EmailStr
 
-SupplierStatus = Literal["active"]
+class SupplierBase(BaseModel):
+    supplier_code: str = Field(..., max_length=50)
+    name: str = Field(..., max_length=255)
+    contact_person: Optional[str] = Field(None, max_length=100)
+    email: Optional[EmailStr] = None
+    phone: Optional[str] = Field(None, max_length=50)
+    address: Optional[str] = None
+    city: Optional[str] = Field(None, max_length=100)
+    country: Optional[str] = Field(None, max_length=100)
 
 
-class SupplierCreate(BaseModel):
-    supplier_code: str
-    name: str
-    contact_person: str | None = None
-    email: EmailStr | None = None
-    phone: str | None = None
-    address: str | None = None
-    city: str | None = None
-    country: str | None = None
+class SupplierCreate(SupplierBase):
+    pass
 
 
 class SupplierUpdate(BaseModel):
-    supplier_code: str | None = None
-    name: str | None = None
-    contact_person: str | None = None
-    email: EmailStr | None = None
-    phone: str | None = None
-    address: str | None = None
-    city: str | None = None
-    country: str | None = None
-    status: SupplierStatus | None = None
+    name: Optional[str] = Field(None, max_length=255)
+    contact_person: Optional[str] = Field(None, max_length=100)
+    email: Optional[EmailStr] = None
+    phone: Optional[str] = Field(None, max_length=50)
+    address: Optional[str] = None
+    city: Optional[str] = Field(None, max_length=100)
+    country: Optional[str] = Field(None, max_length=100)
+    status: Optional[str] = Field(None, max_length=50)
 
 
-class SupplierResponse(BaseModel):
+class SupplierResponse(SupplierBase):
+    model_config = ConfigDict(from_attributes=True)
+
     id: UUID
-    name: str
-    supplier_code: str
-    contact_person: str | None = None
-    email: EmailStr | None = None
-    phone: str | None = None
-    address: str | None = None
-    city: str | None = None
-    country: str | None = None
-    status: SupplierStatus
-    created_at: datetime
-    updated_at: datetime
+    status: str = "active"
+    created_at: Optional[datetime] = None
+    updated_at: Optional[datetime] = None

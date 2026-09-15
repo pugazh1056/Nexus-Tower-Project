@@ -1,0 +1,4 @@
+id,sku,name,description,category,unit,reorder_level,is_active
+b462b2e9-4a83-4e3c-af52-dd87ab42d06d,MILK-001,Milk,Fresh pasteurized whole milk,Dairy,litre,100.0,true
+6b9956f6-5c18-4fe3-9681-d4feaaed0a38,BIS-001,Biscuits,Crunchy packaged tea biscuits,Snacks,pack,200.0,true
+d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,MJ-001,Mango Juice,100% natural premium mango nectar,Beverages,bottle,150.0,true

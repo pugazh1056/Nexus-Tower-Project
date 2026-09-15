@@ -1,13 +1,14 @@
 from fastapi import APIRouter
+from app.config import settings
 
-router = APIRouter(
-    prefix="/api/health",
-    tags=["Health"]
-)
+router = APIRouter()
 
 
-@router.get("/", include_in_schema=True)
-def health_check():
+@router.get("/health", tags=["System"])
+async def health_check():
     return {
-        "status": "ok"
+        "status": "healthy",
+        "app_name": settings.app_name,
+        "version": settings.app_version,
+        "environment": settings.environment,
     }

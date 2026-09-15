@@ -1,24 +1,15 @@
-"""Request models shared by the API modules."""
+from typing import Generic, List, Optional, TypeVar
+from pydantic import BaseModel, Field
 
-from typing import Any
-
-from pydantic import BaseModel, ConfigDict, EmailStr, Field
-
-
-class FlexibleModel(BaseModel):
-    model_config = ConfigDict(extra="allow")
+T = TypeVar("T")
 
 
-class AuthRegister(BaseModel):
-    email: EmailStr
-    password: str
-    full_name: str | None = None
+class MessageResponse(BaseModel):
+    message: str
 
 
-class AuthLogin(BaseModel):
-    email: EmailStr
-    password: str = Field(min_length=1)
-
-
-class ResourcePayload(FlexibleModel):
-    data: dict[str, Any] | None = None
+class PaginatedResponse(BaseModel, Generic[T]):
+    data: List[T]
+    count: Optional[int] = None
+    page: Optional[int] = 1
+    page_size: Optional[int] = 50

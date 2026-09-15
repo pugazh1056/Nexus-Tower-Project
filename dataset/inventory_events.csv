@@ -1,0 +1,4 @@
+event_id,event_type,entity_id,current_stock,target_stock
+EVT-INV-001,STOCK_LOW,BIS-001,50,200
+EVT-INV-002,STOCK_LOW,MILK-001,30,100
+EVT-INV-003,STOCK_OPTIMAL,MJ-001,300,150

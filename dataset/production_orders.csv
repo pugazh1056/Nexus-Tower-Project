@@ -1,0 +1,4 @@
+id,production_number,product_id,created_by,planned_quantity,produced_quantity,status,planned_start_date,planned_end_date,actual_start_date,actual_end_date,notes
+f1a2b3c4-d5e6-4f7a-8b9c-0d1e2f3a4b5c,PRD-MJ-202609,d6b6faf9-ecc3-40b6-94ef-51a80d2a5853,,500.0,120.0,in_progress,2026-09-12,2026-09-15,2026-09-12,,Bottling Line 2 running at 40% capacity due to high-pressure nozzle calibration issue
+e2b3c4d5-f6a7-4a8b-9c0d-1e2f3a4b5c6d,PRD-BIS-202609,6b9956f6-5c18-4fe3-9681-d4feaaed0a38,,1000.0,0.0,planned,2026-09-16,2026-09-20,,,High-volume biscuit packaging run scheduled following flour delivery
+d3c4d5e6-a7b8-4b9c-0d1e-2f3a4b5c6d7e,PRD-MILK-202609,b462b2e9-4a83-4e3c-af52-dd87ab42d06d,,800.0,0.0,planned,2026-09-17,2026-09-19,,,Awaiting raw pasteurization feedstock confirmation from PO-001

@@ -1,0 +1,5 @@
+id,name,supplier_code,contact_person,email,phone,address,city,country,status
+545e9817-ce6b-4a0f-9a6f-9b5b29041090,Dairy Pure Co,SUP-001,Marcus Vance,orders@dairypure.com,+61-3-9821-4400,12 Yarra Valley Way,Melbourne,Australia,active
+7c89f1d2-3a45-4b67-89ef-0123456789ab,Golden Wheat Mills,SUP-002,Sarah Jenkins,procurement@goldenwheat.com,+1-312-555-0192,800 Industrial Blvd,Chicago,USA,active
+8d90a2e3-4b56-4c78-90fa-1234567890bc,Tropical Sunshine Groves,SUP-003,Rajesh Sharma,export@tropicalgroves.in,+91-22-2849-1120,45 Orchard Estate,Mumbai,India,active
+9e01b3f4-5c67-4d89-01ab-2345678901cd,Global Swift Logistics,SUP-004,Elena Rostova,dispatch@globalswift.sg,+65-6789-2211,10 Marina Terminal Road,Singapore,Singapore,active

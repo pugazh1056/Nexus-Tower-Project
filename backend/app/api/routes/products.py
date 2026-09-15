@@ -1,92 +1,52 @@
-from fastapi import APIRouter, Depends, HTTPException
-from app.core.dependencies import require_roles, require_supabase
-from app.schemas.product import (
-    ProductResponse,
-    ProductCreate,
-    ProductUpdate
-)
-router = APIRouter(
-    prefix="/api/products",
-    tags=["Products"]
-)
+from typing import List
+from uuid import UUID
+from fastapi import APIRouter, Depends, HTTPException, status
+from app.schemas.product import ProductCreate, ProductUpdate, ProductResponse
+from app.services.product_service import product_service
+from app.core.dependencies import get_current_user, require_roles
+
+router = APIRouter(prefix="/products", tags=["Products"])
 
 
-@router.get("/", response_model=list[ProductResponse])
-def get_products():
-    response = require_supabase().table("products").select("*").execute()
-    return response.data
+@router.get("/", response_model=List[ProductResponse])
+async def list_products(current_user: dict = Depends(get_current_user)):
+    return product_service.get_all()
 
 
-@router.post("/", response_model=ProductResponse, status_code=201, dependencies=[Depends(require_roles("admin"))])
-def create_product(product: ProductCreate):
-    response = (
-        require_supabase()
-        .table("products")
-        .insert(product.model_dump())
-        .execute()
-    )
-
-    if not response.data:
-        raise HTTPException(
-            status_code=400,
-            detail="Failed to create product"
-        )
-
-    return response.data[0]
 @router.get("/{product_id}", response_model=ProductResponse)
-def get_product(product_id: str):
-    response = (
-        require_supabase()
-        .table("products")
-        .select("*")
-        .eq("id", product_id)
-        .execute()
-    )
+async def get_product(product_id: UUID, current_user: dict = Depends(get_current_user)):
+    prod = product_service.get_by_id(product_id)
+    if not prod:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
+    return prod
 
-    if not response.data:
-        raise HTTPException(
-            status_code=404,
-            detail="Product not found"
-        )
 
-    return response.data[0]
-@router.patch("/{product_id}", response_model=ProductResponse, dependencies=[Depends(require_roles("admin"))])
-def update_product(product_id: str, product: ProductUpdate):
-    update_data = product.model_dump(exclude_unset=True)
+@router.post("/", response_model=ProductResponse, status_code=status.HTTP_201_CREATED)
+async def create_product(
+    product_in: ProductCreate,
+    current_user: dict = Depends(require_roles(["admin", "procurement", "inventory"])),
+):
+    return product_service.create_product(product_in)
 
-    if not update_data:
-        raise HTTPException(
-            status_code=400,
-            detail="No fields provided for update"
-        )
 
-    response = (
-        require_supabase()
-        .table("products")
-        .update(update_data)
-        .eq("id", product_id)
-        .execute()
-    )
+@router.put("/{product_id}", response_model=ProductResponse)
+async def update_product(
+    product_id: UUID,
+    product_update: ProductUpdate,
+    current_user: dict = Depends(require_roles(["admin", "procurement", "inventory"])),
+):
+    updated = product_service.update_product(product_id, product_update)
+    if not updated:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
+    return updated
 
-    if not response.data:
-        raise HTTPException(
-            status_code=404,
-            detail="Product not found"
-        )
 
-    return response.data[0]
-@router.delete("/{product_id}", status_code=204, dependencies=[Depends(require_roles("admin"))])
-def delete_product(product_id: str):
-    response = (
-        require_supabase()
-        .table("products")
-        .delete()
-        .eq("id", product_id)
-        .execute()
-    )
-
-    if not response.data:
-        raise HTTPException(
-            status_code=404,
-            detail="Product not found"
-        )
+@router.delete("/{product_id}", status_code=status.HTTP_204_NO_CONTENT)
+async def delete_product(
+    product_id: UUID,
+    current_user: dict = Depends(require_roles(["admin"])),
+):
+    deleted = product_service.delete_product(product_id)
+    if not deleted:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Product not found")
+    return None
