@@ -16,6 +16,10 @@ class Settings(BaseSettings):
     supabase_key: Optional[str] = "placeholder-anon-key"
     supabase_secret_key: Optional[str] = None
 
+    # Master Agent Orchestration Webhook Configuration
+    master_webhook_url: Optional[str] = None
+    master_webhook_timeout_seconds: float = 10.0
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",

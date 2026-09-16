@@ -6,11 +6,11 @@
   <title>Nexus Tower — Supply Chain Control</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-        tailwind.config = {
+    tailwind.config = {
       darkMode: 'class',
       theme: {
         extend: {
@@ -39,9 +39,9 @@
             'on-background': '#0b1c30',
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            display: ['Geist', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+            display: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace']
           }
         }
       }
@@ -65,12 +65,12 @@
           <span class="material-symbols-outlined text-[18px]">deployed_code</span>
         </div>
         <div class="flex flex-col">
-          <span class="font-display font-semibold text-[15px] leading-snug tracking-tight text-slate-900">Nexus Tower</span>
-          <span class="text-[11px] text-slate-500 leading-none">Operations Cockpit</span>
+          <span class="font-semibold text-[15px] leading-snug tracking-tight text-slate-900">Nexus Tower</span>
+          <span class="text-xs text-slate-500 leading-none">Operations Cockpit</span>
         </div>
       </div>
       <nav class="p-4 space-y-1">
-        <div class="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-slate-400 font-mono">Operations</div>
+        <div class="px-3 pb-2 pt-1 text-xs font-semibold uppercase tracking-wider text-slate-400">Operations</div>
         <a data-nav="controlTower" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="control-tower.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">hub</span><span>Control Tower</span></a>
         <a data-nav="procurement" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="procurement.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">shopping_cart</span><span>Procurement</span></a>
         <a data-nav="inventory" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="inventory.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">inventory_2</span><span>Inventory</span></a>
@@ -79,11 +79,11 @@
       </nav>
     </div>
     <div class="p-4 border-t border-border-subtle">
-      <div class="flex items-center gap-3 p-2 rounded-lg bg-slate-50 border border-border-subtle">
+      <div class="flex items-center gap-3 p-2.5 rounded-lg bg-slate-50 border border-border-subtle">
         <span class="relative flex h-2 w-2 ml-1"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span><span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span></span>
         <div class="flex flex-col min-w-0">
           <span class="text-xs font-medium text-slate-800">Rotterdam Hub 04</span>
-          <span class="text-[11px] text-slate-500">Live Telemetry Active</span>
+          <span class="text-xs text-slate-500">Live Telemetry Active</span>
         </div>
       </div>
     </div>
@@ -100,7 +100,7 @@
         <div class="relative hidden md:block w-80">
           <span class="material-symbols-outlined absolute left-3 top-2 text-[18px] text-slate-400">search</span>
           <input class="w-full h-9 pl-9 pr-8 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-1 focus:ring-slate-400 focus:border-slate-400 transition" placeholder="Search PO, SKU, line or facility..." type="text" />
-          <kbd class="absolute right-2.5 top-2 text-[10px] font-mono text-slate-400 border border-slate-200 px-1 rounded bg-white">⌘K</kbd>
+          <kbd class="absolute right-2.5 top-2 text-[10px] font-medium text-slate-500 border border-slate-200 px-1.5 py-0.5 rounded bg-white">⌘K</kbd>
         </div>
       </div>
         <div class="flex items-center gap-4">
@@ -113,7 +113,7 @@
         <div class="flex items-center gap-3">
           <div class="text-right hidden sm:block">
             <div class="text-xs font-medium text-slate-900 leading-tight">Marcus Vance</div>
-            <div class="text-[11px] text-slate-500 leading-none">Antwerp HQ</div>
+            <div class="text-xs text-slate-500 leading-none">Antwerp HQ</div>
           </div>
           <img alt="User" class="w-8 h-8 rounded-full border border-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChSaObbGUL8IDEAtrYZu9BDRwEMLhPVvmZ16oYHBeodBQ5NffFGU58oCVV-VKnH7DaiowzWay76otj3esuE681JnHj6sWqXziWm-3iO7Y4QkBd1qn95Qrio-aqMiguhiHp4H6TTMcpRgK6NNzvuDlAgo3T_UYErnaKkeuNu6audwWOYZJ37UXGkEIw_NDztlbBidLLWQSU5knFgvPpcDLmhrx3xUWRirFp2q0MpxjV26XB3QfvhIu1" />
         </div>
@@ -122,67 +122,379 @@
     </header>
 
     <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8">
-      <div class="flex items-center justify-between gap-4">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">System Health & Incident Chain</h1>
-          <p class="text-sm text-slate-500 mt-1">Real-time status across operational nodes and active resolutions.</p>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700 border border-indigo-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-indigo-500 animate-pulse"></span>
+              MASTER ORCHESTRATOR
+            </span>
+            <span id="master-connection-badge" class="inline-flex items-center gap-1 text-xs text-slate-500">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Live Telemetry
+            </span>
+          </div>
+          <h1 class="text-2xl sm:text-[28px] font-semibold tracking-tight text-slate-900">System Health & Incident Chain</h1>
+          <p class="text-sm text-slate-500 mt-1">Cross-domain disruption resolution powered by Master Agent intelligence pipeline.</p>
         </div>
-        <button class="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-sm transition" type="button"><span class="material-symbols-outlined text-[16px]">refresh</span>Refresh Status</button>
+        <div class="flex items-center gap-2">
+          <button id="trigger-evt-004-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm transition" type="button">
+            <span class="material-symbols-outlined text-[16px]">play_circle</span>
+            Run EVT-TEST-004
+          </button>
+          <button id="refresh-pipeline-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-sm transition" type="button">
+            <span class="material-symbols-outlined text-[16px]">refresh</span>
+            Refresh
+          </button>
+        </div>
       </div>
 
+      <!-- MASTER AGENT INTELLIGENCE PIPELINE CARD -->
+      <section id="master-pipeline-container" class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+        <!-- Pipeline Header Bar -->
+        <div class="p-5 sm:p-6 bg-slate-900 text-white flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="flex flex-wrap items-center gap-2.5">
+              <span class="px-2.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 text-xs font-semibold tracking-wide border border-indigo-400/30 uppercase">Master Intelligence Pipeline</span>
+              <span id="pipeline-status-badge" class="px-2.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-xs font-medium border border-emerald-400/30">STATUS: COMPLETED</span>
+              <span id="pipeline-time-badge" class="text-xs text-slate-400">2026-09-15T19:06:00Z</span>
+            </div>
+            <div class="flex flex-wrap items-baseline gap-3 pt-1">
+              <span class="text-base sm:text-lg font-semibold text-white tracking-tight">Execution: <span id="pipeline-execution-id" class="text-indigo-300 text-sm sm:text-base font-medium">EXEC-MST-20260915-004</span></span>
+              <span class="text-slate-400 text-xs">• Event: <span id="pipeline-event-id" class="text-slate-200 font-semibold">EVT-TEST-004</span></span>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <div class="text-right hidden sm:block">
+              <div class="text-xs text-slate-400 uppercase font-medium">Urgency Score</div>
+              <div id="pipeline-urgency-score" class="text-xl font-bold text-amber-400">92.4 <span class="text-xs text-slate-400 font-normal">/ 100</span></div>
+            </div>
+            <div class="h-8 w-px bg-slate-700 hidden sm:block"></div>
+            <div class="text-right">
+              <div class="text-xs text-slate-400 uppercase font-medium">Severity</div>
+              <span id="pipeline-severity-badge" class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-400/30">
+                <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span> CRITICAL
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Pipeline Body Content -->
+        <div id="pipeline-body" class="p-6 space-y-6">
+          <!-- Stage 1 & 2: Normalization & Priority Summary -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-slate-500 font-semibold">01. Normalization</span>
+                <span class="text-xs text-emerald-700 bg-emerald-100 font-medium px-2 py-0.5 rounded">Validated</span>
+              </div>
+              <div class="text-xs space-y-1.5 text-slate-700">
+                <div><span class="text-slate-500">Source:</span> <strong id="norm-source" class="text-slate-900 font-medium">Procurement Agent</strong></div>
+                <div><span class="text-slate-500">Event Type:</span> <span id="norm-type" class="text-indigo-700 font-semibold">SUPPLIER_DELAY</span></div>
+                <div><span class="text-slate-500">Entity:</span> <span id="norm-entity" class="text-slate-900 font-medium">PO-001 (Milk)</span></div>
+                <div><span class="text-slate-500">Supplier:</span> <span id="norm-supplier" class="text-slate-900 font-medium">Dairy Pure Co (SUP-001)</span></div>
+                <div><span class="text-slate-500">Delay:</span> <span id="norm-delay" class="text-error font-semibold">+8 Days (2026-09-06 → 2026-09-14)</span></div>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-slate-500 font-semibold">02. Dynamic Priority</span>
+                <span id="prio-sla-badge" class="text-xs text-rose-700 bg-rose-100 px-2 py-0.5 rounded font-medium">Breach Imminent</span>
+              </div>
+              <p id="prio-justification" class="text-xs text-slate-600 leading-relaxed">
+                8-day delay on primary feedstock with single-silo buffer below 38h threshold.
+              </p>
+              <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs">
+                <span class="text-slate-500">Urgency:</span>
+                <span id="prio-urgency" class="text-amber-700 font-bold">92.4 / 100</span>
+              </div>
+            </div>
+
+            <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-xs uppercase text-slate-500 font-semibold">03. Backward Impact</span>
+                <span class="text-xs text-slate-700 bg-slate-200 px-2 py-0.5 rounded font-medium">Root Cause</span>
+              </div>
+              <div class="text-xs space-y-1.5 text-slate-700">
+                <div><span class="text-slate-500">Cause:</span> <span id="back-cause" class="text-slate-900 font-medium">Compressor breakdown pre-transit</span></div>
+                <div><span class="text-slate-500">Vendor Hist. OTD:</span> <span id="back-otd" class="text-slate-900 font-medium">75.0% (4 POs)</span></div>
+                <div><span class="text-slate-500">Contract Audit:</span> <span id="back-contract" class="text-slate-900 font-medium">CTR-SUP001-2026 (95% SLA)</span></div>
+                <div><span class="text-slate-500">Penalty Fee:</span> <span id="back-penalty" class="text-emerald-700 font-semibold">$800.00 applicable</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 3: Forward Impact Analysis Grid -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Forward Impact & Downstream Propagation</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Automated multi-echelon cascade across affected operational nodes.</p>
+              </div>
+              <div id="forward-affected-domains" class="flex items-center gap-1.5">
+                <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-xs font-medium">Inventory</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-xs font-medium">Production</span>
+                <span class="px-2.5 py-0.5 rounded-full bg-indigo-100 text-indigo-800 text-xs font-medium">Logistics</span>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+              <div class="p-3.5 bg-white rounded-lg border border-slate-200 text-xs space-y-1.5">
+                <div class="font-medium text-slate-900 flex items-center gap-1 text-[13px]">
+                  <span class="material-symbols-outlined text-[16px] text-rose-600">warehouse</span>
+                  <span>Inventory Impact</span>
+                </div>
+                <div class="text-slate-500 text-xs">Cold Hub Alpha - Bay 4</div>
+                <div class="pt-1 flex justify-between text-xs">
+                  <span class="text-slate-500">Available Qty:</span>
+                  <span id="fwd-inv-qty" class="text-rose-600 font-bold">30.0 L (Deficit 70.0 L)</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-500">Safety Runway:</span>
+                  <span id="fwd-inv-runway" class="text-error font-bold">28.8 Hours</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 bg-white rounded-lg border border-slate-200 text-xs space-y-1.5">
+                <div class="font-medium text-slate-900 flex items-center gap-1 text-[13px]">
+                  <span class="material-symbols-outlined text-[16px] text-amber-600">precision_manufacturing</span>
+                  <span>Production Impact</span>
+                </div>
+                <div class="text-slate-500 text-xs">Filling Line 01 · Batch PRD-MILK-202609</div>
+                <div class="pt-1 flex justify-between text-xs">
+                  <span class="text-slate-500">Feedstock Shortage:</span>
+                  <span id="fwd-prod-shortage" class="text-amber-700 font-bold">795.0 / 840.0 L</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-500">Starvation Risk:</span>
+                  <span id="fwd-prod-hazard" class="text-rose-600 font-bold uppercase">Critical Idle Risk</span>
+                </div>
+              </div>
+
+              <div class="p-3.5 bg-white rounded-lg border border-slate-200 text-xs space-y-1.5">
+                <div class="font-medium text-slate-900 flex items-center gap-1 text-[13px]">
+                  <span class="material-symbols-outlined text-[16px] text-indigo-600">local_shipping</span>
+                  <span>Logistics & OTIF Impact</span>
+                </div>
+                <div class="text-slate-500 text-xs">Rotterdam Hub 04 & Antwerp</div>
+                <div class="pt-1 flex justify-between text-xs">
+                  <span class="text-slate-500">Revenue Exposure:</span>
+                  <span id="fwd-logs-revenue" class="text-rose-600 font-bold">$14,200.00</span>
+                </div>
+                <div class="flex justify-between text-xs">
+                  <span class="text-slate-500">Unmitigated OTIF:</span>
+                  <span id="fwd-logs-otif" class="text-slate-700 font-bold">42.0%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 4 & 5: Demand Forecasting Gate & Decision Optimization -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Demand Gate -->
+            <div class="lg:col-span-4 p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold uppercase text-slate-900">Demand Forecasting Gate</span>
+                  <span id="demand-gate-status" class="px-2 py-0.5 rounded text-xs font-medium bg-rose-100 text-rose-800">BREACHED</span>
+                </div>
+                <div class="text-xs space-y-2 text-slate-700">
+                  <div class="flex justify-between">
+                    <span class="text-slate-500">Target SKU:</span>
+                    <strong id="demand-sku" class="text-slate-900">MILK-001</strong>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-slate-500">Daily Burn Rate:</span>
+                    <span id="demand-burn" class="text-slate-900 font-medium">25.0 L / day</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-slate-500">Projected 7-Day:</span>
+                    <span id="demand-7d" class="text-slate-900 font-medium">175.0 L</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-slate-500">Projected 14-Day:</span>
+                    <span id="demand-14d" class="text-slate-900 font-medium">350.0 L</span>
+                  </div>
+                  <div class="flex justify-between">
+                    <span class="text-slate-500">Safety Floor:</span>
+                    <span id="demand-safety" class="text-slate-900 font-semibold">100.0 L</span>
+                  </div>
+                </div>
+              </div>
+              <div class="p-2.5 bg-indigo-50/70 rounded-lg text-xs text-indigo-900 border border-indigo-100">
+                Gate Status: <strong id="demand-decision-gate">Passed To Optimizer</strong>
+              </div>
+            </div>
+
+            <!-- Decision Optimization Evaluated Options Table -->
+            <div class="lg:col-span-8 p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Prescriptive Decision Optimization</h3>
+                  <p class="text-xs text-slate-500 mt-0.5">Automated algorithmic tradeoff evaluation across mitigation paths.</p>
+                </div>
+                <span class="px-2.5 py-0.5 rounded bg-indigo-100 text-indigo-800 text-xs font-medium">3 Options Evaluated</span>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs border-collapse">
+                  <thead>
+                    <tr class="border-b border-slate-200 text-slate-500 text-xs font-medium">
+                      <th class="py-2.5 pr-3">Strategy</th>
+                      <th class="py-2.5 px-3 text-right">Cost</th>
+                      <th class="py-2.5 px-3 text-right">Downtime Loss</th>
+                      <th class="py-2.5 px-3 text-right">Net Impact</th>
+                      <th class="py-2.5 px-3 text-right">OTIF</th>
+                      <th class="py-2.5 pl-3 text-right">Score</th>
+                    </tr>
+                  </thead>
+                  <tbody id="opt-options-tbody" class="divide-y divide-slate-200/60 text-xs">
+                    <!-- Dynamically populated -->
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Selected Recommendation Highlight -->
+              <div id="selected-rec-box" class="p-4 rounded-lg bg-white border border-indigo-200 shadow-sm space-y-1.5">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <div class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-indigo-600">auto_awesome</span>
+                    <span class="font-semibold text-xs text-slate-900" id="rec-title">Expedite Raw Dairy Consignment via Cold-Chain Priority Corridor</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span id="rec-confidence" class="px-2.5 py-0.5 rounded-full text-xs bg-indigo-50 text-indigo-700 font-semibold">98.4% Confidence</span>
+                    <span id="rec-protected-val" class="px-2.5 py-0.5 rounded-full text-xs bg-emerald-50 text-emerald-700 font-semibold">+$13,750 Net Protected</span>
+                  </div>
+                </div>
+                <p id="rec-desc" class="text-xs text-slate-600 leading-relaxed">
+                  Authorizes a $450 surcharge waiver to prioritize tanker transit. Directly protects filling Line 01 continuity and averts an estimated $14,200 in idle production loss.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 6: Smart Replenishment -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-900">Smart Replenishment Recommendation</h3>
+                <p class="text-xs text-slate-500 mt-0.5">Automated backup vendor requisition generated for feedstock recovery.</p>
+              </div>
+              <span id="replenishment-status-badge" class="px-2.5 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">
+                Proposed Pending Approval
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-xs">
+              <div class="p-3 bg-white rounded-lg border border-slate-200">
+                <div class="text-slate-500 text-xs">Supplier & Tier</div>
+                <div id="rep-supplier" class="font-medium text-slate-900 mt-0.5">Apex Dairy Farms (SUP-005)</div>
+                <div class="text-xs text-slate-500 mt-0.5">Tier: Backup · Lead: 4 Days</div>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-slate-200">
+                <div class="text-slate-500 text-xs">Material & Quantity</div>
+                <div id="rep-item" class="font-medium text-slate-900 mt-0.5">Raw Pasteurization Feedstock</div>
+                <div id="rep-qty" class="text-xs text-slate-700 mt-0.5">800.0 litre (RAW-MILK-01)</div>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-slate-200">
+                <div class="text-slate-500 text-xs">Price & Total Value</div>
+                <div id="rep-total" class="font-semibold text-slate-900 mt-0.5">$29,600.00 USD</div>
+                <div id="rep-unit-price" class="text-xs text-slate-500 mt-0.5">$37.00 / litre</div>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-slate-200">
+                <div class="text-slate-500 text-xs">Estimated Arrival (ETA)</div>
+                <div id="rep-eta" class="font-semibold text-indigo-700 mt-0.5">2026-09-18</div>
+                <div class="text-xs text-slate-500 mt-0.5">Requisition: <span id="rep-req-id">REQ-AUTO-2026-004</span></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stage 7: Execution Boundary & Proposed Executable Actions (HUMAN-IN-THE-LOOP) -->
+          <div class="p-5 rounded-xl bg-slate-900 text-white space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+              <div class="space-y-1">
+                <div class="flex items-center gap-2">
+                  <span class="material-symbols-outlined text-[18px] text-amber-400">shield_person</span>
+                  <span class="text-xs font-bold uppercase tracking-wider text-white">Execution Boundary & Governance</span>
+                  <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-medium">Human-in-the-Loop</span>
+                </div>
+                <p class="text-xs text-slate-400">
+                  Actions are <strong class="text-slate-200">Proposed</strong>. Autonomous execution is disabled; explicit human authorization is required.
+                </p>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs text-slate-400">Authorized Roles:</span>
+                <span id="exec-roles" class="px-2.5 py-0.5 rounded bg-slate-800 text-slate-300 text-xs border border-slate-700">admin, procurement</span>
+              </div>
+            </div>
+
+            <!-- Proposed Actions List -->
+            <div class="space-y-2.5">
+              <div class="text-xs text-slate-400 uppercase tracking-wider font-medium">Proposed Executable Actions (Pending Approval)</div>
+              <div id="proposed-actions-container" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <!-- Review & Approval Control Box -->
+            <div id="review-approval-box" class="pt-3 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-slate-800">
+              <div class="text-xs text-slate-400 flex items-center gap-2">
+                <span class="material-symbols-outlined text-[18px] text-indigo-400">gavel</span>
+                <span>Status: <strong id="exec-approval-status" class="text-amber-400 font-semibold">Awaiting Authorization</strong></span>
+              </div>
+              <div class="flex items-center gap-3 w-full sm:w-auto">
+                <button id="review-action-modal-btn" class="w-full sm:w-auto px-4 py-2 rounded-lg bg-slate-800 text-slate-300 hover:bg-slate-700 text-xs font-medium border border-slate-700 transition" type="button">
+                  Review Action Payloads
+                </button>
+                <button id="authorize-master-action-btn" class="w-full sm:w-auto px-5 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-medium shadow-sm transition flex items-center justify-center gap-1.5" type="button">
+                  <span class="material-symbols-outlined text-[16px]">verified</span>
+                  <span>Authorize & Transmit</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Master Empty / Loading / Error State Containers -->
+        <div id="pipeline-loading" class="hidden p-12 text-center space-y-3">
+          <div class="inline-block animate-spin material-symbols-outlined text-[32px] text-indigo-600">progress_activity</div>
+          <div class="text-sm font-medium text-slate-900">Executing Master Intelligence Pipeline...</div>
+          <div class="text-xs text-slate-500">Normalizing event • Running forward/backward graph • Optimizing trade-offs</div>
+        </div>
+
+        <div id="pipeline-error" class="hidden p-8 text-center space-y-3 bg-rose-50 border-t border-rose-200">
+          <span class="material-symbols-outlined text-[32px] text-rose-600">error</span>
+          <div id="pipeline-error-title" class="text-sm font-semibold text-rose-900">Master Pipeline Communication Error</div>
+          <p id="pipeline-error-detail" class="text-xs text-rose-700 max-w-md mx-auto"></p>
+          <button id="pipeline-retry-btn" class="px-4 py-1.5 rounded-lg bg-rose-600 text-white text-xs font-medium hover:bg-rose-700 transition" type="button">Retry Pipeline</button>
+        </div>
+      </section>
+
+      <!-- Four Domain Summary Row (Original Domain Navigation) -->
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Procurement</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Delay</span></div>
-          <div class="mt-3"><div class="text-2xl font-display font-semibold">42 Open POs</div><p class="text-xs text-slate-500 mt-1">1 shipment delayed (+3 days)</p></div>
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Procurement</span><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Delay</span></div>
+          <div class="mt-3"><div class="text-2xl font-bold text-slate-900">42 Open POs</div><p class="text-xs text-slate-500 mt-1">1 shipment delayed (+3 days)</p></div>
         </div>
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Inventory</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Critical</span></div>
-          <div class="mt-3"><div class="text-2xl font-display font-semibold">400 L Buffer</div><p class="text-xs text-slate-500 mt-1">&lt; 38 hours safety runway</p></div>
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Inventory</span><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Critical</span></div>
+          <div class="mt-3"><div class="text-2xl font-bold text-slate-900">400 L Buffer</div><p class="text-xs text-slate-500 mt-1">&lt; 38 hours safety runway</p></div>
         </div>
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Production</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Rebalance</span></div>
-          <div class="mt-3"><div class="text-2xl font-display font-semibold">18 Runs Active</div><p class="text-xs text-slate-500 mt-1">Line 04 swap configured</p></div>
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Production</span><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Rebalance</span></div>
+          <div class="mt-3"><div class="text-2xl font-bold text-slate-900">18 Runs Active</div><p class="text-xs text-slate-500 mt-1">Line 04 swap configured</p></div>
         </div>
         <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
-          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Logistics</span><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>On Schedule</span></div>
-          <div class="mt-3"><div class="text-2xl font-display font-semibold">34 Dispatches</div><p class="text-xs text-slate-500 mt-1">Reefer capacity secured</p></div>
+          <div class="flex items-center justify-between"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Logistics</span><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>On Schedule</span></div>
+          <div class="mt-3"><div class="text-2xl font-bold text-slate-900">34 Dispatches</div><p class="text-xs text-slate-500 mt-1">Reefer capacity secured</p></div>
         </div>
       </section>
 
-      <section class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-        <div class="mb-4">
-          <h2 class="text-sm font-display font-semibold uppercase tracking-wider text-slate-900">Active Disruption Propagation</h2>
-          <p class="text-xs text-slate-500 mt-0.5">End-to-end incident cascade across downstream operational stages.</p>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-rose-600 block">01. Root Cause</span><div class="font-medium text-sm text-slate-900 mt-1">Raw Milk Inbound Slip</div><div class="text-xs text-slate-500 mt-1">+3 days delivery delay at Antwerp</div></div>
-          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-amber-600 block">02. Inventory Buffer</span><div class="font-medium text-sm text-slate-900 mt-1">Silo Level Depletion</div><div class="text-xs text-slate-500 mt-1">Safety stock reaches 18h critical point</div></div>
-          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-slate-700 block">03. Line Bottleneck</span><div class="font-medium text-sm text-slate-900 mt-1">Shift Swap Batch #1042</div><div class="text-xs text-slate-500 mt-1">Preempt Line 04 idle downtime</div></div>
-          <div class="p-4 rounded-lg bg-slate-50 border border-slate-200"><span class="text-[11px] font-mono font-medium text-emerald-600 block">04. Fulfillment</span><div class="font-medium text-sm text-slate-900 mt-1">Reefer Truck SH-208</div><div class="text-xs text-slate-500 mt-1">Direct dispatch to Rotterdam Hub</div></div>
-        </div>
-      </section>
-
-      <section id="action-panel" class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div class="space-y-1.5 max-w-2xl">
-            <div class="flex items-center gap-2">
-              <span class="inline-flex items-center gap-1 text-xs font-medium text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded"><span class="material-symbols-outlined text-[14px]">auto_awesome</span>Recommended Action</span>
-              <span class="text-xs text-slate-400">98.4% system confidence</span>
-            </div>
-            <h3 class="text-base font-display font-semibold text-slate-900">Expedite Raw Dairy Consignment via Cold-Chain Priority Corridor</h3>
-            <p class="text-xs text-slate-600 leading-relaxed">Authorizes a $450 surcharge waiver to prioritize tanker transit. Directly protects filling Line 04 continuity and averts an estimated <strong class="text-slate-900">$14,200 in idle production loss</strong>.</p>
-          </div>
-          <div class="flex items-center gap-3 shrink-0">
-            <button id="approve-action" class="px-4 py-2 text-xs font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-lg shadow-sm transition" type="button">Approve Action</button>
-            <button class="px-4 py-2 text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-lg transition" type="button">Review Details</button>
-          </div>
-        </div>
-      </section>
-
+      <!-- Departmental Status Table -->
       <section class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="p-6 border-b border-slate-100 flex items-center justify-between">
           <div>
-            <h2 class="text-sm font-display font-semibold uppercase tracking-wider text-slate-900">Domain Operations Status</h2>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-900">Domain Operations Status</h2>
             <p class="text-xs text-slate-500 mt-0.5">Consolidated departmental overview and ownership.</p>
           </div>
         </div>
@@ -198,16 +510,57 @@
               </tr>
             </thead>
             <tbody class="divide-y divide-slate-100 text-slate-700">
-              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Procurement</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Delay Risk</span></td><td class="py-3.5 px-6 text-slate-600">Supplier A milk transport customs clearance hold</td><td class="py-3.5 px-6">E. Vance</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
-              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Inventory</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-rose-50 text-rose-700"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Low Buffer</span></td><td class="py-3.5 px-6 text-slate-600">Central Hub 04 safety runway under 38h threshold</td><td class="py-3.5 px-6">M. Chen</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
-              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Production</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Line Swap</span></td><td class="py-3.5 px-6 text-slate-600">Batch PO-1042 reassigned to avoid Line 04 idle period</td><td class="py-3.5 px-6">D. Richter</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
-              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Logistics</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Optimal</span></td><td class="py-3.5 px-6 text-slate-600">CarrierX direct route assigned for SH-208 outbound</td><td class="py-3.5 px-6">S. Tanaka</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-[11px] font-mono">Read-only</span></td></tr>
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Procurement</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Delay Risk</span></td><td class="py-3.5 px-6 text-slate-600">Supplier A milk transport customs clearance hold</td><td class="py-3.5 px-6">E. Vance</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-xs font-medium">Read-only</span></td></tr>
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Inventory</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-rose-50 text-rose-700"><span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span>Low Buffer</span></td><td class="py-3.5 px-6 text-slate-600">Central Hub 04 safety runway under 38h threshold</td><td class="py-3.5 px-6">M. Chen</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-xs font-medium">Read-only</span></td></tr>
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Production</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-amber-50 text-amber-700"><span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>Line Swap</span></td><td class="py-3.5 px-6 text-slate-600">Batch PO-1042 reassigned to avoid Line 04 idle period</td><td class="py-3.5 px-6">D. Richter</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-xs font-medium">Read-only</span></td></tr>
+              <tr class="hover:bg-slate-50/70 transition"><td class="py-3.5 px-6 font-medium text-slate-900">Logistics</td><td class="py-3.5 px-6"><span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>Optimal</span></td><td class="py-3.5 px-6 text-slate-600">CarrierX direct route assigned for SH-208 outbound</td><td class="py-3.5 px-6">S. Tanaka</td><td class="py-3.5 px-6 text-right"><span class="text-slate-400 text-xs font-medium">Read-only</span></td></tr>
             </tbody>
           </table>
         </div>
       </section>
     </main>
   </div>
+
+  <!-- Review Proposed Action Modal -->
+  <div id="action-modal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden">
+      <div class="p-5 bg-slate-900 text-white flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[20px] text-amber-400">shield_person</span>
+          <div>
+            <h3 class="text-sm font-semibold">Master Action Review & Governance</h3>
+            <p class="text-xs text-slate-400">Human-In-The-Loop Verification Boundary</p>
+          </div>
+        </div>
+        <button id="close-modal-btn" class="p-1 rounded-lg text-slate-400 hover:text-white transition" type="button">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="p-3 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900 space-y-1">
+          <div class="font-semibold flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px] text-amber-600">info</span>
+            Proposed Actions Require Authorization
+          </div>
+          <p>
+            Autonomous execution is blocked by the Master Orchestration Boundary (<code class="font-mono text-xs bg-amber-100 px-1 rounded">execution_mode = HUMAN_IN_THE_LOOP</code>). Actions will not execute automatically.
+          </p>
+        </div>
+        <div>
+          <label class="text-xs font-semibold text-slate-500 uppercase">Executable Actions Contract</label>
+          <pre id="modal-json-content" class="mt-1.5 p-3 rounded-lg bg-slate-950 text-emerald-400 font-mono text-xs overflow-x-auto max-h-60 border border-slate-800"></pre>
+        </div>
+        <div class="pt-2 flex items-center justify-end gap-3 border-t border-slate-100">
+          <button id="modal-cancel-btn" class="px-4 py-2 text-xs font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition" type="button">Close Review</button>
+          <button id="modal-confirm-btn" class="px-4 py-2 text-xs font-medium text-white bg-indigo-600 hover:bg-indigo-500 rounded-lg shadow-sm transition flex items-center gap-1.5" type="button">
+            <span class="material-symbols-outlined text-[16px]">check</span>
+            Acknowledge Governance
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script src="assets/api.js"></script>
   <script src="assets/app.js"></script>
 </body>

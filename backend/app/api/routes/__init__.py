@@ -11,6 +11,7 @@ from .events import router as events_router
 from .alerts import router as alerts_router
 from .risks import router as risks_router
 from .recommendations import router as recommendations_router
+from .master import router as master_router
 
 api_router = APIRouter(prefix="/api")
 
@@ -29,5 +30,6 @@ api_router.include_router(events_router)
 api_router.include_router(alerts_router)
 api_router.include_router(risks_router)
 api_router.include_router(recommendations_router)
+api_router.include_router(master_router)
 
 __all__ = ["api_router"]

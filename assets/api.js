@@ -239,6 +239,30 @@
       return this.request(`/events/?limit=${limit}`);
     }
 
+    // ==================== MASTER AGENT PIPELINE METHODS ====================
+
+    async submitMasterEvent(eventData, fallbackTest = false) {
+      const qs = fallbackTest ? '?fallback_test=true' : '';
+      return this.request(`/master/events${qs}`, {
+        method: 'POST',
+        body: eventData,
+      });
+    }
+
+    async getLatestMasterExecution() {
+      return this.request('/master/latest');
+    }
+
+    async getMasterStatus() {
+      return this.request('/master/status');
+    }
+
+    async triggerMasterTestEvent(eventId = 'EVT-TEST-004') {
+      return this.request(`/master/test-event/${encodeURIComponent(eventId)}`, {
+        method: 'POST',
+      });
+    }
+
     // ==================== UI HELPERS ====================
 
     showToast(message, type = 'success') {
