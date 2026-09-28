@@ -38,13 +38,13 @@ class MasterMalformedResponseError(MasterAgentError):
 
 class MasterAgentService:
     def __init__(self):
-        self._latest_execution: Optional[MasterPipelineResponse] = None
+        self._latest_execution: Optional[Any] = None
 
-    def get_latest_execution(self) -> Optional[MasterPipelineResponse]:
+    def get_latest_execution(self) -> Optional[Any]:
         """Returns the most recently recorded Master Agent execution result."""
         return self._latest_execution
 
-    def set_latest_execution(self, response: MasterPipelineResponse) -> None:
+    def set_latest_execution(self, response: Any) -> None:
         """Stores a successful Master Agent execution in cache."""
         self._latest_execution = response
 

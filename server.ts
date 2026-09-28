@@ -1,10 +1,11 @@
-import express, { Request, Response } from 'express';
+import express from 'express';
+import type { Request, Response } from 'express';
 import cors from 'cors';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import http from 'node:http';
 import { createProxyMiddleware, fixRequestBody } from 'http-proxy-middleware';
-import { apiRouter } from './api_router.js';
+import { apiRouter } from './api_router.ts';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -98,6 +99,27 @@ app.get('/health', (_req: Request, res: Response) => {
 });
 
 // Start Express Server
-app.listen(PORT, HOST, () => {
+const server = app.listen(PORT, HOST, () => {
   console.log(`[Nexus Tower] Server listening at http://${HOST}:${PORT}`);
 });
+
+server.on('error', (err: any) => {
+  if (err.code === 'EADDRINUSE') {
+    console.warn(`[Nexus Tower] Port ${PORT} busy, retrying in 1s...`);
+    setTimeout(() => {
+      server.close();
+      server.listen(PORT, HOST);
+    }, 1000);
+  } else {
+    console.error('[Nexus Tower] Server listener error:', err);
+  }
+});
+
+const gracefulShutdown = () => {
+  server.close(() => {
+    process.exit(0);
+  });
+};
+
+process.on('SIGTERM', gracefulShutdown);
+process.on('SIGINT', gracefulShutdown);

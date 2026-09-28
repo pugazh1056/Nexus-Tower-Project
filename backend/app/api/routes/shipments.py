@@ -1,6 +1,6 @@
 from typing import List, Optional
 from uuid import UUID
-from fastapi import APIRouter, Depends, HTTPException, status, Query
+from fastapi import APIRouter, Depends, HTTPException, status, Query, Body
 from app.schemas.shipment import (
     ShipmentCreate,
     ShipmentUpdate,
@@ -19,6 +19,54 @@ async def list_shipments(
     current_user: dict = Depends(get_current_user),
 ):
     return logistics_service.get_all(status=status)
+
+
+@router.get("/{shipment_id}/details")
+async def get_shipment_details(shipment_id: UUID, current_user: dict = Depends(get_current_user)):
+    details = logistics_service.get_shipment_details(shipment_id)
+    if not details:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Shipment not found")
+    return details
+
+
+@router.get("/{shipment_id}/items")
+async def get_shipment_items(shipment_id: UUID, current_user: dict = Depends(get_current_user)):
+    shipment = logistics_service.get_by_id(shipment_id)
+    if not shipment:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Shipment not found")
+    return logistics_service.get_shipment_items(shipment_id)
+
+
+@router.get("/{shipment_id}/receipts")
+async def get_shipment_receipts(shipment_id: UUID, current_user: dict = Depends(get_current_user)):
+    shipment = logistics_service.get_by_id(shipment_id)
+    if not shipment:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Shipment not found")
+    return logistics_service.get_shipment_receipts(shipment_id)
+
+
+@router.get("/{shipment_id}/telemetry")
+async def get_shipment_telemetry(shipment_id: UUID, current_user: dict = Depends(get_current_user)):
+    shipment = logistics_service.get_by_id(shipment_id)
+    if not shipment:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Shipment not found")
+    return logistics_service.get_shipment_telemetry(shipment_id)
+
+
+@router.get("/{shipment_id}/risk")
+async def get_shipment_risk(shipment_id: UUID, current_user: dict = Depends(get_current_user)):
+    risk = logistics_service.get_shipment_risk_assessment(shipment_id)
+    if not risk:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Shipment not found")
+    return risk
+
+
+@router.post("/analyze-event")
+async def analyze_shipment_event(
+    event_data: dict = Body(...),
+    current_user: dict = Depends(get_current_user),
+):
+    return logistics_service.analyze_shipment_event(event_data)
 
 
 @router.get("/{shipment_id}", response_model=ShipmentResponse)

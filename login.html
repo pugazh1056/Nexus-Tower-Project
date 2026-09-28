@@ -54,10 +54,10 @@
     <header class="w-full flex items-center justify-between px-6 sm:px-8 py-4 sm:py-5">
       <div class="flex items-center gap-3">
         <div class="w-9 h-9 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
-          <span class="material-symbols-outlined text-[20px]">dataset</span>
+          <span class="material-symbols-outlined text-[20px]">deployed_code</span>
         </div>
         <div class="flex flex-col leading-none">
-          <span class="font-display font-semibold tracking-tight text-on-surface">NEXUS TOWER</span>
+          <div class="flex items-center gap-1"><span class="font-display font-bold tracking-tight text-on-surface">NEXUS</span><span class="font-display font-semibold tracking-tight text-secondary">TOWER</span></div>
           <span class="text-[11px] font-mono text-outline tracking-[0.22em] mt-1">ENTERPRISE SYSTEM</span>
         </div>
       </div>
@@ -84,7 +84,7 @@
             <p class="mt-2 max-w-[360px] text-sm sm:text-[14px] text-on-surface-variant">AI-powered supply chain decision workspace for enterprise teams.</p>
           </div>
 
-          <div class="mb-6">
+          <div class="mb-6 hidden">
             <label class="block text-[11px] font-semibold uppercase tracking-[0.2em] text-outline mb-2">Operational Persona Access</label>
             <div id="persona-selector" class="grid grid-cols-2 gap-2 bg-surface-container p-2 rounded-2xl">
               <button class="persona-btn rounded-xl px-3 py-2 text-sm font-medium transition-all bg-surface-container-lowest text-on-surface shadow-sm" data-role="Procurement" type="button">Procurement</button>
@@ -99,18 +99,18 @@
             <div>
               <div class="flex items-center justify-between mb-1.5">
                 <label class="text-sm font-medium text-on-surface" for="work-email">Work Identity</label>
-                <span id="role-tag" class="text-[11px] font-mono text-outline">ROLE: PROC-MG</span>
+                <span id="role-tag" class="text-[11px] font-mono text-outline">DEMO ENVIRONMENT</span>
               </div>
-              <input id="work-email" type="email" required value="m.vance@nexustower.internal" placeholder="name@nexustower.internal" class="w-full h-11 px-4 rounded-xl bg-surface-container-low text-on-surface font-mono text-sm outline-none ring-1 ring-transparent focus:ring-secondary/30 focus:bg-surface-container transition-all" />
+              <input id="work-email" type="text" required value="" placeholder="Enter work identity (e.g. procurement, admin)" class="w-full h-11 px-4 rounded-xl bg-surface-container-low text-on-surface font-mono text-sm outline-none ring-1 ring-transparent focus:ring-secondary/30 focus:bg-surface-container transition-all" />
             </div>
 
             <div>
               <div class="flex items-center justify-between mb-1.5">
                 <label class="text-sm font-medium text-on-surface" for="password">Security Credential</label>
-                <span class="text-[11px] text-outline">FIDO2 / Password</span>
+                <span class="text-[11px] text-outline">Password</span>
               </div>
               <div class="relative">
-                <input id="password" type="password" required value="••••••••••••••••" placeholder="Enter credential" class="w-full h-11 px-4 pr-11 rounded-xl bg-surface-container-low text-on-surface font-mono text-sm outline-none ring-1 ring-transparent focus:ring-secondary/30 focus:bg-surface-container transition-all" />
+                <input id="password" type="password" required value="" placeholder="Enter credential" class="w-full h-11 px-4 pr-11 rounded-xl bg-surface-container-low text-on-surface font-mono text-sm outline-none ring-1 ring-transparent focus:ring-secondary/30 focus:bg-surface-container transition-all" />
                 <button id="toggle-pwd" type="button" aria-label="Toggle password visibility" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-outline hover:text-on-surface p-1.5 rounded-lg">
                   <span id="pwd-icon" class="material-symbols-outlined text-[18px]">visibility</span>
                 </button>

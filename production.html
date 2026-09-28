@@ -198,15 +198,18 @@
 <body class="min-h-screen bg-surface text-on-surface font-sans" data-page="production">
   <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between">
     <div>
-      <div class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle">
-        <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
+      <a href="control-tower.html" class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle hover:bg-slate-50 transition-colors">
+        <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center shadow-sm shrink-0">
           <span class="material-symbols-outlined text-[18px]">deployed_code</span>
         </div>
         <div class="flex flex-col">
-          <span class="font-display font-semibold text-[15px] leading-snug tracking-tight text-slate-900">Nexus Tower</span>
-          <span class="text-[11px] text-slate-500 leading-none">Operations Cockpit</span>
+          <div class="flex items-center gap-1">
+            <span class="font-display text-[15px] leading-snug tracking-tight font-bold text-slate-900">NEXUS</span>
+            <span class="font-display text-[15px] leading-snug tracking-tight font-semibold text-indigo-700">TOWER</span>
+          </div>
+          <span class="text-[10px] text-slate-500 font-mono tracking-wide uppercase leading-none mt-0.5">Operations Cockpit</span>
         </div>
-      </div>
+      </a>
       <nav class="p-4 space-y-1">
         <div class="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-slate-400 font-mono">Operations</div>
         <a data-nav="controlTower" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="control-tower.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">hub</span><span>Control Tower</span></a>
@@ -230,12 +233,290 @@
   <div class="lg:pl-64 min-h-screen flex flex-col">
     <header class="h-16 border-b border-border-subtle bg-white px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30"><div class="flex items-center gap-4 min-w-0"><span class="text-xs font-medium text-slate-700 bg-slate-100 px-3 py-1 rounded-lg whitespace-nowrap">Production Manager</span></div><div class="flex items-center gap-4 sm:gap-6"><button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="relative w-80 hidden md:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-slate-400 pointer-events-none">search</span><input class="w-full h-9 pl-9 pr-12 rounded-lg bg-slate-50 border border-border-subtle text-xs text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors" placeholder="Search batches, lines, finished products..." type="text"/><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 border border-slate-200 rounded text-[10px] bg-white text-slate-400 font-mono">⌘K</kbd></div><div class="flex items-center gap-4"><button aria-label="Notifications" class="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-3 pl-2 border-l border-border-subtle"><img alt="Profile avatar" class="w-8 h-8 rounded-full ring-1 ring-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChSaObbGUL8IDEAtrYZu9BDRwEMLhPVvmZ16oYHBeodBQ5NffFGU58oCVV-VKnH7DaiowzWay76otj3esuE681JnHj6sWqXziWm-3iO7Y4QkBd1qn95Qrio-aqMiguhiHp4H6TTMcpRgK6NNzvuDlAgo3T_UYErnaKkeuNu6audwWOYZJ37UXGkEIw_NDztlbBidLLWQSU5knFgvPpcDLmhrx3xUWRirFp2q0MpxjV26XB3QfvhIu1"/><div class="hidden sm:flex flex-col text-left"><span class="text-xs font-medium text-on-surface">Marcus Vance</span><span class="text-[11px] text-on-surface-variant">Production Lead</span></div></div><button id="logout-btn" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs font-medium hover:bg-slate-50 hover:text-error transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">logout</span><span class="hidden sm:inline">Logout</span></button></div>
   </header>
-      <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8"><div class="flex items-center justify-between gap-4"><div><h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Production Operations</h1><p class="text-sm text-slate-500 mt-1">Active line execution, batch dependencies, and bottleneck triage.</p></div><div class="flex items-center gap-3"><button class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px] text-slate-500">tune</span><span>Line Config</span></button><button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>New Production Run</span></button></div></div>
-      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active Orders</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-slate-900">18</span><span class="text-xs text-slate-500 font-medium">Runs</span></div><span class="text-xs text-emerald-600 font-medium">4 Lines Busy</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-error uppercase tracking-wider">Orders At Risk</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-error">2</span><span class="text-xs text-slate-500 font-medium">Batches</span></div><span class="text-xs text-error font-medium">Line 02 & Line 04</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Material Shortages</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-slate-900">1</span><span class="text-xs text-slate-500 font-medium">Impending</span></div><span class="text-xs text-amber-600 font-medium">Raw Milk Deficit</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Line Efficiency (OEE)</span><div class="mt-4 flex items-baseline justify-between"><div class="flex items-baseline gap-1.5"><span class="text-3xl font-display font-semibold text-slate-900">93.4%</span><span class="text-xs text-slate-500 font-medium">Target: 92%</span></div><span class="text-xs text-emerald-600 font-medium">+0.8% this week</span></div></div></section>
-      <section><div class="bg-error-light border border-error-border rounded-xl p-4 flex items-center justify-between gap-4"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-error text-white flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">warning</span></div><p class="text-xs text-slate-800 leading-snug"><span class="font-semibold text-error">Line 02 Starvation Risk:</span> Batch <span class="font-semibold">PO-1042</span> (Fresh Milk 1L Pack) faces raw milk stockout on Shift B (07 Sep 14:00).</p></div><span class="text-xs font-mono text-error font-medium shrink-0">Downtime risk: 14.0 hrs</span></div></section>
-      <section id="aiRecommendationCard"><div class="bg-white border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col gap-5"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border-subtle"><div class="flex items-center gap-2.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span><h2 class="text-sm font-semibold text-slate-900">AI Recommendation: Reschedule Batch Sequence & Swap Line Priority</h2></div><span class="text-xs font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full w-fit">Confidence: 92%</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-600"><div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Reason</span><p class="text-slate-800 leading-relaxed">Swap Line 02 schedule: run <strong class="text-slate-900 font-semibold">Butter Crunch Biscuits Batch PO-1045</strong> first while waiting for expedited raw milk consignment. Prevents packaging cell idle starvation.</p></div><div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Impact</span><p class="text-slate-800 leading-relaxed">Recovers <span class="font-semibold text-emerald-700">14.0 hrs idle labor time</span>. Preserves 98.2% on-time fulfillment (<span class="font-semibold text-indigo-700 font-mono">Risk Delta: -42%</span>).</p></div></div><div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-border-subtle"><div class="flex items-center gap-2"><button class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm" type="button">Approve Schedule Swap</button><button class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Simulate Line OEE</button></div><button data-dismiss-target="aiRecommendationCard" class="px-3 py-2 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors" type="button">Dismiss</button></div></div></section>
-      <section class="bg-white border border-border-subtle rounded-xl shadow-sm overflow-hidden flex flex-col"><div class="p-5 border-b border-border-subtle flex items-center justify-between"><div class="flex items-center gap-3"><h3 class="text-sm font-semibold text-slate-900">Active Production Orders</h3><span class="text-xs text-slate-500 font-mono bg-slate-100 px-2 py-0.5 rounded-full">4 Active</span></div><div class="flex items-center gap-2"><button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button"><span class="material-symbols-outlined text-[15px] text-slate-400">filter_list</span><span>Filter: All Lines</span></button><button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button"><span class="material-symbols-outlined text-[15px] text-slate-400">sort</span><span>Sort: Priority</span></button></div></div><div class="overflow-x-auto"><table class="w-full text-left border-collapse text-xs"><thead><tr class="bg-slate-50 text-slate-500 uppercase font-mono text-[11px] border-b border-border-subtle"><th class="py-3 px-5 font-medium">Order ID</th><th class="py-3 px-5 font-medium">Finished Product</th><th class="py-3 px-5 font-medium">Line / Cell</th><th class="py-3 px-5 font-medium">Batch Quantity</th><th class="py-3 px-5 font-medium">Progress</th><th class="py-3 px-5 font-medium">Risk Level</th><th class="py-3 px-5 font-medium text-right">Action</th></tr></thead><tbody class="divide-y divide-border-subtle text-slate-700"><tr class="hover:bg-slate-50/75 transition-colors bg-red-50/20"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1042</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Fresh Milk 1L TetraPack</span><span class="text-[11px] text-slate-400 font-mono">SKU-DRY-8832</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-error"></span><span>Line 02 (Dairy Cold)</span></div></td><td class="py-3.5 px-5 font-mono">10,000 Units</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>15%</span><span>1.5k / 10k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-error h-full rounded-full" style="width: 15%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-red-100 text-error">Critical (1.2d delay)</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-900 text-white text-[11px] font-medium hover:bg-slate-800 transition-colors" type="button">Resolve</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1045</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Butter Crunch Biscuits</span><span class="text-[11px] text-slate-400 font-mono">SKU-BKY-4412</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Line 01 (Bakery Dry)</span></div></td><td class="py-3.5 px-5 font-mono">25,000 Packs</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>68%</span><span>17k / 25k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-indigo-600 h-full rounded-full" style="width: 68%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">On Track</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1048</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Pure Mango Juice 250ml</span><span class="text-[11px] text-slate-400 font-mono">SKU-BEV-9920</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-amber-500"></span><span>Line 04 (Aseptic Bottling)</span></div></td><td class="py-3.5 px-5 font-mono">8,000 Bottles</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>35%</span><span>2.8k / 8k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-indigo-400 h-full rounded-full" style="width: 35%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-100 text-amber-800">Warning</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-1039</td><td class="py-3.5 px-5"><div class="flex flex-col"><span class="font-medium text-slate-900">Salted Cream Butter 200g</span><span class="text-[11px] text-slate-400 font-mono">SKU-DRY-3310</span></div></td><td class="py-3.5 px-5"><div class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-500"></span><span>Line 03 (Dairy Chilled)</span></div></td><td class="py-3.5 px-5 font-mono">4,500 Tubs</td><td class="py-3.5 px-5"><div class="w-32 flex flex-col gap-1"><div class="flex justify-between items-center font-mono text-[11px] text-slate-500"><span>95%</span><span>4.2k / 4.5k</span></div><div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full rounded-full" style="width: 95%;"></div></div></div></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">On Track</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr></tbody></table></div></section>
-    </main></div>
+      <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Production Operations</h1>
+            <p class="text-sm text-slate-500 mt-1">Active line execution, batch dependencies, and bottleneck triage.</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <button id="prod-line-config-btn" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-sm" type="button">
+              <span class="material-symbols-outlined text-[16px] text-slate-500">tune</span>
+              <span>Line Config</span>
+            </button>
+            <button id="prod-new-run-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button">
+              <span class="material-symbols-outlined text-[16px]">add</span>
+              <span>New Production Run</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <!-- KPI 1: Active Orders -->
+          <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active Orders</span>
+            <div class="mt-4 flex items-baseline justify-between">
+              <div class="flex items-baseline gap-1.5">
+                <span id="kpi-active-orders-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+                <span class="text-xs text-slate-500 font-medium">Runs</span>
+              </div>
+              <span id="kpi-active-orders-badge" class="text-xs text-emerald-600 font-medium">--</span>
+            </div>
+            <div id="kpi-active-orders-sub" class="mt-2 text-[11px] text-slate-400 font-mono">Loading orders...</div>
+          </div>
+
+          <!-- KPI 2: Orders At Risk -->
+          <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+            <span class="text-xs font-medium text-error uppercase tracking-wider">Orders At Risk</span>
+            <div class="mt-4 flex items-baseline justify-between">
+              <div class="flex items-baseline gap-1.5">
+                <span id="kpi-orders-at-risk-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+                <span class="text-xs text-slate-500 font-medium">Batches</span>
+              </div>
+              <span id="kpi-orders-at-risk-badge" class="text-xs font-medium">--</span>
+            </div>
+            <div id="kpi-orders-at-risk-sub" class="mt-2 text-[11px] text-slate-400 font-mono">Analyzing risk...</div>
+          </div>
+
+          <!-- KPI 3: Material Shortages -->
+          <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Material Shortages</span>
+            <div class="mt-4 flex items-baseline justify-between">
+              <div class="flex items-baseline gap-1.5">
+                <span id="kpi-material-shortages-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+                <span class="text-xs text-slate-500 font-medium">Impending</span>
+              </div>
+              <span id="kpi-material-shortages-badge" class="text-xs font-medium">--</span>
+            </div>
+            <div id="kpi-material-shortages-sub" class="mt-2 text-[11px] text-slate-400 font-mono">Checking buffers...</div>
+          </div>
+
+          <!-- KPI 4: Line Efficiency (OEE) -->
+          <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+            <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Line Efficiency (OEE)</span>
+            <div class="mt-4 flex items-baseline justify-between">
+              <div class="flex items-baseline gap-1.5">
+                <span id="kpi-line-efficiency-val" class="text-2xl sm:text-3xl font-display font-semibold text-slate-600">Unavailable</span>
+              </div>
+              <span id="kpi-line-efficiency-badge" class="text-xs text-slate-400 font-medium bg-slate-50 px-2 py-0.5 rounded-full">Telemetry Pending</span>
+            </div>
+            <div id="kpi-line-efficiency-sub" class="mt-2 text-[11px] text-slate-400 font-mono">No telemetry stream</div>
+          </div>
+        </section>
+
+        <!-- Live Production Alert Container -->
+        <section id="prod-alert-container">
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-between gap-4 animate-pulse">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-slate-200 text-slate-400 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[18px]">info</span>
+              </div>
+              <p class="text-xs text-slate-500">Checking active production telemetry and alerts...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI Recommendation Card -->
+        <section id="aiRecommendationCard">
+          <div class="bg-white border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col gap-5">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border-subtle">
+              <div class="flex items-center gap-2.5">
+                <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+                <h2 id="prod-rec-card-title" class="text-sm font-semibold text-slate-900">AI Recommendation: Loading...</h2>
+              </div>
+              <span id="prod-rec-card-confidence" class="text-xs font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full w-fit">Confidence: --%</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-600">
+              <div>
+                <span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Reason</span>
+                <p id="prod-rec-card-reason" class="text-slate-800 leading-relaxed">Analyzing operational constraints...</p>
+              </div>
+              <div>
+                <span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Impact</span>
+                <p id="prod-rec-card-impact" class="text-slate-800 leading-relaxed">Evaluating potential throughput gains...</p>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-border-subtle">
+              <div class="flex items-center gap-2">
+                <button id="prod-rec-approve-btn" class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm" type="button">Approve Recommendation</button>
+                <button id="prod-rec-simulate-btn" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Simulate Line</button>
+              </div>
+              <div class="flex items-center gap-3">
+                <span id="prod-rec-card-footer-info" class="text-[11px] text-slate-400 font-mono hidden sm:inline"></span>
+                <button data-dismiss-target="aiRecommendationCard" class="px-3 py-2 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors" type="button">Dismiss</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Production Orders Table Section -->
+        <section class="bg-white border border-border-subtle rounded-xl shadow-sm overflow-hidden flex flex-col">
+          <div class="p-5 border-b border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <h3 class="text-sm font-semibold text-slate-900">Production Orders</h3>
+              <span id="prod-table-count" class="text-xs text-slate-500 font-mono bg-slate-100 px-2 py-0.5 rounded-full">Loading...</span>
+            </div>
+            <div class="flex flex-wrap items-center gap-2">
+              <div class="relative">
+                <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-slate-400 pointer-events-none">search</span>
+                <input id="prod-search-input" class="h-8 pl-8 pr-3 rounded-lg bg-slate-50 border border-border-subtle text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors w-44 sm:w-56" placeholder="Search orders, SKU, lines..." type="text"/>
+              </div>
+              <button id="prod-filter-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button">
+                <span class="material-symbols-outlined text-[15px] text-slate-400">filter_list</span>
+                <span id="prod-filter-label">Filter: All</span>
+              </button>
+              <button id="prod-sort-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button">
+                <span class="material-symbols-outlined text-[15px] text-slate-400">sort</span>
+                <span id="prod-sort-label">Sort: Order</span>
+              </button>
+              <button id="prod-refresh-btn" aria-label="Refresh production data" class="p-1.5 rounded-lg border border-border-subtle bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors" type="button" title="Refresh production data">
+                <span class="material-symbols-outlined text-[16px]">refresh</span>
+              </button>
+            </div>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-50 text-slate-500 uppercase font-mono text-[11px] border-b border-border-subtle">
+                  <th class="py-3 px-5 font-medium">Order ID</th>
+                  <th class="py-3 px-5 font-medium">Finished Product</th>
+                  <th class="py-3 px-5 font-medium">Line / Cell</th>
+                  <th class="py-3 px-5 font-medium text-right">Planned Qty</th>
+                  <th class="py-3 px-5 font-medium text-right">Completed Qty</th>
+                  <th class="py-3 px-5 font-medium text-right">Remaining Qty</th>
+                  <th class="py-3 px-5 font-medium">Progress</th>
+                  <th class="py-3 px-5 font-medium text-center">Status</th>
+                  <th class="py-3 px-5 font-medium text-center">Risk Level</th>
+                  <th class="py-3 px-5 font-medium text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="prod-table-body" class="divide-y divide-border-subtle text-slate-700">
+                <!-- Dynamically rendered rows -->
+                <tr>
+                  <td colspan="10" class="py-12 text-center text-slate-400">
+                    <div class="flex flex-col items-center justify-center gap-2">
+                      <span class="material-symbols-outlined text-[26px] animate-spin text-indigo-500">progress_activity</span>
+                      <span class="text-xs text-slate-500 font-medium">Loading live production orders...</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Production Order Details Modal -->
+        <div id="prod-detail-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs hidden p-4">
+          <div class="bg-white rounded-xl shadow-xl max-w-lg w-full overflow-hidden border border-border-subtle animate-in fade-in zoom-in-95 duration-150">
+            <div class="p-5 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-slate-600 text-[20px]">precision_manufacturing</span>
+                <h3 id="prod-modal-title" class="text-sm font-semibold text-slate-900">Production Order Details</h3>
+              </div>
+              <button id="prod-modal-close" class="text-slate-400 hover:text-slate-600 transition" type="button">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+            <div id="prod-modal-body" class="p-6 space-y-4 text-xs">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="p-4 border-t border-border-subtle bg-slate-50 flex items-center justify-end gap-2">
+              <button id="prod-modal-ok" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs transition" type="button">Close</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- New Production Run Modal -->
+        <div id="prod-new-run-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs hidden p-4">
+          <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-hidden border border-border-subtle animate-in fade-in zoom-in-95 duration-150">
+            <div class="p-5 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-indigo-600 text-[20px]">factory</span>
+                <h3 class="text-sm font-semibold text-slate-900">Schedule New Production Run</h3>
+              </div>
+              <button id="prod-new-run-close" class="text-slate-400 hover:text-slate-600 transition" type="button">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+            <form id="prod-new-run-form" class="p-6 space-y-4 text-xs">
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Product Formulation</label>
+                <select id="prod-run-product" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600" required>
+                  <option value="">Select product...</option>
+                </select>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-slate-700 font-medium mb-1">Production Line</label>
+                  <select id="prod-run-line" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600">
+                    <option value="Line 1 - Bottling">Line 1 - Bottling</option>
+                    <option value="Line 2 - Canning">Line 2 - Canning</option>
+                    <option value="Line 3 - Packaging">Line 3 - Packaging</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-slate-700 font-medium mb-1">Batch Size (Units)</label>
+                  <input id="prod-run-quantity" type="number" min="100" step="50" value="2500" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 font-mono focus:outline-none focus:border-indigo-600" required />
+                </div>
+              </div>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-slate-700 font-medium mb-1">Start Date</label>
+                  <input id="prod-run-start" type="date" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 font-mono focus:outline-none focus:border-indigo-600" required />
+                </div>
+                <div>
+                  <label class="block text-slate-700 font-medium mb-1">Target End Date</label>
+                  <input id="prod-run-end" type="date" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 font-mono focus:outline-none focus:border-indigo-600" required />
+                </div>
+              </div>
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Run Priority</label>
+                <select id="prod-run-priority" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600">
+                  <option value="normal">Normal (Standard Schedule)</option>
+                  <option value="high">High (Customer Order Fulfillment)</option>
+                  <option value="critical">Critical (Safety Buffer Replenishment)</option>
+                </select>
+              </div>
+              <div class="pt-3 border-t border-border-subtle flex items-center justify-end gap-2">
+                <button id="prod-new-run-cancel" type="button" class="px-4 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition">Cancel</button>
+                <button id="prod-new-run-submit" type="submit" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-[15px]">play_arrow</span>
+                  <span>Commit Production Run</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Line Simulation Modal -->
+        <div id="prod-simulation-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs hidden p-4">
+          <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full overflow-hidden border border-border-subtle animate-in fade-in zoom-in-95 duration-150">
+            <div class="p-5 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-indigo-600 text-[20px]">analytics</span>
+                <div>
+                  <h3 class="text-sm font-semibold text-slate-900">Line Throughput Simulation</h3>
+                  <p class="text-[11px] text-slate-500 font-mono">Dynamic Line Bottleneck & Capacity Model</p>
+                </div>
+              </div>
+              <button id="prod-sim-close" class="text-slate-400 hover:text-slate-600 transition" type="button">
+                <span class="material-symbols-outlined text-[20px]">close</span>
+              </button>
+            </div>
+            <div id="prod-sim-body" class="p-6 space-y-4 text-xs max-h-[70vh] overflow-y-auto">
+              <!-- Dynamically populated from /production-orders/simulate-line -->
+            </div>
+            <div class="p-4 border-t border-border-subtle bg-slate-50 flex items-center justify-between">
+              <span class="text-[11px] text-slate-500 font-mono">Telemetry & capacity validation</span>
+              <div class="flex items-center gap-2">
+                <button id="prod-sim-ok" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs transition" type="button">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
   <script src="assets/api.js"></script>
   <script src="assets/app.js"></script>
 </body>

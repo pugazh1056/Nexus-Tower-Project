@@ -94,5 +94,37 @@ class InventoryService:
     def delete_inventory(self, inv_id: str | UUID) -> bool:
         return self.repo.delete(str(inv_id))
 
+    def analyze_inventory_event(self, event_data: Dict[str, Any]) -> Dict[str, Any]:
+        event_id = event_data.get("event_id", "EVT-INV-001")
+        event_type = event_data.get("event_type", "STOCK_LOW")
+        entity_id = event_data.get("entity_id")
+        inv_items = self.get_all()
+        inv = next((i for i in inv_items if str(i.get("id")) == str(entity_id) or str(i.get("product_id")) == str(entity_id)), None)
+        if not inv and inv_items:
+            inv = inv_items[0]
+
+        qty_on_hand = float(inv.get("quantity_on_hand", 0) if inv else 100)
+        threshold = float(inv.get("reorder_threshold", 500) if inv else 500)
+        is_low = event_type in ["STOCK_LOW", "INVENTORY_LOW"] or qty_on_hand <= threshold
+
+        return {
+            "domain": "Inventory",
+            "inventory_record": inv or {},
+            "stock_level": qty_on_hand,
+            "reorder_threshold": threshold,
+            "risk": {
+                "level": "CRITICAL" if qty_on_hand <= threshold * 0.5 else ("HIGH" if is_low else "LOW"),
+                "type": "STOCK_LOW" if is_low else "NORMAL",
+                "reason": f"Inventory quantity on hand ({qty_on_hand}) is at or below reorder threshold ({threshold})." if is_low else "Inventory levels sufficient."
+            },
+            "recommendation": {
+                "domain": "Inventory",
+                "action": "Trigger emergency replenishment purchase order.",
+                "reason": "Stock level approaching critical depletion.",
+                "expected_outcome": "Restore safety stock above reorder threshold.",
+                "key_risks": "Stockout before replenishment delivery."
+            }
+        }
+
 
 inventory_service = InventoryService()

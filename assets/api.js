@@ -207,12 +207,76 @@
       return this.request(`/purchase-orders/${id}`);
     }
 
+    async createPurchaseOrder(poData) {
+      return this.request('/purchase-orders', {
+        method: 'POST',
+        body: poData,
+      });
+    }
+
+    async resolvePurchaseOrder(poId, resolveData = {}) {
+      return this.request(`/purchase-orders/${poId}/resolve`, {
+        method: 'POST',
+        body: resolveData,
+      });
+    }
+
+    async requestReplenishment(replenishData) {
+      return this.request('/inventory/replenish', {
+        method: 'POST',
+        body: replenishData,
+      });
+    }
+
+    async resolveInventory(invId, resolveData = {}) {
+      return this.request(`/inventory/${invId}/resolve`, {
+        method: 'POST',
+        body: resolveData,
+      });
+    }
+
+    async getAlternativeAllocations() {
+      return this.request('/inventory/alternative-allocations');
+    }
+
     async getProductionOrders() {
       return this.request('/production-orders/');
     }
 
+    async createProductionOrder(orderData) {
+      return this.request('/production-orders', {
+        method: 'POST',
+        body: orderData,
+      });
+    }
+
+    async simulateProductionLine(simParams = {}) {
+      return this.request('/production-orders/simulate-line', {
+        method: 'POST',
+        body: simParams,
+      });
+    }
+
     async getShipments() {
       return this.request('/shipments/');
+    }
+
+    async createConsignment(shipmentData) {
+      return this.request('/shipments', {
+        method: 'POST',
+        body: shipmentData,
+      });
+    }
+
+    async getCarrierMatrix() {
+      return this.request('/shipments/carrier-matrix');
+    }
+
+    async resolveShipment(shipmentId, resolveData = {}) {
+      return this.request(`/shipments/${shipmentId}/resolve`, {
+        method: 'POST',
+        body: resolveData,
+      });
     }
 
     async getAlerts(status = null) {
@@ -249,6 +313,14 @@
       });
     }
 
+    async submitMasterExternalEvent(eventData, isTestMode = false) {
+      const qs = isTestMode ? '?mode=test' : '';
+      return this.request(`/master/external/events${qs}`, {
+        method: 'POST',
+        body: eventData,
+      });
+    }
+
     async getLatestMasterExecution() {
       return this.request('/master/latest');
     }
@@ -258,8 +330,17 @@
     }
 
     async triggerMasterTestEvent(eventId = 'EVT-TEST-004') {
-      return this.request(`/master/test-event/${encodeURIComponent(eventId)}`, {
+      const payloadMap = {
+        'SUPPLIER_DELAY': { event_id: 'EVT-SUP-01', event_type: 'SUPPLIER_DELAY', source_domain: 'Procurement', entity_type: 'purchase_order', entity_id: 'PO-001' },
+        'STOCK_LOW': { event_id: 'EVT-INV-01', event_type: 'STOCK_LOW', source_domain: 'Inventory', entity_type: 'product', entity_id: 'PRD-001' },
+        'PRODUCTION_DISRUPTION': { event_id: 'EVT-PROD-01', event_type: 'PRODUCTION_DISRUPTION', source_domain: 'Production', entity_type: 'production_order', entity_id: 'PROD-001' },
+        'SHIPMENT_DISRUPTION': { event_id: 'EVT-LOG-01', event_type: 'SHIPMENT_DISRUPTION', source_domain: 'Logistics', entity_type: 'shipment', entity_id: 'SHP-001' }
+      };
+      
+      const payload = payloadMap[eventId] || payloadMap['SUPPLIER_DELAY'];
+      return this.request('/master/internal/events', {
         method: 'POST',
+        body: payload,
       });
     }
 

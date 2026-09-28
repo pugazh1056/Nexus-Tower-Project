@@ -68,6 +68,46 @@ async def delete_production_order(
     return None
 
 
+@router.get("/{order_id}/details")
+async def get_production_order_details(order_id: UUID, current_user: dict = Depends(get_current_user)):
+    details = production_service.get_order_details(order_id)
+    if not details:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Production order not found")
+    return details
+
+
+@router.get("/{order_id}/materials")
+async def get_production_order_materials(order_id: UUID, current_user: dict = Depends(get_current_user)):
+    materials = production_service.get_order_materials(order_id)
+    if not materials:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Production order not found")
+    return materials
+
+
+@router.get("/{order_id}/progress")
+async def get_production_order_progress(order_id: UUID, current_user: dict = Depends(get_current_user)):
+    progress = production_service.get_order_progress_details(order_id)
+    if not progress:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Production order not found")
+    return progress
+
+
+@router.get("/{order_id}/risk")
+async def get_production_order_risk(order_id: UUID, current_user: dict = Depends(get_current_user)):
+    risk = production_service.get_order_risk_assessment(order_id)
+    if not risk:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Production order not found")
+    return risk
+
+
+@router.post("/analyze-event")
+async def analyze_production_event(
+    event_data: dict = Body(...),
+    current_user: dict = Depends(get_current_user),
+):
+    return production_service.analyze_production_event(event_data)
+
+
 @router.post("/{order_id}/report-disruption")
 async def report_production_disruption(
     order_id: UUID,

@@ -23,15 +23,18 @@
 <body class="min-h-screen bg-surface text-on-surface font-sans" data-page="logistics">
   <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between">
     <div>
-      <div class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle">
-        <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
+      <a href="control-tower.html" class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle hover:bg-slate-50 transition-colors">
+        <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center shadow-sm shrink-0">
           <span class="material-symbols-outlined text-[18px]">deployed_code</span>
         </div>
         <div class="flex flex-col">
-          <span class="font-display font-semibold text-[15px] leading-snug tracking-tight text-slate-900">Nexus Tower</span>
-          <span class="text-[11px] text-slate-500 leading-none">Operations Cockpit</span>
+          <div class="flex items-center gap-1">
+            <span class="font-display text-[15px] leading-snug tracking-tight font-bold text-slate-900">NEXUS</span>
+            <span class="font-display text-[15px] leading-snug tracking-tight font-semibold text-indigo-700">TOWER</span>
+          </div>
+          <span class="text-[10px] text-slate-500 font-mono tracking-wide uppercase leading-none mt-0.5">Operations Cockpit</span>
         </div>
-      </div>
+      </a>
       <nav class="p-4 space-y-1">
         <div class="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-slate-400 font-mono">Operations</div>
         <a data-nav="controlTower" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="control-tower.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">hub</span><span>Control Tower</span></a>
@@ -55,11 +58,281 @@
   <div class="lg:pl-64 min-h-screen flex flex-col">
     <header class="h-16 border-b border-border-subtle bg-white px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30"><div class="flex items-center gap-4 min-w-0"><span class="text-xs font-medium text-slate-700 bg-slate-100 px-3 py-1 rounded-lg whitespace-nowrap">Logistics Manager</span></div><div class="flex items-center gap-4 sm:gap-6"><button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="relative w-80 hidden md:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-slate-400 pointer-events-none">search</span><input class="w-full h-9 pl-9 pr-10 rounded-lg bg-slate-50 border border-border-subtle text-xs text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors" placeholder="Search consignments, carriers, routes, hubs..." type="text"/><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 border border-slate-200 rounded bg-white text-[10px] font-mono text-slate-400">⌘K</kbd></div><div class="flex items-center gap-4"><button aria-label="Notifications" class="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-3 pl-2"><img alt="Marcus Vance avatar" class="w-8 h-8 rounded-full ring-1 ring-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XJLdNuQ-aMwpt-MX_fhGsfVleEX5lx7CaPzPs4_pAH7TUdjrWXhXAwiSRmD7Urh8O8ODmVElFnSjICprEURFCj9BouXUCD55sQ_9gwKW4JfxJnu8OQIn7rAxQA5geHM1CQWELzw1XzMBWHYMQYLP5ltKJXrgiZeW83AbxgFh9ioZMuQQeqF0fk8DwaNdnV-yjTrQ_HSWzayCGUAH1hzChBrVhwJ44TKTLl4vv324llfmnvj9IWPD4ecwQ"/><div class="hidden sm:flex flex-col text-left"><span class="text-xs font-medium text-on-surface">Marcus Vance</span><span class="text-[11px] text-on-surface-variant">Logistics Lead</span></div></div><button id="logout-btn" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs font-medium hover:bg-slate-50 hover:text-error transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">logout</span><span class="hidden sm:inline">Logout</span></button></div>
   </header>
-      <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8"><div class="flex items-center justify-between gap-4"><div><div class="flex items-center gap-2"><h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Logistics Operations</h1><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-indigo-50 text-indigo-700 border border-indigo-200/60">LIVE</span></div><p class="text-sm text-slate-500 mt-1">Live freight consignments, carrier performance, and delivery risk mitigation.</p></div><div class="flex items-center gap-3"><button class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[16px] text-slate-500">tune</span><span>Filter Grid</span></button><button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Consignment</span></button></div></div>
-      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active Shipments</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-slate-900">34</span><span class="text-xs text-slate-500 font-medium">Units in Network</span></div><div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500"><span class="inline-flex items-center px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">28 Reefer / Cold</span><span>82.3% active</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-error uppercase tracking-wider">Delayed</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-error">2</span><span class="text-xs text-slate-400">Flagged En Route</span></div><div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center"><span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-red-50 text-error font-medium text-[11px]"><span class="w-1.5 h-1.5 rounded-full bg-error inline-block"></span>Upstream Bottling Hold</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">At-Risk Deliveries</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-slate-900">1</span><span class="text-xs text-amber-600 font-medium">Critical Window</span></div><div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center"><span class="text-[11px] font-mono text-slate-600 bg-slate-100 px-2 py-0.5 rounded truncate">Retail Hub North (SH-208)</span></div></div><div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">On-Time Delivery (OTD)</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-slate-900">96.8%</span><span class="text-xs text-emerald-600 font-medium">+0.8%</span></div><div class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500"><span>Target: 96.0%</span><div class="w-20 bg-slate-100 rounded-full h-1.5 overflow-hidden"><div class="bg-slate-900 h-1.5 rounded-full" style="width: 96.8%"></div></div></div></div></section>
-      <section><div class="bg-error-light border border-error-border rounded-xl p-4 flex items-center justify-between gap-4 shadow-sm"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-error text-white flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">warning</span></div><p class="text-xs text-slate-800 leading-snug"><span class="font-semibold text-error">Shipment SH-208 ETA Drift:</span> Upstream packaging delay risks breaching retail 24h receiving window at <span class="font-semibold text-slate-900">Hamburg DC</span>.</p></div><span class="text-xs font-mono text-error font-medium shrink-0 bg-white/70 px-3 py-1 rounded-md border border-error-border">SLA Penalty: $4,800 at risk</span></div></section>
-      <section id="aiRecommendationCard"><div class="bg-white border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col gap-5"><div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border-subtle"><div class="flex items-center gap-2.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span><h2 class="text-sm font-semibold text-slate-900">AI Recommendation: Re-route to Priority Direct Reefer Line</h2></div><span class="text-xs font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full w-fit">Confidence: 89%</span></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-600"><div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Reason</span><p class="text-slate-800">Bypass regional transshipment hub. Pre-book direct express reefer line (Carrier ColdFleet) departing Rotterdam DC directly to Hamburg DC.</p></div><div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Impact</span><p class="text-slate-800">Recovers <span class="font-semibold text-slate-900">14 hours</span> transit time. Arrives 10 Sep 22:00 within SLA (<span class="font-semibold text-emerald-700">$4,800 saved</span> with a $320 direct expedite surcharge).</p></div></div><div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-border-subtle"><div class="flex items-center gap-2"><button class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm" type="button">Approve Direct Route</button><button class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Carrier Option Matrix</button></div><button data-dismiss-target="aiRecommendationCard" class="px-3 py-2 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors" type="button">Dismiss</button></div></div></section>
-      <section class="bg-white border border-border-subtle rounded-xl shadow-sm overflow-hidden flex flex-col"><div class="p-5 border-b border-border-subtle flex items-center justify-between"><div class="flex items-center gap-2.5"><h3 class="text-sm font-semibold text-slate-900">Active Dispatches & Consignments</h3><span class="text-[11px] font-medium bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4 Selected</span></div><div class="flex items-center gap-2 text-xs text-slate-400 font-mono"><span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span><span>Auto-syncing every 30s</span></div></div><div class="overflow-x-auto"><table class="w-full text-left border-collapse text-xs"><thead><tr class="bg-slate-50 text-slate-500 uppercase font-mono text-[11px] border-b border-border-subtle"><th class="py-3 px-5 font-medium">Shipment ID</th><th class="py-3 px-5 font-medium">Carrier / Route</th><th class="py-3 px-5 font-medium">Destination Hub</th><th class="py-3 px-5 font-medium">Consignment</th><th class="py-3 px-5 font-medium">Scheduled ETA</th><th class="py-3 px-5 font-medium">Status</th><th class="py-3 px-5 font-medium">Risk Level</th><th class="py-3 px-5 font-medium text-right">Action</th></tr></thead><tbody class="divide-y divide-border-subtle text-slate-700"><tr class="hover:bg-slate-50/75 transition-colors bg-red-50/20"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">SH-208</td><td class="py-3.5 px-5"><div class="font-medium text-slate-900">ColdFleet Express</div><div class="text-[11px] text-slate-500 font-mono">Reefer Container • Direct</div></td><td class="py-3.5 px-5 font-medium text-slate-900">Retail Hub North</td><td class="py-3.5 px-5"><div>Milk 1L Packs</div><div class="text-[11px] text-slate-400 font-mono">PO-1042</div></td><td class="py-3.5 px-5 font-mono text-error font-medium">10 Sep 18:00 <span class="text-slate-400 line-through text-[11px] ml-1">11 Sep</span></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-red-100 text-error">At Risk</span></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-red-600 text-white">Critical</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-900 text-white text-[11px] font-medium hover:bg-slate-800 transition-colors" type="button">Resolve</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-slate-900">SH-204</td><td class="py-3.5 px-5"><div class="font-medium text-slate-900">EuroLogistics</div><div class="text-[11px] text-slate-500 font-mono">Standard Dry Box</div></td><td class="py-3.5 px-5 font-medium text-slate-900">Distribution Center West</td><td class="py-3.5 px-5"><div>Biscuits &amp; Confectionery</div><div class="text-[11px] text-slate-400 font-mono">PO-0994</div></td><td class="py-3.5 px-5 font-mono text-slate-600">08 Sep 09:00</td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">In Transit</span></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600">Normal</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-slate-900">SH-199</td><td class="py-3.5 px-5"><div class="font-medium text-slate-900">MetroCold Carrier</div><div class="text-[11px] text-slate-500 font-mono">Reefer Van Fleet</div></td><td class="py-3.5 px-5 font-medium text-slate-900">Regional Supermarket DC</td><td class="py-3.5 px-5"><div>Chilled Dairy Assorted</div><div class="text-[11px] text-slate-400 font-mono">PO-1102</div></td><td class="py-3.5 px-5 font-mono text-slate-600">07 Sep 16:30</td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-100 text-emerald-800">Out for Delivery</span></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600">Normal</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr><tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-slate-900">SH-212</td><td class="py-3.5 px-5"><div class="font-medium text-slate-900">BalticTrans</div><div class="text-[11px] text-slate-500 font-mono">Intermodal Rail / Barge</div></td><td class="py-3.5 px-5 font-medium text-slate-900">Port Terminal South</td><td class="py-3.5 px-5"><div>Mango Juice Export</div><div class="text-[11px] text-slate-400 font-mono">PO-0881</div></td><td class="py-3.5 px-5 font-mono text-slate-600">12 Sep 11:00</td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">Confirmed</span></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-600">Normal</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr></tbody></table></div><div class="p-4 border-t border-border-subtle bg-slate-50/50 flex items-center justify-between text-xs text-slate-500 font-mono"><span>Showing 4 of 34 Active Consignments • Fleet Health: 98.4% Telemetry Active</span><div class="flex items-center gap-2"><button class="p-1 text-slate-400 hover:text-slate-600 disabled:opacity-30" disabled type="button"><span class="material-symbols-outlined text-[16px]">chevron_left</span></button><span class="font-medium text-slate-700">1 / 9</span><button class="p-1 text-slate-400 hover:text-slate-600" type="button"><span class="material-symbols-outlined text-[16px]">chevron_right</span></button></div></div></section>
+      <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8"><div class="flex items-center justify-between gap-4"><div><div class="flex items-center gap-2"><h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Logistics Operations</h1><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-indigo-50 text-indigo-700 border border-indigo-200/60">LIVE</span></div><p class="text-sm text-slate-500 mt-1">Live freight consignments, carrier performance, and delivery risk mitigation.</p></div><div class="flex items-center gap-3"><button id="logistics-filter-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[16px] text-slate-500">tune</span><span>Filter Grid</span></button><button id="logistics-create-shipment-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Consignment</span></button></div></div>
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <!-- KPI 1: Active Shipments -->
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active Shipments</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-active-shipments-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+            <span id="kpi-active-shipments-badge" class="text-xs text-slate-500 font-medium">Units in Network</span>
+          </div>
+          <div id="kpi-active-shipments-sub" class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
+            <span class="inline-flex items-center px-2 py-0.5 rounded bg-slate-100 text-slate-700 font-medium">Calculating...</span>
+            <span>-- active</span>
+          </div>
+        </div>
+
+        <!-- KPI 2: Delayed -->
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-error uppercase tracking-wider">Delayed</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-delayed-shipments-val" class="text-3xl font-display font-semibold text-error">--</span>
+            <span id="kpi-delayed-shipments-badge" class="text-xs text-slate-400">Flagged En Route</span>
+          </div>
+          <div id="kpi-delayed-shipments-sub" class="mt-3 pt-2.5 border-t border-slate-100 flex items-center">
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-slate-100 text-slate-600 font-medium text-[11px]">
+              Checking status...
+            </span>
+          </div>
+        </div>
+
+        <!-- KPI 3: At-Risk Deliveries -->
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">At-Risk Deliveries</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-at-risk-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+            <span id="kpi-at-risk-badge" class="text-xs text-amber-600 font-medium">Critical Window</span>
+          </div>
+          <div id="kpi-at-risk-sub" class="mt-3 pt-2.5 border-t border-slate-100 flex items-center">
+            <span class="text-[11px] font-mono text-slate-500 bg-slate-100 px-2 py-0.5 rounded truncate">Scanning transit risks...</span>
+          </div>
+        </div>
+
+        <!-- KPI 4: On-Time Delivery (OTD) -->
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">On-Time Delivery (OTD)</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-otd-val" class="text-3xl font-display font-semibold text-slate-900">--%</span>
+            <span id="kpi-otd-badge" class="text-xs text-slate-500 font-medium">Historical Rate</span>
+          </div>
+          <div id="kpi-otd-sub" class="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+            <span id="kpi-otd-target-label">Target: 96.0%</span>
+            <div class="w-20 bg-slate-100 rounded-full h-1.5 overflow-hidden">
+              <div id="kpi-otd-bar" class="bg-slate-900 h-1.5 rounded-full" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Live Logistics Alert Banner Container -->
+      <section id="logistics-alert-container">
+        <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-between gap-4 animate-pulse">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-slate-200 text-slate-400 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[18px]">info</span>
+            </div>
+            <p class="text-xs text-slate-500">Checking active logistics route alerts...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- AI Recommendation Card -->
+      <section id="aiRecommendationCard">
+        <div class="bg-white border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col gap-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border-subtle">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+              <h2 id="logistics-rec-title" class="text-sm font-semibold text-slate-900">AI Recommendation: Loading...</h2>
+            </div>
+            <span id="logistics-rec-confidence" class="text-xs font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full w-fit">Confidence: --%</span>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-600">
+            <div>
+              <span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Reason</span>
+              <p id="logistics-rec-reason" class="text-slate-800 leading-relaxed">Analyzing carrier telemetry and transit windows...</p>
+            </div>
+            <div>
+              <span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Impact</span>
+              <p id="logistics-rec-impact" class="text-slate-800 leading-relaxed">Evaluating ETA recovery options...</p>
+            </div>
+          </div>
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-border-subtle">
+            <div class="flex items-center gap-2">
+              <button id="logistics-rec-approve-btn" class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm" type="button">Approve Route Mitigation</button>
+              <button id="logistics-rec-matrix-btn" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Carrier Option Matrix</button>
+            </div>
+            <div class="flex items-center gap-3">
+              <span id="logistics-rec-footer-info" class="text-[11px] text-slate-400 font-mono hidden sm:inline"></span>
+              <button data-dismiss-target="aiRecommendationCard" class="px-3 py-2 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors" type="button">Dismiss</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Active Shipments & Consignments Table Section -->
+      <section class="bg-white border border-border-subtle rounded-xl shadow-sm overflow-hidden flex flex-col">
+        <div class="p-5 border-b border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <h3 class="text-sm font-semibold text-slate-900">Active Dispatches & Consignments</h3>
+            <span id="logistics-table-count" class="text-xs text-slate-500 font-mono bg-slate-100 px-2 py-0.5 rounded-full">Loading...</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="relative">
+              <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-slate-400 pointer-events-none">search</span>
+              <input id="logistics-search-input" class="h-8 pl-8 pr-3 rounded-lg bg-slate-50 border border-border-subtle text-xs text-slate-800 placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors w-44 sm:w-56" placeholder="Search tracking, carrier, destination..." type="text"/>
+            </div>
+            <button id="logistics-filter-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button">
+              <span class="material-symbols-outlined text-[15px] text-slate-400">filter_list</span>
+              <span id="logistics-filter-label">Filter: All</span>
+            </button>
+            <button id="logistics-sort-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button">
+              <span class="material-symbols-outlined text-[15px] text-slate-400">sort</span>
+              <span id="logistics-sort-label">Sort: Default</span>
+            </button>
+            <button id="logistics-refresh-btn" aria-label="Refresh logistics data" class="p-1.5 rounded-lg border border-border-subtle bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors" type="button" title="Refresh logistics data">
+              <span class="material-symbols-outlined text-[16px]">refresh</span>
+            </button>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-slate-50 text-slate-500 uppercase font-mono text-[11px] border-b border-border-subtle">
+                <th class="py-3 px-5 font-medium">Tracking Number</th>
+                <th class="py-3 px-5 font-medium">Carrier & Route</th>
+                <th class="py-3 px-5 font-medium">Destination Hub</th>
+                <th class="py-3 px-5 font-medium">Consignment / PO</th>
+                <th class="py-3 px-5 font-medium">Scheduled ETA</th>
+                <th class="py-3 px-5 font-medium">Timing</th>
+                <th class="py-3 px-5 font-medium text-center">Status</th>
+                <th class="py-3 px-5 font-medium text-center">Risk Level</th>
+                <th class="py-3 px-5 font-medium text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="logistics-table-body" class="divide-y divide-border-subtle text-slate-700">
+              <tr>
+                <td colspan="9" class="py-12 text-center text-slate-400">
+                  <div class="flex flex-col items-center justify-center gap-2">
+                    <span class="material-symbols-outlined text-[26px] animate-spin text-indigo-500">progress_activity</span>
+                    <span class="text-xs text-slate-500 font-medium">Loading live shipment consignments...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="p-4 border-t border-border-subtle bg-slate-50/50 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-slate-500 font-mono">
+          <span id="logistics-footer-info">Showing active consignments</span>
+          <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Live Data Sync</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shipment Details Modal -->
+      <div id="logistics-detail-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs hidden p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-lg w-full overflow-hidden border border-border-subtle animate-in fade-in zoom-in-95 duration-150">
+          <div class="p-5 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-slate-600 text-[20px]">local_shipping</span>
+              <h3 id="logistics-modal-title" class="text-sm font-semibold text-slate-900">Shipment Details</h3>
+            </div>
+            <button id="logistics-modal-close" class="text-slate-400 hover:text-slate-600 transition" type="button">
+              <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          </div>
+          <div id="logistics-modal-body" class="p-6 space-y-4 text-xs">
+            <!-- Dynamically populated -->
+          </div>
+          <div class="p-4 border-t border-border-subtle bg-slate-50 flex items-center justify-end gap-2">
+            <button id="logistics-modal-ok" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs transition" type="button">Close</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Create Consignment Modal -->
+      <div id="logistics-create-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs hidden p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full overflow-hidden border border-border-subtle animate-in fade-in zoom-in-95 duration-150">
+          <div class="p-5 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-indigo-600 text-[20px]">local_shipping</span>
+              <h3 class="text-sm font-semibold text-slate-900">Create Freight Consignment</h3>
+            </div>
+            <button id="logistics-create-close" class="text-slate-400 hover:text-slate-600 transition" type="button">
+              <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          </div>
+          <form id="logistics-create-form" class="p-6 space-y-4 text-xs">
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Carrier Service</label>
+                <select id="logistics-carrier" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600" required>
+                  <option value="SwiftReefer Logistics">SwiftReefer Logistics</option>
+                  <option value="ColdRoute Express">ColdRoute Express</option>
+                  <option value="Pacific Cold Chain">Pacific Cold Chain</option>
+                  <option value="Vanguard Freight">Vanguard Freight</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Tracking Number</label>
+                <input id="logistics-tracking" type="text" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 font-mono focus:outline-none focus:border-indigo-600" placeholder="TRK-2026-904" required />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Origin Facility</label>
+                <input id="logistics-origin" type="text" value="Central Hub (Bay 4)" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600" required />
+              </div>
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Destination DC</label>
+                <input id="logistics-destination" type="text" value="Western Regional DC" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600" required />
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Estimated Delivery</label>
+                <input id="logistics-eta" type="date" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 font-mono focus:outline-none focus:border-indigo-600" required />
+              </div>
+              <div>
+                <label class="block text-slate-700 font-medium mb-1">Consignment Mode</label>
+                <select id="logistics-status" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600">
+                  <option value="in_transit">In Transit (Dispatched)</option>
+                  <option value="dispatched">Dispatched (Loading)</option>
+                  <option value="pending">Pending Gate Pass</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label class="block text-slate-700 font-medium mb-1">Cargo Details / Associated PO</label>
+              <input id="logistics-notes" type="text" class="w-full h-9 px-3 rounded-lg border border-border-subtle bg-white text-xs text-slate-800 focus:outline-none focus:border-indigo-600" placeholder="e.g., Priority refrigerated stock transfer (PO-2026-004)" />
+            </div>
+            <div class="pt-3 border-t border-border-subtle flex items-center justify-end gap-2">
+              <button id="logistics-create-cancel" type="button" class="px-4 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition">Cancel</button>
+              <button id="logistics-create-submit" type="submit" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
+                <span class="material-symbols-outlined text-[15px]">send</span>
+                <span>Dispatch Consignment</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Carrier Option Matrix Modal -->
+      <div id="logistics-carrier-matrix-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-xs hidden p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-2xl w-full overflow-hidden border border-border-subtle animate-in fade-in zoom-in-95 duration-150">
+          <div class="p-5 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-indigo-600 text-[20px]">swap_horiz</span>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-900">Carrier Option Matrix</h3>
+                <p class="text-[11px] text-slate-500 font-mono">Real-time carrier rates, transit variances & route recovery options</p>
+              </div>
+            </div>
+            <button id="logistics-matrix-close" class="text-slate-400 hover:text-slate-600 transition" type="button">
+              <span class="material-symbols-outlined text-[20px]">close</span>
+            </button>
+          </div>
+          <div id="logistics-matrix-body" class="p-6 space-y-4 text-xs max-h-[70vh] overflow-y-auto">
+            <!-- Dynamically populated from /shipments/carrier-matrix -->
+          </div>
+          <div class="p-4 border-t border-border-subtle bg-slate-50 flex items-center justify-between">
+            <span class="text-[11px] text-slate-500 font-mono">Live EDI integration</span>
+            <button id="logistics-matrix-ok" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white font-medium text-xs transition" type="button">Close</button>
+          </div>
+        </div>
+      </div>
     </main></div>
   <script src="assets/api.js"></script>
   <script src="assets/app.js"></script>

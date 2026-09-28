@@ -27,15 +27,18 @@
 <body class="min-h-screen bg-surface text-on-surface font-sans" data-page="procurement">
   <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between">
     <div>
-      <div class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle">
-        <div class="w-8 h-8 rounded-lg bg-primary text-white flex items-center justify-center shadow-sm">
+      <a href="control-tower.html" class="h-16 px-6 flex items-center gap-3 border-b border-border-subtle hover:bg-slate-50 transition-colors">
+        <div class="w-8 h-8 rounded-lg bg-slate-900 text-white flex items-center justify-center shadow-sm shrink-0">
           <span class="material-symbols-outlined text-[18px]">deployed_code</span>
         </div>
         <div class="flex flex-col">
-          <span class="font-display font-semibold text-[15px] leading-snug tracking-tight text-slate-900">Nexus Tower</span>
-          <span class="text-[11px] text-slate-500 leading-none">Operations Cockpit</span>
+          <div class="flex items-center gap-1">
+            <span class="font-display text-[15px] leading-snug tracking-tight font-bold text-slate-900">NEXUS</span>
+            <span class="font-display text-[15px] leading-snug tracking-tight font-semibold text-indigo-700">TOWER</span>
+          </div>
+          <span class="text-[10px] text-slate-500 font-mono tracking-wide uppercase leading-none mt-0.5">Operations Cockpit</span>
         </div>
-      </div>
+      </a>
       <nav class="p-4 space-y-1">
         <div class="px-3 pb-2 pt-1 text-[11px] font-medium uppercase tracking-wider text-slate-400 font-mono">Operations</div>
         <a data-nav="controlTower" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors" href="control-tower.html"><span data-nav-icon class="material-symbols-outlined text-[19px]">hub</span><span>Control Tower</span></a>
@@ -65,7 +68,7 @@
       <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span></button>
       <div class="relative w-80 hidden md:block">
         <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-slate-400 pointer-events-none">search</span>
-        <input class="w-full h-9 pl-9 pr-4 rounded-lg bg-slate-50 border border-border-subtle text-xs text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors" placeholder="Search orders, suppliers, items..." type="text" />
+        <input id="po-search-input" class="w-full h-9 pl-9 pr-4 rounded-lg bg-slate-50 border border-border-subtle text-xs text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors" placeholder="Search orders, suppliers, items..." type="text" />
       </div>
       <button aria-label="Notifications" class="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button>
       <div class="flex items-center gap-3 pl-2"><img alt="Profile avatar" class="w-8 h-8 rounded-full ring-1 ring-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChSaObbGUL8IDEAtrYZu9BDRwEMLhPVvmZ16oYHBeodBQ5NffFGU58oCVV-VKnH7DaiowzWay76otj3esuE681JnHj6sWqXziWm-3iO7Y4QkBd1qn95Qrio-aqMiguhiHp4H6TTMcpRgK6NNzvuDlAgo3T_UYErnaKkeuNu6audwWOYZJ37UXGkEIw_NDztlbBidLLWQSU5knFgvPpcDLmhrx3xUWRirFp2q0MpxjV26XB3QfvhIu1" /><div class="hidden sm:flex flex-col text-left"><span class="text-xs font-medium text-on-surface">Marcus Vance</span><span class="text-[11px] text-on-surface-variant">Procurement Lead</span></div></div>
@@ -79,55 +82,170 @@
           <h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Procurement Operations</h1>
           <p class="text-sm text-slate-500 mt-1">Live visibility into inbound streams, supplier contracts, and line buffer risks.</p>
         </div>
-        <button class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Purchase Order</span></button>
+        <button id="create-po-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Purchase Order</span></button>
       </div>
 
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active POs</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-slate-900">42</span><span class="text-xs text-emerald-600 font-medium">+8% this week</span></div></div>
-        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-error uppercase tracking-wider">Delayed</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-error">3</span><span class="text-xs text-slate-400">Transit delays</span></div></div>
-        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Pending Approvals</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-slate-900">5</span><span class="text-xs text-slate-400">Avg age 4.2h</span></div></div>
-        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm"><span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Supplier Risk</span><div class="mt-4 flex items-baseline justify-between"><span class="text-3xl font-display font-semibold text-slate-900">1</span><span class="text-xs text-amber-600 font-medium">Critical focus</span></div></div>
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active POs</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-active-pos-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+            <span id="kpi-active-pos-sub" class="text-xs text-emerald-600 font-medium">Loading...</span>
+          </div>
+        </div>
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-error uppercase tracking-wider">Delayed</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-delayed-pos-val" class="text-3xl font-display font-semibold text-error">--</span>
+            <span id="kpi-delayed-pos-sub" class="text-xs text-slate-400">Loading...</span>
+          </div>
+        </div>
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Pending Approvals</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-pending-approvals-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+            <span id="kpi-pending-approvals-sub" class="text-xs text-slate-400">Loading...</span>
+          </div>
+        </div>
+        <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <span class="text-xs font-medium text-slate-500 uppercase tracking-wider">Supplier Risk</span>
+          <div class="mt-4 flex items-baseline justify-between">
+            <span id="kpi-supplier-risk-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
+            <span id="kpi-supplier-risk-sub" class="text-xs text-amber-600 font-medium">Loading...</span>
+          </div>
+        </div>
       </section>
 
-      <section>
-        <div class="bg-error-light border border-error-border rounded-xl p-4 flex items-center justify-between gap-4">
-          <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-error text-white flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-[18px]">warning</span></div><p class="text-xs text-slate-800 leading-snug"><span class="font-semibold text-error">Supplier A Milk Delay (+3 Days)</span> impacts <span class="font-semibold">PO-8821</span> and downstream bottling line buffer.</p></div>
-          <span class="text-xs font-mono text-error font-medium shrink-0">Safety buffer: 72h remaining</span>
+      <section id="procurementAlertSection">
+        <div id="procurement-alert-container">
+          <div class="bg-slate-50 border border-border-subtle rounded-xl p-4 flex items-center justify-between gap-4">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-slate-200 text-slate-600 flex items-center justify-center shrink-0">
+                <span class="animate-spin material-symbols-outlined text-[18px]">sync</span>
+              </div>
+              <p class="text-xs text-slate-600 leading-snug">Checking procurement operational telemetry and supplier delay streams...</p>
+            </div>
+            <span class="text-xs font-mono text-slate-400 font-medium shrink-0">Syncing...</span>
+          </div>
         </div>
       </section>
 
       <section id="aiRecommendationCard">
         <div class="bg-white border border-border-subtle rounded-xl p-6 shadow-sm flex flex-col gap-5">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-border-subtle">
-            <div class="flex items-center gap-2.5"><span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span><h2 class="text-sm font-semibold text-slate-900">AI Recommendation: Expedite Current Supplier</h2></div>
-            <span class="text-xs font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full w-fit">Confidence: 91%</span>
+            <div class="flex items-center gap-2.5">
+              <span class="w-2.5 h-2.5 rounded-full bg-indigo-600"></span>
+              <h2 id="rec-card-title" class="text-sm font-semibold text-slate-900">AI Recommendation: Loading strategy...</h2>
+            </div>
+            <div class="flex items-center gap-2">
+              <span id="rec-card-id" class="text-[11px] font-mono text-slate-400">REC-—</span>
+              <span id="rec-card-confidence" class="text-xs font-medium text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded-full w-fit">Confidence: --%</span>
+            </div>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs text-slate-600">
-            <div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Reason</span><p class="text-slate-800">Prevents buffer stockout before revised delivery date. Current stock will breach safety threshold within 72 hours.</p></div>
-            <div><span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Impact</span><p class="text-slate-800">Averts line downtime (<span class="font-semibold text-emerald-700">$14.2k protected</span> with a $450 direct expedite freight surcharge).</p></div>
+            <div>
+              <span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Reason &amp; Trigger</span>
+              <p id="rec-card-reason" class="text-slate-800">Evaluating supply disruptions and inventory runway constraints...</p>
+            </div>
+            <div>
+              <span class="block text-[11px] font-semibold text-slate-400 uppercase tracking-wider mb-1">Impact &amp; Protection</span>
+              <p id="rec-card-impact" class="text-slate-800">Calculating financial impact and buffer protection...</p>
+            </div>
           </div>
           <div class="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-border-subtle">
-            <div class="flex items-center gap-2"><button class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm" type="button">Approve Expedite</button><button class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Alternative Suppliers</button></div>
+            <div class="flex items-center gap-2">
+              <button id="rec-approve-btn" class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" type="button">Approve Recommendation</button>
+              <button id="rec-alt-btn" class="px-4 py-2 rounded-lg bg-slate-100 text-slate-700 text-xs font-medium hover:bg-slate-200 transition-colors" type="button">Alternative Suppliers</button>
+            </div>
             <button data-dismiss-target="aiRecommendationCard" class="px-3 py-2 text-xs font-medium text-slate-400 hover:text-slate-600 transition-colors" type="button">Dismiss</button>
           </div>
         </div>
       </section>
 
       <section class="bg-white border border-border-subtle rounded-xl shadow-sm overflow-hidden">
-        <div class="p-5 border-b border-border-subtle flex items-center justify-between"><h3 class="text-sm font-semibold text-slate-900">Active Purchase Orders</h3><span class="text-xs text-slate-400 font-mono">4 Orders Shown</span></div>
+        <div class="p-5 border-b border-border-subtle flex items-center justify-between">
+          <h3 class="text-sm font-semibold text-slate-900">Active Purchase Orders</h3>
+          <span id="po-table-count" class="text-xs text-slate-400 font-mono">Loading orders...</span>
+        </div>
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
-            <thead><tr class="bg-slate-50 text-slate-500 uppercase font-mono text-[11px] border-b border-border-subtle"><th class="py-3 px-5 font-medium">PO ID</th><th class="py-3 px-5 font-medium">Supplier</th><th class="py-3 px-5 font-medium">Material</th><th class="py-3 px-5 font-medium">Quantity</th><th class="py-3 px-5 font-medium">Delivery Date</th><th class="py-3 px-5 font-medium">Status</th><th class="py-3 px-5 font-medium text-right">Action</th></tr></thead>
-            <tbody class="divide-y divide-border-subtle text-slate-700">
-              <tr class="hover:bg-slate-50/75 transition-colors bg-red-50/20"><td class="py-3.5 px-5 font-mono font-medium text-indigo-600">PO-8821</td><td class="py-3.5 px-5 font-medium text-slate-900">Supplier A</td><td class="py-3.5 px-5">Raw Whole Milk</td><td class="py-3.5 px-5 font-mono">12,000 L</td><td class="py-3.5 px-5 font-mono text-error font-medium">09 Sep <span class="text-slate-400 line-through text-[11px] ml-1">06 Sep</span></td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-red-100 text-error">Delayed</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-900 text-white text-[11px] font-medium hover:bg-slate-800 transition-colors" type="button">Resolve</button></td></tr>
-              <tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-slate-900">PO-8819</td><td class="py-3.5 px-5 font-medium text-slate-900">AgroGrain Co</td><td class="py-3.5 px-5">Wheat Flour Type 55</td><td class="py-3.5 px-5 font-mono">8,500 kg</td><td class="py-3.5 px-5 font-mono text-slate-600">07 Sep</td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">In Transit</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr>
-              <tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-slate-900">PO-8814</td><td class="py-3.5 px-5 font-medium text-slate-900">TropicPure Ltd</td><td class="py-3.5 px-5">Alphonso Mango Pulp</td><td class="py-3.5 px-5 font-mono">4,200 L</td><td class="py-3.5 px-5 font-mono text-slate-600">08 Sep</td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-amber-100 text-amber-800">Pending Customs</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr>
-              <tr class="hover:bg-slate-50/75 transition-colors"><td class="py-3.5 px-5 font-mono font-medium text-slate-900">PO-8802</td><td class="py-3.5 px-5 font-medium text-slate-900">TetraPak Supplies</td><td class="py-3.5 px-5">1L Carton Sleeves</td><td class="py-3.5 px-5 font-mono">50,000 units</td><td class="py-3.5 px-5 font-mono text-slate-600">11 Sep</td><td class="py-3.5 px-5"><span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-slate-100 text-slate-700">Confirmed</span></td><td class="py-3.5 px-5 text-right"><button class="px-3 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-medium hover:bg-slate-200 transition-colors" type="button">View</button></td></tr>
+            <thead>
+              <tr class="bg-slate-50 text-slate-500 uppercase font-mono text-[11px] border-b border-border-subtle">
+                <th class="py-3 px-5 font-medium">PO ID</th>
+                <th class="py-3 px-5 font-medium">Supplier</th>
+                <th class="py-3 px-5 font-medium">Material</th>
+                <th class="py-3 px-5 font-medium">Order Value</th>
+                <th class="py-3 px-5 font-medium">Delivery Date</th>
+                <th class="py-3 px-5 font-medium">Status</th>
+                <th class="py-3 px-5 font-medium text-right">Action</th>
+              </tr>
+            </thead>
+            <tbody id="po-table-body" class="divide-y divide-border-subtle text-slate-700">
+              <tr>
+                <td colspan="7" class="py-12 text-center text-slate-500">
+                  <div class="inline-flex items-center gap-2">
+                    <span class="animate-spin material-symbols-outlined text-[18px]">progress_activity</span>
+                    <span>Loading purchase orders from live API...</span>
+                  </div>
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
       </section>
     </main>
+
+    <!-- Purchase Order Detail Modal -->
+    <div id="po-detail-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl shadow-xl max-w-lg w-full border border-border-subtle overflow-hidden">
+        <div class="px-6 py-4 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px] text-indigo-600">receipt_long</span>
+            <h3 id="modal-po-title" class="text-sm font-semibold text-slate-900">Purchase Order Details</h3>
+          </div>
+          <button id="modal-po-close" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg" type="button">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+        <div id="modal-po-body" class="p-6 space-y-4 text-xs">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="px-6 py-3 border-t border-border-subtle bg-slate-50 flex justify-between items-center gap-3">
+          <div class="flex items-center gap-4">
+            <button id="modal-po-sns-btn" class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-medium transition-colors shadow-sm hidden inline-flex items-center gap-1.5" type="button">
+              <span class="material-symbols-outlined text-[15px]">dns</span>
+              <span>Send to SNS Workbench</span>
+            </button>
+            <label id="sns-test-mode-container" class="hidden inline-flex items-center gap-2 cursor-pointer text-slate-600 select-none">
+              <input id="sns-test-mode-checkbox" type="checkbox" class="w-3.5 h-3.5 rounded text-indigo-600 border-gray-300 focus:ring-indigo-500" />
+              <span class="text-[11px] font-medium">Test Mode (canvas trigger)</span>
+            </label>
+          </div>
+          <button id="modal-po-ok" class="px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-colors ml-auto" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SNS Workbench Result Modal -->
+    <div id="sns-workbench-modal" class="fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+      <div class="bg-white rounded-xl shadow-xl max-w-lg w-full border border-border-subtle overflow-hidden">
+        <div class="px-6 py-4 border-b border-border-subtle flex items-center justify-between bg-slate-50">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[20px] text-indigo-600">dns</span>
+            <h3 class="text-sm font-semibold text-slate-900">External SNS Agent Workbench</h3>
+          </div>
+          <button id="modal-sns-close" class="text-slate-400 hover:text-slate-600 p-1 rounded-lg" type="button">
+            <span class="material-symbols-outlined text-[18px]">close</span>
+          </button>
+        </div>
+        <div id="modal-sns-body" class="p-6 space-y-4 text-xs overflow-y-auto max-h-[70vh]">
+          <!-- Dynamically populated -->
+        </div>
+        <div class="px-6 py-3 border-t border-border-subtle bg-slate-50 flex justify-end">
+          <button id="modal-sns-ok" class="px-4 py-2 rounded-lg bg-indigo-600 text-white text-xs font-medium hover:bg-indigo-700 transition-colors shadow-sm" type="button">Dismiss</button>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="assets/api.js"></script>
   <script src="assets/app.js"></script>

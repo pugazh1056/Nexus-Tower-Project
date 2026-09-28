@@ -10,6 +10,9 @@ class MasterEventSubmission(BaseModel):
     payload: Dict[str, Any] = Field(default_factory=dict, description="Raw domain event attributes")
 
 
+MasterEventInput = MasterEventSubmission
+
+
 class NormalizationStage(BaseModel):
     model_config = ConfigDict(extra="allow")
     node: Optional[str] = "Event Normalization Node"
