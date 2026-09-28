@@ -18,6 +18,7 @@
       }
     })();
   </script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body class="min-h-screen bg-surface text-on-surface font-sans" data-page="inventory">
@@ -62,7 +63,22 @@
   </header>
 
       <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8">
-      <div class="flex items-center justify-between gap-4"><div><h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Inventory Operations</h1><p class="text-sm text-slate-500 mt-1">Live stock levels, safety buffer thresholds, and replenishment triage.</p></div><button id="inv-request-replenish-btn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Request Replenishment</span></button></div>
+      <div class="flex items-center justify-between gap-4">
+        <div>
+          <h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Inventory Operations</h1>
+          <p class="text-sm text-slate-500 mt-1">Live stock levels, safety buffer thresholds, and replenishment triage.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button id="export-inventory-header-csv-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-xs" type="button" title="Export Inventory as CSV">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Export CSV</span>
+          </button>
+          <button id="inv-request-replenish-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium transition-all shadow-sm" type="button">
+            <span class="material-symbols-outlined text-[16px]">add</span>
+            <span>Request Replenishment</span>
+          </button>
+        </div>
+      </div>
 
       <!-- KPI Section -->
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -97,6 +113,32 @@
             <span id="kpi-pending-replenishment-badge" class="text-xs text-slate-600 font-medium bg-slate-100 px-2 py-0.5 rounded-full">Actionable</span>
           </div>
           <div id="kpi-pending-replenishment-sub" class="mt-2 text-xs text-slate-400">Pending AI actions &amp; POs</div>
+        </div>
+      </section>
+
+      <!-- Inventory Stock Health & Buffer Availability Section -->
+      <section class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-border-subtle">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]">shelves</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-slate-900">Inventory Stock Health &amp; Buffer Availability (30-Day Trajectory)</h3>
+              <p class="text-xs text-slate-500">Rolling safety runway &amp; OTIF SKU availability across 8 multi-echelon regional warehouses.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded" id="inv-trend-avg-health">97.6% Avg</span>
+            <span class="text-xs font-mono font-medium text-slate-700 bg-slate-100 px-2 py-1 rounded">Target SLA: 95.0%</span>
+            <button id="export-inventory-chart-csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs cursor-pointer" title="Export 30-Day Stock Health Chart Data as CSV" type="button">
+              <span class="material-symbols-outlined text-[15px]">download</span>
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </div>
+        <div class="relative w-full h-20 bg-slate-50/50 rounded-lg p-3 border border-slate-100">
+          <div id="inventory-trend-chart" class="w-full h-full"></div>
         </div>
       </section>
 
@@ -163,6 +205,10 @@
               <span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-[16px] text-slate-400 pointer-events-none">search</span>
               <input id="inv-search-input" class="w-full h-8 pl-8 pr-3 rounded-lg bg-slate-50 border border-border-subtle text-xs text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors" placeholder="Filter material, SKU, location..." type="text" />
             </div>
+            <button id="export-inv-csv-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs" title="Export Inventory as CSV" type="button">
+              <span class="material-symbols-outlined text-[16px]">download</span>
+              <span>Export CSV</span>
+            </button>
             <button id="inv-refresh-btn" class="p-1.5 rounded-md border border-slate-200 text-slate-500 hover:bg-slate-50 transition-colors" title="Refresh" type="button">
               <span class="material-symbols-outlined text-[18px]">refresh</span>
             </button>

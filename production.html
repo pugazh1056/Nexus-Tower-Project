@@ -194,6 +194,7 @@
       background: rgba(51, 65, 85, 0.45);
     }
   </style>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
 </head>
 <body class="min-h-screen bg-surface text-on-surface font-sans" data-page="production">
   <aside class="fixed inset-y-0 left-0 w-64 bg-white border-r border-border-subtle z-40 hidden lg:flex flex-col justify-between">
@@ -240,6 +241,10 @@
             <p class="text-sm text-slate-500 mt-1">Active line execution, batch dependencies, and bottleneck triage.</p>
           </div>
           <div class="flex items-center gap-3">
+            <button id="export-production-header-csv-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-xs" type="button" title="Export Production Orders as CSV">
+              <span class="material-symbols-outlined text-[16px]">download</span>
+              <span>Export CSV</span>
+            </button>
             <button id="prod-line-config-btn" class="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-sm" type="button">
               <span class="material-symbols-outlined text-[16px] text-slate-500">tune</span>
               <span>Line Config</span>
@@ -302,6 +307,32 @@
               <span id="kpi-line-efficiency-badge" class="text-xs text-slate-400 font-medium bg-slate-50 px-2 py-0.5 rounded-full">Telemetry Pending</span>
             </div>
             <div id="kpi-line-efficiency-sub" class="mt-2 text-[11px] text-slate-400 font-mono">No telemetry stream</div>
+          </div>
+        </section>
+
+        <!-- Production Line OEE & Schedule Attainment Section -->
+        <section class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-border-subtle">
+            <div class="flex items-center gap-3">
+              <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                <span class="material-symbols-outlined text-[20px]">precision_manufacturing</span>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-900">Production Line OEE &amp; Schedule Attainment (30-Day Trajectory)</h3>
+                <p class="text-xs text-slate-500">Continuous equipment effectiveness, batch yield, and CIP changeover compliance telemetry.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded" id="prod-trend-avg-oee">94.8% Avg</span>
+              <span class="text-xs font-mono font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Target SLA: 92.0%</span>
+              <button id="export-production-chart-csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs cursor-pointer" title="Export 30-Day Production OEE Chart Data as CSV" type="button">
+                <span class="material-symbols-outlined text-[15px]">download</span>
+                <span>Export CSV</span>
+              </button>
+            </div>
+          </div>
+          <div class="relative w-full h-20 bg-slate-50/50 rounded-lg p-3 border border-slate-100">
+            <div id="production-trend-chart" class="w-full h-full"></div>
           </div>
         </section>
 
@@ -369,6 +400,10 @@
               <button id="prod-sort-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button">
                 <span class="material-symbols-outlined text-[15px] text-slate-400">sort</span>
                 <span id="prod-sort-label">Sort: Order</span>
+              </button>
+              <button id="export-prod-csv-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs" title="Export Production Orders as CSV" type="button">
+                <span class="material-symbols-outlined text-[16px]">download</span>
+                <span>Export CSV</span>
               </button>
               <button id="prod-refresh-btn" aria-label="Refresh production data" class="p-1.5 rounded-lg border border-border-subtle bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors" type="button" title="Refresh production data">
                 <span class="material-symbols-outlined text-[16px]">refresh</span>

@@ -18,6 +18,7 @@
       }
     })();
   </script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body class="min-h-screen bg-surface text-on-surface font-sans" data-page="logistics">
@@ -58,7 +59,7 @@
   <div class="lg:pl-64 min-h-screen flex flex-col">
     <header class="h-16 border-b border-border-subtle bg-white px-4 sm:px-8 flex items-center justify-between sticky top-0 z-30"><div class="flex items-center gap-4 min-w-0"><span class="text-xs font-medium text-slate-700 bg-slate-100 px-3 py-1 rounded-lg whitespace-nowrap">Logistics Manager</span></div><div class="flex items-center gap-4 sm:gap-6"><button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span id="theme-icon" class="material-symbols-outlined text-[20px]">dark_mode</span></button><div class="relative w-80 hidden md:block"><span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-[18px] text-slate-400 pointer-events-none">search</span><input class="w-full h-9 pl-9 pr-10 rounded-lg bg-slate-50 border border-border-subtle text-xs text-on-surface placeholder:text-slate-400 focus:outline-none focus:border-slate-400 transition-colors" placeholder="Search consignments, carriers, routes, hubs..." type="text"/><kbd class="absolute right-2.5 top-1/2 -translate-y-1/2 px-1.5 py-0.5 border border-slate-200 rounded bg-white text-[10px] font-mono text-slate-400">⌘K</kbd></div><div class="flex items-center gap-4"><button aria-label="Notifications" class="relative p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-3 pl-2"><img alt="Marcus Vance avatar" class="w-8 h-8 rounded-full ring-1 ring-slate-200 object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1XJLdNuQ-aMwpt-MX_fhGsfVleEX5lx7CaPzPs4_pAH7TUdjrWXhXAwiSRmD7Urh8O8ODmVElFnSjICprEURFCj9BouXUCD55sQ_9gwKW4JfxJnu8OQIn7rAxQA5geHM1CQWELzw1XzMBWHYMQYLP5ltKJXrgiZeW83AbxgFh9ioZMuQQeqF0fk8DwaNdnV-yjTrQ_HSWzayCGUAH1hzChBrVhwJ44TKTLl4vv324llfmnvj9IWPD4ecwQ"/><div class="hidden sm:flex flex-col text-left"><span class="text-xs font-medium text-on-surface">Marcus Vance</span><span class="text-[11px] text-on-surface-variant">Logistics Lead</span></div></div><button id="logout-btn" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs font-medium hover:bg-slate-50 hover:text-error transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">logout</span><span class="hidden sm:inline">Logout</span></button></div>
   </header>
-      <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8"><div class="flex items-center justify-between gap-4"><div><div class="flex items-center gap-2"><h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Logistics Operations</h1><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-indigo-50 text-indigo-700 border border-indigo-200/60">LIVE</span></div><p class="text-sm text-slate-500 mt-1">Live freight consignments, carrier performance, and delivery risk mitigation.</p></div><div class="flex items-center gap-3"><button id="logistics-filter-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[16px] text-slate-500">tune</span><span>Filter Grid</span></button><button id="logistics-create-shipment-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Consignment</span></button></div></div>
+      <main class="flex-1 p-4 sm:p-8 max-w-7xl mx-auto w-full space-y-8"><div class="flex items-center justify-between gap-4"><div><div class="flex items-center gap-2"><h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Logistics Operations</h1><span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-indigo-50 text-indigo-700 border border-indigo-200/60">LIVE</span></div><p class="text-sm text-slate-500 mt-1">Live freight consignments, carrier performance, and delivery risk mitigation.</p></div><div class="flex items-center gap-3"><button id="export-logistics-header-csv-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-colors shadow-xs" type="button" title="Export Shipments as CSV"><span class="material-symbols-outlined text-[16px]">download</span><span>Export CSV</span></button><button id="logistics-filter-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-colors shadow-sm" type="button"><span class="material-symbols-outlined text-[16px] text-slate-500">tune</span><span>Filter Grid</span></button><button id="logistics-create-shipment-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Consignment</span></button></div></div>
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <!-- KPI 1: Active Shipments -->
         <div class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
@@ -112,6 +113,32 @@
               <div id="kpi-otd-bar" class="bg-slate-900 h-1.5 rounded-full" style="width: 0%"></div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- Carrier On-Time Delivery & Transit SLA Performance Section -->
+      <section class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-border-subtle">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-sky-50 text-sky-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-slate-900">Carrier On-Time Delivery &amp; Transit SLA Performance (30-Day Trajectory)</h3>
+              <p class="text-xs text-slate-500">Rolling multimodal freight adherence, lane speed, and cold-chain compliance telemetry.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold text-sky-700 bg-sky-50 px-2.5 py-1 rounded" id="logs-trend-avg-otd">96.4% Avg</span>
+            <span class="text-xs font-mono font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Target SLA: 94.0%</span>
+            <button id="export-logistics-chart-csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs cursor-pointer" title="Export 30-Day Carrier OTD Chart Data as CSV" type="button">
+              <span class="material-symbols-outlined text-[15px]">download</span>
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </div>
+        <div class="relative w-full h-20 bg-slate-50/50 rounded-lg p-3 border border-slate-100">
+          <div id="logistics-trend-chart" class="w-full h-full"></div>
         </div>
       </section>
 
@@ -179,6 +206,10 @@
             <button id="logistics-sort-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-600 text-xs hover:bg-slate-50 transition-colors" type="button">
               <span class="material-symbols-outlined text-[15px] text-slate-400">sort</span>
               <span id="logistics-sort-label">Sort: Default</span>
+            </button>
+            <button id="export-logistics-csv-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs" title="Export Shipments as CSV" type="button">
+              <span class="material-symbols-outlined text-[16px]">download</span>
+              <span>Export CSV</span>
             </button>
             <button id="logistics-refresh-btn" aria-label="Refresh logistics data" class="p-1.5 rounded-lg border border-border-subtle bg-white text-slate-500 hover:text-slate-800 hover:bg-slate-50 transition-colors" type="button" title="Refresh logistics data">
               <span class="material-symbols-outlined text-[16px]">refresh</span>

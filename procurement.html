@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
     <script>
     tailwind.config = { darkMode: 'class', theme: { extend: { colors: { primary: '#0f172a', 'primary-container': '#1e293b', secondary: '#4338ca', surface: '#f8fafc', 'surface-card': '#ffffff', 'surface-container': '#e5eeff', 'surface-container-low': '#eff4ff', 'surface-container-lowest': '#ffffff', 'on-surface': '#0f172a', 'on-surface-variant': '#64748b', outline: '#64748b', 'border-subtle': '#e2e8f0', error: '#ef4444', 'error-light': '#fef2f2', 'error-border': '#fecaca', success: '#10b981', 'success-light': '#ecfdf5', background: '#f8f9ff', 'on-primary': '#ffffff' }, fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'], display: ['Inter', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'], mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'monospace'] } } } };
   </script>
@@ -82,7 +83,13 @@
           <h1 class="text-2xl sm:text-[28px] font-display font-semibold tracking-tight text-slate-900">Procurement Operations</h1>
           <p class="text-sm text-slate-500 mt-1">Live visibility into inbound streams, supplier contracts, and line buffer risks.</p>
         </div>
-        <button id="create-po-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Purchase Order</span></button>
+        <div class="flex items-center gap-3">
+          <button id="export-procurement-csv-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-xs" type="button" title="Export Purchase Orders as CSV">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Export CSV</span>
+          </button>
+          <button id="create-po-btn" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-white text-xs font-medium hover:bg-slate-800 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[16px]">add</span><span>Create Purchase Order</span></button>
+        </div>
       </div>
 
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -113,6 +120,32 @@
             <span id="kpi-supplier-risk-val" class="text-3xl font-display font-semibold text-slate-900">--</span>
             <span id="kpi-supplier-risk-sub" class="text-xs text-amber-600 font-medium">Loading...</span>
           </div>
+        </div>
+      </section>
+
+      <!-- Vendor Reliability & SLA Performance Section -->
+      <section class="bg-white border border-border-subtle rounded-xl p-5 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-border-subtle">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]">monitoring</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-slate-900">Vendor Reliability &amp; SLA Compliance (30-Day Trajectory)</h3>
+              <p class="text-xs text-slate-500">Rolling on-time fulfillment telemetry across 1,420 contracted suppliers.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded" id="proc-trend-avg-reliability">98.2% Avg</span>
+            <span class="text-xs font-mono font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Target SLA: 95.0%</span>
+            <button id="export-procurement-chart-csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs cursor-pointer" title="Export 30-Day Vendor Reliability Chart Data as CSV" type="button">
+              <span class="material-symbols-outlined text-[15px]">download</span>
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </div>
+        <div class="relative w-full h-20 bg-slate-50/50 rounded-lg p-3 border border-slate-100">
+          <div id="procurement-trend-chart" class="w-full h-full"></div>
         </div>
       </section>
 
@@ -164,8 +197,14 @@
 
       <section class="bg-white border border-border-subtle rounded-xl shadow-sm overflow-hidden">
         <div class="p-5 border-b border-border-subtle flex items-center justify-between">
-          <h3 class="text-sm font-semibold text-slate-900">Active Purchase Orders</h3>
-          <span id="po-table-count" class="text-xs text-slate-400 font-mono">Loading orders...</span>
+          <div class="flex items-center gap-3">
+            <h3 class="text-sm font-semibold text-slate-900">Active Purchase Orders</h3>
+            <span id="po-table-count" class="text-xs text-slate-400 font-mono">Loading orders...</span>
+          </div>
+          <button id="export-procurement-table-csv-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-white text-slate-700 text-xs font-medium hover:bg-slate-50 transition-all shadow-xs" type="button" title="Export Purchase Orders Table as CSV">
+            <span class="material-symbols-outlined text-[15px]">download</span>
+            <span>Export CSV</span>
+          </button>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">

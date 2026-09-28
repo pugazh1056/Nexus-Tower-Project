@@ -237,7 +237,13 @@
 <div class="mb-6 p-4 bg-surface-container-low rounded-lg border border-outline/10">
   <div class="flex items-center justify-between mb-2">
     <span class="text-[11px] font-mono-data uppercase tracking-wider font-semibold text-on-surface-variant">30-Day Vendor Reliability</span>
-    <span class="text-xs font-mono-metric font-bold text-secondary bg-secondary-container/10 px-2 py-0.5 rounded" id="trend-avg-reliability">98.2% Avg</span>
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono-metric font-bold text-secondary bg-secondary-container/10 px-2 py-0.5 rounded" id="trend-avg-reliability">98.2% Avg</span>
+      <button id="export-procurement-chart-csv" class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-xs transition-colors cursor-pointer" title="Export 30-Day Vendor Reliability as CSV" type="button">
+        <span class="material-symbols-outlined text-[13px]">download</span>
+        <span>Export CSV</span>
+      </button>
+    </div>
   </div>
   <div id="procurement-trend-chart" class="w-full h-16"></div>
 </div>
@@ -272,6 +278,20 @@
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
             Move beyond static safety stocks. Nexus evaluates perishability shelf-life velocity, safety floors, and true stock reserves across regional distribution centers.
           </p>
+<!-- D3 Mini Trend Chart -->
+<div class="mb-6 p-4 bg-surface-container-low rounded-lg border border-outline/10">
+  <div class="flex items-center justify-between mb-2">
+    <span class="text-[11px] font-mono-data uppercase tracking-wider font-semibold text-on-surface-variant">30-Day Stock Health &amp; Availability</span>
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono-metric font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded" id="trend-avg-inventory">97.6% Avg</span>
+      <button id="export-inventory-chart-csv" class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-xs transition-colors cursor-pointer" title="Export 30-Day Stock Health as CSV" type="button">
+        <span class="material-symbols-outlined text-[13px]">download</span>
+        <span>Export CSV</span>
+      </button>
+    </div>
+  </div>
+  <div id="inventory-trend-chart" class="w-full h-16"></div>
+</div>
 <!-- Available Stock Formula Visual Pill -->
 <div class="p-space-sm mb-6 bg-surface-container rounded-lg font-mono-metric text-label-sm text-center text-primary font-bold">
             Available Stock = Total Physically Present - (Safety Floor + Committed)
@@ -293,7 +313,13 @@
 </div>
 <div class="p-space-md bg-surface-container-low rounded-lg font-mono-data text-label-sm flex items-center justify-between text-on-surface-variant">
 <span>SPOILAGE PREVENTION RATIO</span>
-<span class="text-secondary font-bold font-mono-metric">99.88% ZERO-WASTE</span>
+<div class="flex items-center gap-2">
+  <span class="text-secondary font-bold font-mono-metric">99.88% ZERO-WASTE</span>
+  <button id="export-domain-inv-csv" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-xs transition-colors cursor-pointer" title="Export Inventory Metrics as CSV" type="button">
+    <span class="material-symbols-outlined text-[13px]">download</span>
+    <span>CSV</span>
+  </button>
+</div>
 </div>
 </div>
 <!-- 3. Production & Line Orchestration -->
@@ -307,6 +333,20 @@
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
             Keep manufacturing lines humming. Synchronize ingredient staging with actual plant equipment speeds, changeover windows, and recipe constraints.
           </p>
+<!-- D3 Mini Trend Chart -->
+<div class="mb-6 p-4 bg-surface-container-low rounded-lg border border-outline/10">
+  <div class="flex items-center justify-between mb-2">
+    <span class="text-[11px] font-mono-data uppercase tracking-wider font-semibold text-on-surface-variant">30-Day Line OEE &amp; Attainment</span>
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono-metric font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded" id="trend-avg-production">94.8% Avg</span>
+      <button id="export-production-chart-csv" class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-xs transition-colors cursor-pointer" title="Export 30-Day Production OEE as CSV" type="button">
+        <span class="material-symbols-outlined text-[13px]">download</span>
+        <span>Export CSV</span>
+      </button>
+    </div>
+  </div>
+  <div id="production-trend-chart" class="w-full h-16"></div>
+</div>
 <ul class="space-y-2 mb-6 font-body-sm text-body-sm text-on-surface">
 <li class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
@@ -324,7 +364,13 @@
 </div>
 <div class="p-space-md bg-surface-container-low rounded-lg font-mono-data text-label-sm flex items-center justify-between text-on-surface-variant">
 <span>OEE STABILITY RATING</span>
-<span class="text-primary font-bold font-mono-metric">94.2% OPTIMAL</span>
+<div class="flex items-center gap-2">
+  <span class="text-primary font-bold font-mono-metric">94.2% OPTIMAL</span>
+  <button id="export-domain-prod-csv" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-xs transition-colors cursor-pointer" title="Export Production Metrics as CSV" type="button">
+    <span class="material-symbols-outlined text-[13px]">download</span>
+    <span>CSV</span>
+  </button>
+</div>
 </div>
 </div>
 <!-- 4. Logistics & Multimodal Freight -->
@@ -338,6 +384,20 @@
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
             Autonomous cold-chain integrity monitoring. Track continuous temperature sensor telemetry, port dwell times, and driver hours-of-service in real time.
           </p>
+<!-- D3 Mini Trend Chart -->
+<div class="mb-6 p-4 bg-surface-container-low rounded-lg border border-outline/10">
+  <div class="flex items-center justify-between mb-2">
+    <span class="text-[11px] font-mono-data uppercase tracking-wider font-semibold text-on-surface-variant">30-Day Carrier On-Time Delivery</span>
+    <div class="flex items-center gap-2">
+      <span class="text-xs font-mono-metric font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded" id="trend-avg-logistics">96.4% Avg</span>
+      <button id="export-logistics-chart-csv" class="inline-flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono font-medium bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-xs transition-colors cursor-pointer" title="Export 30-Day Carrier OTD as CSV" type="button">
+        <span class="material-symbols-outlined text-[13px]">download</span>
+        <span>Export CSV</span>
+      </button>
+    </div>
+  </div>
+  <div id="logistics-trend-chart" class="w-full h-16"></div>
+</div>
 <ul class="space-y-2 mb-6 font-body-sm text-body-sm text-on-surface">
 <li class="flex items-center gap-space-xs">
 <span class="material-symbols-outlined text-tertiary-container text-[18px]">check_circle</span>
@@ -355,7 +415,13 @@
 </div>
 <div class="p-space-md bg-surface-container-low rounded-lg font-mono-data text-label-sm flex items-center justify-between text-on-surface-variant">
 <span>LIVE FLEET GPS NODES</span>
-<span class="text-primary font-bold font-mono-metric">4,812 ACTIVE UNITS</span>
+<div class="flex items-center gap-2">
+  <span class="text-primary font-bold font-mono-metric">4,812 ACTIVE UNITS</span>
+  <button id="export-domain-logs-csv" class="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 shadow-xs transition-colors cursor-pointer" title="Export Logistics Metrics as CSV" type="button">
+    <span class="material-symbols-outlined text-[13px]">download</span>
+    <span>CSV</span>
+  </button>
+</div>
 </div>
 </div>
 </div>
@@ -527,36 +593,102 @@
       `;
     }
 
-    // Render D3 Vendor Reliability Mini-Trend Chart
+    // Render D3 Domain Mini-Trend Charts across all cards
     document.addEventListener('DOMContentLoaded', () => {
-      renderProcurementTrend();
+      renderAllDomainTrends();
     });
 
-    function renderProcurementTrend() {
-      const container = document.getElementById('procurement-trend-chart');
-      if (!container) return;
-
-      // 30 Days of dynamic reliability data trending from 95% up to 99.8%
-      const data = [];
-      const baseDate = new Date();
-      const baseReliability = [
-        95.4, 95.1, 95.8, 96.2, 95.9, 96.5, 96.8, 96.1, 96.6, 97.2,
-        97.0, 97.5, 97.9, 97.4, 97.8, 98.3, 98.1, 98.5, 98.8, 98.2,
-        98.6, 99.1, 99.3, 98.9, 99.2, 99.5, 99.4, 99.7, 99.5, 99.8
+    function renderAllDomainTrends() {
+      const chartsConfig = [
+        {
+          containerId: 'procurement-trend-chart',
+          avgId: 'trend-avg-reliability',
+          btnId: 'export-procurement-chart-csv',
+          filename: 'procurement_vendor_reliability_30d.csv',
+          metricHeader: 'Vendor_Reliability_Pct',
+          color: '#4e45d5',
+          targetSla: '95.0%',
+          slaThreshold: 95.0,
+          yDomain: [94, 100],
+          baseData: [
+            95.4, 95.1, 95.8, 96.2, 95.9, 96.5, 96.8, 96.1, 96.6, 97.2,
+            97.0, 97.5, 97.9, 97.4, 97.8, 98.3, 98.1, 98.5, 98.8, 98.2,
+            98.6, 99.1, 99.3, 98.9, 99.2, 99.5, 99.4, 99.7, 99.5, 99.8
+          ]
+        },
+        {
+          containerId: 'inventory-trend-chart',
+          avgId: 'trend-avg-inventory',
+          btnId: 'export-inventory-chart-csv',
+          filename: 'inventory_stock_health_trend_30d.csv',
+          metricHeader: 'Stock_Health_Pct',
+          color: '#059669',
+          targetSla: '95.0%',
+          slaThreshold: 95.0,
+          yDomain: [93, 100],
+          baseData: [
+            95.0, 95.4, 95.2, 95.8, 96.1, 96.5, 96.2, 96.8, 97.1, 96.9,
+            97.3, 97.0, 97.6, 97.8, 97.5, 97.9, 98.1, 97.8, 98.3, 98.0,
+            98.4, 98.6, 98.2, 98.7, 98.9, 98.5, 99.0, 99.2, 99.1, 99.4
+          ]
+        },
+        {
+          containerId: 'production-trend-chart',
+          avgId: 'trend-avg-production',
+          btnId: 'export-production-chart-csv',
+          filename: 'production_oee_trend_30d.csv',
+          metricHeader: 'Production_OEE_Pct',
+          color: '#d97706',
+          targetSla: '92.0%',
+          slaThreshold: 92.0,
+          yDomain: [90, 98],
+          baseData: [
+            91.8, 92.2, 92.0, 92.5, 92.9, 93.1, 93.5, 93.2, 93.8, 94.0,
+            93.7, 94.2, 94.5, 94.1, 94.6, 94.9, 95.2, 94.8, 95.3, 95.5,
+            95.1, 95.7, 95.9, 95.6, 96.0, 96.2, 96.1, 96.5, 96.7, 96.8
+          ]
+        },
+        {
+          containerId: 'logistics-trend-chart',
+          avgId: 'trend-avg-logistics',
+          btnId: 'export-logistics-chart-csv',
+          filename: 'logistics_carrier_otd_trend_30d.csv',
+          metricHeader: 'Carrier_OTD_Pct',
+          color: '#0284c7',
+          targetSla: '94.0%',
+          slaThreshold: 94.0,
+          yDomain: [92, 100],
+          baseData: [
+            93.8, 94.2, 94.0, 94.5, 94.9, 95.1, 95.4, 95.0, 95.6, 95.9,
+            95.7, 96.2, 96.5, 96.1, 96.6, 96.8, 97.1, 96.9, 97.2, 97.0,
+            97.5, 97.7, 97.4, 97.8, 98.0, 97.9, 98.2, 98.4, 98.3, 98.6
+          ]
+        }
       ];
 
+      chartsConfig.forEach((cfg) => {
+        renderSingleTrendChart(cfg);
+      });
+    }
+
+    function renderSingleTrendChart(cfg) {
+      const container = document.getElementById(cfg.containerId);
+      if (!container || !window.d3) return;
+
+      const data = [];
+      const baseDate = new Date();
       for (let i = 0; i < 30; i++) {
         const date = new Date();
         date.setDate(baseDate.getDate() - (29 - i));
         data.push({
           date: date,
-          value: baseReliability[i]
+          dateStr: date.toISOString().split('T')[0],
+          value: cfg.baseData[i]
         });
       }
 
-      // Calculate Average and display it
       const avg = data.reduce((sum, d) => sum + d.value, 0) / data.length;
-      const avgEl = document.getElementById('trend-avg-reliability');
+      const avgEl = document.getElementById(cfg.avgId);
       if (avgEl) {
         avgEl.textContent = `${avg.toFixed(1)}% Avg`;
       }
@@ -567,7 +699,7 @@
 
       container.innerHTML = '';
 
-      const svg = d3.select('#procurement-trend-chart')
+      const svg = d3.select(`#${cfg.containerId}`)
         .append('svg')
         .attr('width', '100%')
         .attr('height', '100%')
@@ -580,12 +712,13 @@
         .range([margin.left, width - margin.right]);
 
       const y = d3.scaleLinear()
-        .domain([94, 100])
+        .domain(cfg.yDomain)
         .range([height - margin.bottom, margin.top]);
 
       const defs = svg.append('defs');
+      const gradId = `grad-${cfg.containerId}`;
       const gradient = defs.append('linearGradient')
-        .attr('id', 'reliability-grad')
+        .attr('id', gradId)
         .attr('x1', '0%')
         .attr('y1', '0%')
         .attr('x2', '0%')
@@ -593,12 +726,12 @@
 
       gradient.append('stop')
         .attr('offset', '0%')
-        .attr('stop-color', '#4e45d5') // Theme secondary color
+        .attr('stop-color', cfg.color)
         .attr('stop-opacity', 0.35);
 
       gradient.append('stop')
         .attr('offset', '100%')
-        .attr('stop-color', '#4e45d5')
+        .attr('stop-color', cfg.color)
         .attr('stop-opacity', 0);
 
       const area = d3.area()
@@ -614,26 +747,31 @@
 
       svg.append('path')
         .datum(data)
-        .attr('fill', 'url(#reliability-grad)')
+        .attr('fill', `url(#${gradId})`)
         .attr('d', area);
 
       const path = svg.append('path')
         .datum(data)
         .attr('fill', 'none')
-        .attr('stroke', '#4e45d5')
+        .attr('stroke', cfg.color)
         .attr('stroke-width', 2)
         .attr('stroke-linecap', 'round')
         .attr('stroke-linejoin', 'round')
         .attr('d', line);
 
-      const tooltip = d3.select('body')
-        .append('div')
-        .attr('class', 'absolute hidden px-2 py-1 bg-slate-900 text-white rounded text-[10px] font-mono shadow-md pointer-events-none z-[9999]')
-        .style('transition', 'opacity 0.1s ease');
+      // Tooltip interaction
+      let tooltip = d3.select('#cockpit-chart-tooltip');
+      if (tooltip.empty()) {
+        tooltip = d3.select('body')
+          .append('div')
+          .attr('id', 'cockpit-chart-tooltip')
+          .attr('class', 'absolute hidden px-2 py-1 bg-slate-900 text-white rounded text-[10px] font-mono shadow-md pointer-events-none z-[9999]')
+          .style('transition', 'opacity 0.1s ease');
+      }
 
       const focusCircle = svg.append('circle')
         .attr('r', 4)
-        .attr('fill', '#4e45d5')
+        .attr('fill', cfg.color)
         .attr('stroke', '#ffffff')
         .attr('stroke-width', 1.5)
         .style('display', 'none');
@@ -678,6 +816,103 @@
         path.attr('d', line);
         svg.select('path:nth-of-type(1)').attr('d', area);
       });
+
+      // Bind Export CSV button
+      const exportBtn = document.getElementById(cfg.btnId);
+      if (exportBtn && !exportBtn.dataset.bound) {
+        exportBtn.dataset.bound = 'true';
+        exportBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const headers = ['Date', cfg.metricHeader, 'Rolling_30D_Avg_Pct', 'Target_SLA_Pct', 'SLA_Compliance_Status'];
+          const rows = data.map((d) => [
+            d3.timeFormat('%Y-%m-%d')(d.date),
+            d.value.toFixed(1) + '%',
+            avg.toFixed(1) + '%',
+            cfg.targetSla,
+            d.value >= cfg.slaThreshold ? 'Compliant' : 'Breach'
+          ]);
+          downloadClientCSV(cfg.filename, headers, rows);
+        });
+      }
     }
+
+    // Generic CSV Downloader for Landing Page
+    function downloadClientCSV(filename, headers, rows) {
+      const escapeCell = (val) => {
+        if (val === null || val === undefined) return '';
+        const str = String(val);
+        if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {
+          return `"${str.replace(/"/g, '""')}"`;
+        }
+        return str;
+      };
+      const headerLine = headers.map(escapeCell).join(',');
+      const rowLines = (rows || []).map((row) => row.map(escapeCell).join(','));
+      const csvContent = '\uFEFF' + [headerLine, ...rowLines].join('\r\n');
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', filename.endsWith('.csv') ? filename : `${filename}.csv`);
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      // Toast feedback
+      const toast = document.createElement('div');
+      toast.className = 'fixed bottom-5 right-5 z-[9999] px-4 py-2.5 bg-slate-900 text-white text-xs font-medium rounded-lg shadow-lg flex items-center gap-2 transition-all duration-300';
+      toast.innerHTML = `<span class="material-symbols-outlined text-[16px] text-emerald-400">check_circle</span><span>Exported ${(rows || []).length} rows to ${filename}</span>`;
+      document.body.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(8px)';
+        setTimeout(() => toast.remove(), 300);
+      }, 3500);
+    }
+
+    // Bind other domain cards export buttons
+    document.addEventListener('DOMContentLoaded', () => {
+      const invBtn = document.getElementById('export-domain-inv-csv');
+      if (invBtn) {
+        invBtn.addEventListener('click', () => {
+          const headers = ['Metric_ID', 'Domain', 'Metric_Name', 'Value', 'Safety_Target', 'Unit', 'Status'];
+          const rows = [
+            ['MET-INV-01', 'Inventory', 'Spoilage Prevention Ratio', '99.88%', '99.50%', 'Percent', 'Optimal'],
+            ['MET-INV-02', 'Inventory', 'Perishable Safety Buffer', '6.4', '4.0', 'Days', 'Healthy'],
+            ['MET-INV-03', 'Inventory', 'Multi-Echelon Balancing Velocity', '98.2', '95.0', 'Percent', 'Active']
+          ];
+          downloadClientCSV('inventory_domain_metrics.csv', headers, rows);
+        });
+      }
+
+      const prodBtn = document.getElementById('export-domain-prod-csv');
+      if (prodBtn) {
+        prodBtn.addEventListener('click', () => {
+          const headers = ['Metric_ID', 'Domain', 'Metric_Name', 'Value', 'Target', 'Unit', 'Status'];
+          const rows = [
+            ['MET-PROD-01', 'Production', 'OEE Stability Rating', '94.2%', '90.0%', 'Percent', 'Optimal'],
+            ['MET-PROD-02', 'Production', 'Batch Starvation Runway', '48.0', '24.0', 'Hours', 'Secured'],
+            ['MET-PROD-03', 'Production', 'CIP Sequencing Efficiency', '96.5%', '92.0%', 'Percent', 'Optimal']
+          ];
+          downloadClientCSV('production_domain_metrics.csv', headers, rows);
+        });
+      }
+
+      const logsBtn = document.getElementById('export-domain-logs-csv');
+      if (logsBtn) {
+        logsBtn.addEventListener('click', () => {
+          const headers = ['Metric_ID', 'Domain', 'Metric_Name', 'Value', 'Active_Fleet', 'Status'];
+          const rows = [
+            ['MET-LOG-01', 'Logistics', 'Active GPS Telemetry Nodes', '4812', '4812 Units', 'Live Tracking'],
+            ['MET-LOG-02', 'Logistics', 'Cold-Chain SLA Compliance', '99.4%', '98.0%', 'Optimal'],
+            ['MET-LOG-03', 'Logistics', 'Carrier On-Time Performance', '97.8%', '95.0%', 'Optimal']
+          ];
+          downloadClientCSV('logistics_domain_metrics.csv', headers, rows);
+        });
+      }
+    });
   </script>
 </div></main><footer class="w-full bg-surface-container-low"><div class="w-full max-w-7xl mx-auto px-page-margin-desktop py-space-3xl flex flex-col gap-space-2xl"><div class="grid grid-cols-2 md:grid-cols-5 gap-space-xl"><div class="col-span-2 flex flex-col gap-space-md"><div class="flex items-center gap-space-sm"><div class="w-6 h-6 rounded bg-primary text-on-primary flex items-center justify-center shadow-sm shrink-0"><span class="material-symbols-outlined text-[14px]">deployed_code</span></div><span class="font-headline-sm text-headline-sm text-primary font-bold">NEXUS TOWER</span></div><p class="font-body-sm text-body-sm text-on-surface-variant max-w-sm">Autonomous exception orchestration and high-fidelity operational twin architecture for Fortune 500 Food & Beverage consumer packaged goods manufacturers.</p><div class="flex items-center gap-space-xs font-mono-data text-label-sm text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-tertiary-container">verified</span>SOC2 Type II • ISO 27001 • FedRAMP High • FIDO2</div></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Platform</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="procurement-engine" href="#">Procurement Engine</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="inventory-optimization" href="#">Inventory Multi-Echelon</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="production-scheduling" href="#">Factory & Batch Run</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="freight-logistics" href="#">Cold Chain Logistics</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Solutions</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="shelf-life-spoilage" href="#">Perishables & Spoilage</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="promotional-demand" href="#">Retail Promo Volatility</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="ingredient-hedging" href="#">Commodity Hedging</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="traceability" href="#">Batch Genealogies</a></nav></div><div class="flex flex-col gap-space-sm"><span class="font-label-md text-label-md text-on-surface font-semibold uppercase tracking-wider">Governance</span><nav class="flex flex-col gap-space-xs" data-active-classes="text-primary font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="enterprise-security" href="#">Security Whitepaper</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="audit-trail" href="#">Immutable Auditing</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="sla-commitments" href="#">99.999% SLA</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-compliance" href="#">Privacy Framework</a></nav></div></div><div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-lg"><span class="font-body-sm text-body-sm text-on-surface-variant">© 2025 Nexus Tower Systems Inc. Mission-critical autonomous FMCG supply decision platform.</span><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="privacy-compliance" href="#">Privacy Policy</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="terms-of-service" href="#">Terms of Service</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors" data-path="responsible-ai" href="#">Trust & AI Safety</a></div></div></div></footer></body></html>

@@ -381,7 +381,37 @@
         }
       }, 4000);
     }
+
+    exportCSV(filename, headers, rows) {
+      if (!headers || !headers.length) return;
+      const escapeCell = (val) => {
+        if (val === null || val === undefined) return '';
+        const str = String(val);
+        if (str.includes(',') || str.includes('"') || str.includes('\n') || str.includes('\r')) {
+          return `"${str.replace(/"/g, '""')}"`;
+        }
+        return str;
+      };
+
+      const headerLine = headers.map(escapeCell).join(',');
+      const rowLines = (rows || []).map((row) => row.map(escapeCell).join(','));
+      const csvContent = '\uFEFF' + [headerLine, ...rowLines].join('\r\n');
+
+      const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.setAttribute('href', url);
+      link.setAttribute('download', filename.endsWith('.csv') ? filename : `${filename}.csv`);
+      link.style.display = 'none';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      this.showToast(`Exported ${(rows || []).length} records to ${filename.endsWith('.csv') ? filename : filename + '.csv'}`, 'success');
+    }
   }
 
   window.NexusAPI = new NexusAPIClient();
+  window.NexusExportCSV = (filename, headers, rows) => window.NexusAPI.exportCSV(filename, headers, rows);
 })(window);

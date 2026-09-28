@@ -55,6 +55,7 @@
       }
     })();
   </script>
+  <script src="https://d3js.org/d3.v7.min.js"></script>
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body class="min-h-screen bg-surface text-on-surface font-sans" data-page="controlTower">
@@ -151,6 +152,10 @@
           </button>
           <button class="trigger-evt-btn inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-medium text-white bg-slate-900 hover:bg-slate-800 rounded shadow-sm transition" data-evt="SHIPMENT_DISRUPTION" type="button">
             Shipment Delay
+          </button>
+          <button id="export-tower-csv-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-xs transition" type="button" title="Export Incident Chain Log as CSV">
+            <span class="material-symbols-outlined text-[16px]">download</span>
+            <span>Export CSV</span>
           </button>
           <button id="refresh-pipeline-btn" class="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-sm transition" type="button">
             <span class="material-symbols-outlined text-[16px]">refresh</span>
@@ -271,6 +276,31 @@
         </div>
       </section>
 
+      <!-- End-to-End Orchestration & Supply Chain Resilience Section -->
+      <section class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+              <span class="material-symbols-outlined text-[20px]">hub</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-semibold text-slate-900">End-to-End Supply Chain Orchestration Health (30-Day Trajectory)</h3>
+              <p class="text-xs text-slate-500">Enterprise multi-tier synchronization index across Procurement, Inventory, Production, and Logistics.</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 px-2.5 py-1 rounded" id="tower-trend-avg-resilience">99.2% Avg</span>
+            <span class="text-xs font-mono font-medium text-emerald-700 bg-emerald-50 px-2 py-1 rounded">Target SLA: 98.0%</span>
+            <button id="export-tower-chart-csv" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 hover:bg-slate-50 text-xs font-medium transition-colors shadow-xs cursor-pointer" title="Export 30-Day Orchestration Health Chart Data as CSV" type="button">
+              <span class="material-symbols-outlined text-[15px]">download</span>
+              <span>Export CSV</span>
+            </button>
+          </div>
+        </div>
+        <div class="relative w-full h-20 bg-slate-50/50 rounded-lg p-3 border border-slate-100">
+          <div id="control-tower-trend-chart" class="w-full h-full"></div>
+        </div>
+      </section>
 
       <!-- Four Domain Summary Row (Original Domain Navigation) -->
       <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -299,6 +329,10 @@
             <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-900">Domain Operations Status</h2>
             <p class="text-xs text-slate-500 mt-0.5">Consolidated departmental overview and ownership.</p>
           </div>
+          <button id="export-tower-domains-csv-btn" class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-slate-700 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 shadow-xs transition cursor-pointer" type="button" title="Export Domain Status as CSV">
+            <span class="material-symbols-outlined text-[15px]">download</span>
+            <span>Export CSV</span>
+          </button>
         </div>
         <div class="overflow-x-auto">
           <table class="w-full text-left border-collapse text-xs">
